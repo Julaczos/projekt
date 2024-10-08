@@ -7,6 +7,10 @@ class Overworld {
 
 
   init() {
-    console.log("hello world");
+    const image = new Image();
+    image.onload = () => {
+      
+    };
+    image.src = "/images/DemoLower.png";
   }
 }
