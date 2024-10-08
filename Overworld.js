@@ -11,6 +11,6 @@ class Overworld {
     image.onload = () => {
       this.ctx.drawImage(image,0,0)
     };
-    image.src = "images/DemoLower.png";
+    image.src = "/images/DemoLower.png";
   }
 }
