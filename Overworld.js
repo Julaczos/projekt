@@ -16,7 +16,7 @@ class Overworld {
 
     const hero = new Image();
     hero.onload = () => {
-        
+        this.ctx.drawImage(hero, 0, 0)
       }
     hero.src = "/projekt/images/Warrior_Red.png";
   }
