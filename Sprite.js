@@ -9,7 +9,7 @@ class Sprite {
     
     this.animations = config.animations || {
       idleDown: [
-        [0,0], [1,0], [2,0], [3,0]
+        [0,0]
       ]
     }
     this.currentAnimation = config.currentAnimation || "idleDown";
@@ -23,6 +23,6 @@ class Sprite {
     const x = this.gameObject.x * 16;
     const y = this.gameObject.y * 16;
 
-    ctx.drawImage(this.image,0,0,16,32,x,y,16,32)
+    this.isLoaded && ctx.drawImage(this.image,0,0,16,32,x,y,16,32)
   }
 }
