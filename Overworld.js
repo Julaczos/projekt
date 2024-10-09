@@ -13,8 +13,9 @@ class Overworld {
     };
     image.src = "/projekt/images/DemoLower.png";
 
-    const x = 1;
-    const y = 4;
+    const x = 5;
+    const y = 6;
+    
     const hero = new Image();
     hero.onload = () => {
         this.ctx.drawImage(hero, 0, 0, 16, 32, x * 16, y * 16, 16, 32)
