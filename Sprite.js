@@ -9,7 +9,7 @@ class Sprite {
     
     this.animations = config.animations || {
       idleDown: [
-        [0,0]
+        [4,0]
       ]
     }
     this.currentAnimation = config.currentAnimation || "idleDown";
