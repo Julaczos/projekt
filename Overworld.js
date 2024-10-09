@@ -9,7 +9,7 @@ class Overworld {
    image.onload = () => {
      this.ctx.drawImage(image,0,0)
    };
-   image.src = "/images/maps/DemoLower.png";
+   image.src = "/projekt/images/DemoLower.png";
    const hero = new GameObject({
      x: 5,
      y: 6,
