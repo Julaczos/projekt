@@ -33,5 +33,20 @@ window.OverworldMaps = {
         src: "/projekt/images/npc1.png"
       })
     }
-  }
+  },
+  Kitchen: {
+    lowerSrc: "/projekt/images/KitchenLower.png",
+    upperSrc: "/projekt/images/KitchenUpper.png",
+    gameObjects: {
+      hero: new GameObject({
+        x: 10,
+        y: 3,
+      }),
+      npc1: new GameObject({
+        x: 8,
+        y: 12,
+        src: "/projekt/images/npc2.png"
+      })
+    }
+  },
 }
