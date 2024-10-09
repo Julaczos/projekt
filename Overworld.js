@@ -14,7 +14,9 @@ class Overworld {
     image.src = "/projekt/images/DemoLower.png";
 
     const hero = new GameObjet({x: 5, y: 6})
+    const npc1 = new GameObject ({x : 7, y: 9, src: "/projekt/images/npc1.png"})
 
     hero.sprite.draw(this.ctx);
+    npc1.sprite.draw(this.ctx);
   }
 }
