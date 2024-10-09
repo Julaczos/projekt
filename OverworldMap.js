@@ -40,11 +40,11 @@ window.OverworldMaps = {
     gameObjects: {
       hero: new GameObject({
         x: 10,
-        y: 3,
+        y: 6,
       }),
       npc1: new GameObject({
         x: 8,
-        y: 12,
+        y: 9,
         src: "/projekt/images/npc2.png"
       })
     }
