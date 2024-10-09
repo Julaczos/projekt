@@ -13,13 +13,8 @@ class Overworld {
     };
     image.src = "/projekt/images/DemoLower.png";
 
-    const x = 5;
-    const y = 6;
-    
-    const hero = new Image();
-    hero.onload = () => {
-        this.ctx.drawImage(hero, 0, 0, 16, 32, x * 16, y * 16, 16, 32)
-      }
-    hero.src = "/projekt/images/hero.png";
+    const hero = new GameObjet({x: 5, y: 6})
+
+    hero.sprite.draw(this.ctx);
   }
 }
