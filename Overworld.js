@@ -4,7 +4,22 @@ class Overworld {
    this.canvas = this.element.querySelector(".game-canvas");
    this.ctx = this.canvas.getContext("2d");
  }
+
+ startGameLoop(){
+  const step = () => {
+   console.log("it's working");
+   requestAnimationFrame(() => {
+     step();
+    })
+  }
+  step();
+ }
+
+ 
  init() {
+
+  this.startGameLoop();
+   
    const image = new Image();
    image.onload = () => {
      this.ctx.drawImage(image,0,0)
@@ -19,9 +34,5 @@ class Overworld {
     y: 9,
     src: "/projekt/images/npc1.png"
   })
-  setTimeout(() => {
-    hero.sprite.draw(this.ctx);
-    npc1.sprite.draw(this.ctx);
-  }, 200)
  }
 }
