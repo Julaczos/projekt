@@ -13,10 +13,11 @@ class Overworld {
     };
     image.src = "/projekt/images/DemoLower.png";
 
-
+    const x = 0;
+    const y = 0;
     const hero = new Image();
     hero.onload = () => {
-        this.ctx.drawImage(hero, 0, 0)
+        this.ctx.drawImage(hero, 0, 0, 16, 32, x, y, 16, 32)
       }
     hero.src = "/projekt/images/hero.png";
   }
