@@ -8,6 +8,14 @@ class Overworld {
 
  startGameLoop(){
   const step = () => {
+
+   this.map.drawLowerImage(this.ctx);
+
+   Object.values(this.map.gameObjects).forEach(object => {
+    object.sprite.draw(this.ctx);
+   }
+   
+   this.map.drawUpperImage(this.ctx);
    requestAnimationFrame(() => {
      step();
     })
