@@ -35,7 +35,7 @@ window.OverworldMaps = {
     }
   },
   Kitchen: {
-    lowerSrc: "/projekt/images/KitchenLower.png",
+    lowerSrc: "/projekt/images/testowa.js",
     upperSrc: "/projekt/images/KitchenUpper.png",
     gameObjects: {
       hero: new GameObject({
