@@ -27,7 +27,7 @@ class Overworld {
    step();
  }
  init() {
-  this.map = new OverworldMap(window.OverworldMaps.Kitchen);
+  this.map = new OverworldMap(window.OverworldMaps.DemoRoom);
   this.startGameLoop();
  }
 }
