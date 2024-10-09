@@ -5,6 +5,6 @@ class GameObject {
     this.sprite = new Sprite({
       gameObject: this,
       src: config.src || "/projekt/images/hero.png",
-    )};
+    });
   }
 }
