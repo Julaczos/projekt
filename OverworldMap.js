@@ -39,6 +39,7 @@ window.OverworldMaps = {
     upperSrc: "/projekt/images/KitchenUpper.png",
     gameObjects: {
       hero: new Person({
+        isPlayerControlled: true,
         x: utils.withGrid(10),
         y: utils.withGrid(6),
       }),
