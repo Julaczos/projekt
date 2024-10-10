@@ -43,8 +43,8 @@ window.OverworldMaps = {
         y: utils.withGrid(6),
       }),
       npc1: new GameObject({
-        x: utils.withGrid(8),,
-        y: utils.withGrid(9),,
+        x: utils.withGrid(8),
+        y: utils.withGrid(9),
         src: "/projekt/images/npc2.png"
       })
     }
