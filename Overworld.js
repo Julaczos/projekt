@@ -11,13 +11,16 @@ class Overworld {
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
       const cameraPerson = this.map.gameObjects.hero;
-     
-      this.map.drawLowerImage(this.ctx, cameraPerson);
 
       Object.values(this.map.gameObjects).forEach(object => {
         object.update({
           arrow: this.directionInput.direction
         })
+      })
+
+      this.map.drawLowerImage(this.ctx, cameraPerson);
+
+      Object.values(this.map.gameObjects).forEach(object => {
         object.sprite.draw(this.ctx, cameraPerson);
       })
 
