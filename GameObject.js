@@ -7,4 +7,10 @@ class GameObject {
       src: config.src || "/projekt/images/hero.png",
     });
   }
+
+  update (){
+    
+  }
 }
+
+
