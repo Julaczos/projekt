@@ -10,7 +10,7 @@ class Overworld {
     const step = () => {
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-      const cameraPerson = this.map.ganeObjects.hero;
+      const cameraPerson = this.map.gameObjects.hero;
      
       this.map.drawLowerImage(this.ctx, cameraPerson);
 
