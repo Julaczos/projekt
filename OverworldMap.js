@@ -9,11 +9,11 @@ class OverworldMap {
     this.upperImage.src = config.upperSrc;
   }
 
-  drawLowerImage(ctx) {
+  drawLowerImage(ctx, cameraPerson) {
     ctx.drawImage(this.lowerImage, 0, 0)
   }
 
-  drawUpperImage(ctx) {
+  drawUpperImage(ctx, cameraPerson) {
     ctx.drawImage(this.upperImage, 0, 0)
   } 
 }
