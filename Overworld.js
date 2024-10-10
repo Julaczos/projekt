@@ -12,7 +12,7 @@ class Overworld {
 
       const cameraPerson = this.map.ganeObjects.hero;
      
-      this.map.drawLowerImage(this.ctx);
+      this.map.drawLowerImage(this.ctx, cameraPerson);
 
       Object.values(this.map.gameObjects).forEach(object => {
         object.update({
@@ -21,7 +21,7 @@ class Overworld {
         object.sprite.draw(this.ctx, cameraPerson);
       })
 
-      this.map.drawUpperImage(this.ctx);
+      this.map.drawUpperImage(this.ctx, cameraPerson);
       
       requestAnimationFrame(() => {
         step();   
