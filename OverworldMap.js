@@ -85,7 +85,7 @@ window.OverworldMaps = {
       })
     },
     walls: {
-      [utils.asGridCoord(28,29)] : true,
+      [utils.asGridCoord(28,29)] : true, //poczatek domku nr 1
       [utils.asGridCoord(29,29)] : true,
       [utils.asGridCoord(30,29)] : true,
       [utils.asGridCoord(31,29)] : true,
@@ -130,7 +130,7 @@ window.OverworldMaps = {
       [utils.asGridCoord(28,33)] : true,
       [utils.asGridCoord(28,32)] : true,
       [utils.asGridCoord(28,31)] : true,
-      [utils.asGridCoord(28,30)] : true,
+      [utils.asGridCoord(28,30)] : true, //koniec domku nr 1
       [utils.asGridCoord(26,35)] : true,
       [utils.asGridCoord(20,31)] : true,
       [utils.asGridCoord(18,40)] : true,
