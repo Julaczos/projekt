@@ -2,6 +2,7 @@ class OverworldMap {
   constructor(config) {
     this.gameObjects = config.gameObjects;
     this.walls = config.walls || {};
+
     this.lowerImage = new Image();
     this.lowerImage.src = config.lowerSrc;
 
@@ -10,22 +11,33 @@ class OverworldMap {
   }
 
   drawLowerImage(ctx, cameraPerson) {
-    ctx.drawImage(this.lowerImage, utils.withGrid(10.5)-cameraPerson.x, utils.withGrid(6)-cameraPerson.y)
+    ctx.drawImage(
+      this.lowerImage, 
+      utils.withGrid(10.5) - cameraPerson.x, 
+      utils.withGrid(6) - cameraPerson.y
+      )
   }
 
   drawUpperImage(ctx, cameraPerson) {
-    ctx.drawImage(this.upperImage, utils.withGrid(10.5)-cameraPerson.x, utils.withGrid(6)-cameraPerson.y)
+    ctx.drawImage(
+      this.upperImage, 
+      utils.withGrid(10.5) - cameraPerson.x, 
+      utils.withGrid(6) - cameraPerson.y
+    )
   } 
 
-  isSpaceTaken (currentX, currentY, direction){
+  isSpaceTaken(currentX, currentY, direction) {
     const {x,y} = utils.nextPosition(currentX, currentY, direction);
     return this.walls[`${x},${y}`] || false;
   }
-  
+
   mountObjects() {
     Object.values(this.gameObjects).forEach(o => {
       o.mount(this);
-  })
+
+    })
+  }
+
   addWall(x,y) {
     this.walls[`${x},${y}`] = true;
   }
@@ -37,6 +49,7 @@ class OverworldMap {
     const {x,y} = utils.nextPosition(wasX, wasY, direction);
     this.addWall(x,y);
   }
+
 }
 
 window.OverworldMaps = {
@@ -56,7 +69,7 @@ window.OverworldMaps = {
       })
     }
   },
-  Kitchen: {
+  MainMap: {
     lowerSrc: "/projekt/images/MainMap.png",
     upperSrc: "/projekt/images/MainMapUpper.png",
     gameObjects: {
