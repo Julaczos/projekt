@@ -83,7 +83,7 @@ window.OverworldMaps = {
         y: utils.withGrid(9),
         src: "/projekt/images/npc2.png"
       })
-    }
+    },
     walls: {
       [utils.asGridCoord(7,6)] : true,
       [utils.asGridCoord(8,6)] : true,
