@@ -90,19 +90,20 @@ function calculateAngle(A, B, C) {
 }
 
 async function startCamera() {
-    const video = document.createElement("video");  
     try {
         const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-        video.srcObject = stream;
-        video.play();
-        return video;
+        return stream;
     } catch (err) {
         console.error("Błąd podczas uzyskiwania dostępu do kamerki: ", err);
         alert("Nie można uzyskać dostępu do kamery. Upewnij się, że udzielono odpowiednich uprawnień.");
     }
 }
 
-async function initMediaPipe(video) {
+async function initMediaPipe(stream) {
+    const video = document.createElement("video");
+    video.srcObject = stream;
+    video.play();
+
     const pose = new Pose({
         locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`
     });
@@ -129,19 +130,7 @@ async function initMediaPipe(video) {
 }
 
 function onPoseResults(results) {
-    const canvasElement = document.getElementById('outputCanvas');
-    const canvasCtx = canvasElement.getContext('2d');
-
-    canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
-    canvasElement.width = results.image.width;
-    canvasElement.height = results.image.height;
-    canvasCtx.drawImage(results.image, 0, 0);
-
     if (results.poseLandmarks) {
-        console.log(results.poseLandmarks); 
-        drawConnectors(canvasCtx, results.poseLandmarks, POSE_CONNECTIONS, { color: '#00FF00', lineWidth: 4 });
-        drawLandmarks(canvasCtx, results.poseLandmarks, { color: '#FF0000', lineWidth: 2 });
-
         updateSquatCounter(results.poseLandmarks);
         updateBicepCurlCounter(results.poseLandmarks);
     }
@@ -151,9 +140,9 @@ window.onload = async () => {
     if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
         alert("Twoja przeglądarka nie obsługuje dostępu do kamery. Prosimy o aktualizację.");
     } else {
-        const video = await startCamera();
-        if (video) {
-            initMediaPipe(video);
+        const stream = await startCamera();
+        if (stream) {
+            initMediaPipe(stream);
         }
     }
 };
