@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GymAI</title>
     <link href="styles.css" type="text/css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils"></script>
-  </head>
-  <body>
+</head>
+<body>
+    <h1>Podgląd kamery</h1>
+    <video id="video" width="640" height="480" autoplay></video>
     <div class="game-container">
-      <canvas class="game-canvas" width="352" height="198"></canvas>
-      <canvas id="outputCanvas" width="640" height="480" style="display:none;"></canvas> 
-      <div id="levelDisplay">Poziom: 1</div>
-      <div id="xpDisplay">XP: 0 / 100</div>
-      <div id="errorDisplay"></div>
+        <canvas class="game-canvas" width="352" height="198"></canvas>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils"></script>
     <script src="utils.js"></script>
     <script src="DirectionInput.js"></script>
     <script src="Overworld.js"></script>
@@ -25,6 +23,20 @@
     <script src="Sprite.js"></script>
     <script src="OverworldMap.js"></script>
     <script src="init.js"></script>
-    <script src="poseMain.js"></script>
-  </body>
+
+    <script>
+        async function startCamera() {
+            const video = document.getElementById('video');
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                video.srcObject = stream;
+            } catch (err) {
+                console.error("Błąd podczas uzyskiwania dostępu do kamerki: ", err);
+                alert("Nie można uzyskać dostępu do kamery. Upewnij się, że udzielono odpowiednich uprawnień.");
+            }
+        }
+
+        window.onload = startCamera;
+    </script>
+</body>
 </html>
