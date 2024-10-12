@@ -119,6 +119,7 @@ async function initMediaPipe(video) {
 
     async function detectPose() {
         if (video.readyState >= 3) {
+            console.log('Wysyłanie obrazu do MediaPipe...');
             await pose.send({ image: video });
         }
         requestAnimationFrame(detectPose);
@@ -137,6 +138,7 @@ function onPoseResults(results) {
     canvasCtx.drawImage(results.image, 0, 0);
 
     if (results.poseLandmarks) {
+        console.log(results.poseLandmarks); 
         drawConnectors(canvasCtx, results.poseLandmarks, POSE_CONNECTIONS, { color: '#00FF00', lineWidth: 4 });
         drawLandmarks(canvasCtx, results.poseLandmarks, { color: '#FF0000', lineWidth: 2 });
 
@@ -144,7 +146,6 @@ function onPoseResults(results) {
         updateBicepCurlCounter(results.poseLandmarks);
     }
 }
-
 
 window.onload = async () => {
     if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
