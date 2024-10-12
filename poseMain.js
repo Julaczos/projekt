@@ -156,5 +156,6 @@ async function checkLocationAndStartCamera() {
         if (pose) {
             pose.close();
         }
+        console.log("Kamerka wyłączona poza FitnessRoom.");
     }
 }
