@@ -6,7 +6,7 @@ let isCurling = false;
 let level = 1;
 let xp = 0;
 let xpToNextLevel = 100;
-let currentLocation = 'FitnessRoom';
+let currentLocation = 'MainMap';
 let videoStream;
 let pose;
 
