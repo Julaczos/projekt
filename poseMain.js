@@ -6,6 +6,9 @@ let isCurling = false;
 let level = 1;
 let xp = 0;
 let xpToNextLevel = 100;
+let currentLocation = 'MainMap';
+let videoStream;
+let pose;
 
 function gainXP(amount) {
     xp += amount;
@@ -18,7 +21,7 @@ function checkLevelUp() {
         level++;
         xp -= xpToNextLevel;
         xpToNextLevel = Math.floor(xpToNextLevel * 1.5);
-        
+
         document.getElementById("levelDisplay").innerText = `Poziom: ${level}`;
         document.getElementById("xpDisplay").innerText = `XP: ${xp} / ${xpToNextLevel}`;
         console.log(`Gratulacje! Osiągnięto poziom ${level}`);
@@ -104,7 +107,7 @@ async function initMediaPipe(stream) {
     video.srcObject = stream;
     video.play();
 
-    const pose = new Pose({
+    pose = new Pose({
         locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`
     });
 
@@ -120,7 +123,6 @@ async function initMediaPipe(stream) {
 
     async function detectPose() {
         if (video.readyState >= 3) {
-            console.log('Wysyłanie obrazu do MediaPipe...');
             await pose.send({ image: video });
         }
         requestAnimationFrame(detectPose);
@@ -136,13 +138,23 @@ function onPoseResults(results) {
     }
 }
 
-window.onload = async () => {
-    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-        alert("Twoja przeglądarka nie obsługuje dostępu do kamery. Prosimy o aktualizację.");
+async function checkLocationAndStartCamera() {
+    if (currentLocation === 'FitnessRoom') {
+        if (!videoStream) {
+            videoStream = await startCamera();
+            if (videoStream) {
+                initMediaPipe(videoStream);
+            }
+        }
     } else {
-        const stream = await startCamera();
-        if (stream) {
-            initMediaPipe(stream);
+        if (videoStream) {
+            let tracks = videoStream.getTracks();
+            tracks.forEach(track => track.stop());
+            videoStream = null;
+            console.log("Kamerka wyłączona poza FitnessRoom.");
+        }
+        if (pose) {
+            pose.close();
         }
     }
-};
+}
