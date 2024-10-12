@@ -139,23 +139,35 @@ function onPoseResults(results) {
 }
 
 async function checkLocationAndStartCamera() {
+    console.log("Aktualna lokalizacja: ", currentLocation);  // Sprawdzenie, jaka jest aktualna lokalizacja
+    
     if (currentLocation === 'FitnessRoom') {
+        console.log("Gracz znajduje się w FitnessRoom. Próba uruchomienia kamerki...");
         if (!videoStream) {
             videoStream = await startCamera();
             if (videoStream) {
+                console.log("Kamerka uruchomiona.");
                 initMediaPipe(videoStream);
+            } else {
+                console.log("Nie udało się uruchomić kamerki.");
             }
+        } else {
+            console.log("Kamerka już działa.");
         }
     } else {
+        console.log("Gracz nie znajduje się w FitnessRoom. Wyłączanie kamerki...");
         if (videoStream) {
             let tracks = videoStream.getTracks();
             tracks.forEach(track => track.stop());
             videoStream = null;
-            console.log("Kamerka wyłączona poza FitnessRoom.");
+            console.log("Kamerka wyłączona.");
+        } else {
+            console.log("Kamerka już była wyłączona.");
         }
         if (pose) {
             pose.close();
+            console.log("MediaPipe wyłączone.");
         }
-        console.log("Kamerka wyłączona poza FitnessRoom.");
     }
 }
+
