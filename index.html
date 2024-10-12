@@ -4,19 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GymAI</title>
-    <link href="styles.css" type="text/css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
 </head>
 <body>
     <div class="game-container">
         <canvas class="game-canvas" width="352" height="198"></canvas>
-        <canvas id="outputCanvas" width="352" height="198" style="display: none;"></canvas>
     </div>
     
-    <div id="xpDisplay">XP: 0 / 100</div>
-    <div id="levelDisplay">Poziom: 1</div>
-    <div id="counter3">Przysiady: 0</div>
-    <div id="bicepCounter">Biceps Curls: 0</div>
-
     <script src="utils.js"></script>
     <script src="DirectionInput.js"></script>
     <script src="Overworld.js"></script>
@@ -25,6 +22,6 @@
     <script src="Sprite.js"></script>
     <script src="OverworldMap.js"></script>
     <script src="init.js"></script>
-    <script src="poseMain.js"></script>
+    <script src="poseMain.js"></script>  
 </body>
 </html>
