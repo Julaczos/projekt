@@ -85,7 +85,7 @@ window.OverworldMaps = {
       }),
       npc2: new Person({
         x: utils.withGrid(55),
-        y: utils.withGrid(55),
+        y: utils.withGrid(56),
         src: "/projekt/images/npc2.png"
       }),
       npc3: new Person({
