@@ -23,7 +23,7 @@ body {
   image-rendering: pixelated;
 }
 
-#counter3, #bicepCounter, #levelDisplay, #xpDisplay, #errorDisplay {
+#levelDisplay, #xpDisplay, #errorDisplay {
   position: absolute;
   color: #fff;
   font-family: 'Arial', sans-serif;
@@ -32,28 +32,18 @@ body {
   z-index: 10; 
 }
 
-#counter3 {
+#levelDisplay {
   top: 10px;
   left: 10px;
 }
 
-#bicepCounter {
+#xpDisplay {
   top: 30px;
   left: 10px;
 }
 
-#levelDisplay {
-  top: 50px;
-  left: 10px;
-}
-
-#xpDisplay {
-  top: 70px;
-  left: 10px;
-}
-
 #errorDisplay {
-  top: 90px;
+  top: 50px;
   left: 10px;
   color: red; /
   font-weight: bold;
