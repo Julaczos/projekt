@@ -222,6 +222,9 @@ window.OverworldMaps = {
       [utils.asGridCoord(27,49)] : true,
       [utils.asGridCoord(28,49)] : true,
       [utils.asGridCoord(29,49)] : true,
+      for (let i = 30; i <= 50; i++) {
+        [utils.asGridCoord(x,11)] : true,
+      }
       
     }
   },
