@@ -28,7 +28,7 @@ function checkLevelUp() {
 function checkGameProgress() {
     if (squatCount >= 10) {
         alert("Gratulacje! Wykonałeś 10 przysiadów, zdobywasz bonus w grze!");
-        squatCount = 0; 
+        squatCount = 0; // Resetuj licznik przysiadów
     }
 }
 
@@ -45,7 +45,7 @@ function updateSquatCounter(poseLandmarks) {
         document.getElementById("errorDisplay").innerText = "Część sylwetki jest niewidoczna. Ustaw się prawidłowo.";
         return;
     } else {
-        document.getElementById("errorDisplay").innerText = "";  
+        document.getElementById("errorDisplay").innerText = "";  // Czyści komunikat błędu
     }
 
     const leftKneeAngle = calculateAngle(leftHip, leftKnee, leftAnkle);
@@ -59,7 +59,7 @@ function updateSquatCounter(poseLandmarks) {
         isSquatting = false;
         document.getElementById("counter3").innerText = `Przysiady: ${squatCount}`;
         gainXP(10);
-        checkGameProgress();  
+        checkGameProgress();  // Dodaj to wywołanie
     }
 }
 
@@ -76,7 +76,7 @@ function updateBicepCurlCounter(poseLandmarks) {
         document.getElementById("errorDisplay").innerText = "Część sylwetki jest niewidoczna. Ustaw się prawidłowo.";
         return;
     } else {
-        document.getElementById("errorDisplay").innerText = "";  
+        document.getElementById("errorDisplay").innerText = "";  // Czyści komunikat błędu
     }
 
     const leftElbowAngle = calculateAngle(leftShoulder, leftElbow, leftWrist);
@@ -90,7 +90,69 @@ function updateBicepCurlCounter(poseLandmarks) {
         isCurling = false;
         document.getElementById("bicepCounter").innerText = `Biceps Curls: ${bicepCurlCount}`;
         gainXP(5);
-        checkGameProgress();  
+        checkGameProgress();  // Dodaj to wywołanie
+    }
+}
+
+function calculateAngle(A, B, C) {
+    const radians = Math.atan2(C.y - B.y, C.x - B.x) - Math.atan2(A.y - B.y, A.x - B.x);
+    let angle = Math.abs(radians * 180.0 / Math.PI);
+    if (angle > 180) {
+        angle = 360 - angle;
+    }
+    return angle;
+}
+
+async function startCamera() {
+    const video = document.createElement("video");  // Tworzymy element wideo
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        video.srcObject = stream;
+        video.play();
+        return video;
+    } catch (err) {
+        console.error("Błąd podczas uzyskiwania dostępu do kamerki: ", err);
+        alert("Nie można uzyskać dostępu do kamery. Upewnij się, że udzielono odpowiednich uprawnień.");
+    }
+}
+
+async function initMediaPipe(video) {
+    const pose = new Pose({
+        locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`
+    });
+
+    pose.setOptions({
+        modelComplexity: 0,
+        smoothLandmarks: true,
+        enableSegmentation: false,
+        minDetectionConfidence: 0.5,
+        minTrackingConfidence: 0.5
+    });
+
+    pose.onResults(onPoseResults);
+
+    async function detectPose() {
+        if (video.readyState >= 3) {
+            await pose.send({ image: video });
+        }
+        requestAnimationFrame(detectPose);
+    }
+
+    detectPose();
+}
+
+function onPoseResults(results) {
+    const canvasElement = document.getElementById('outputCanvas');
+    const canvasCtx = canvasElement.getContext('2d');
+
+    canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
+    canvasElement.width = results.image.width;
+    canvasElement.height = results.image.height;
+    canvasCtx.drawImage(results.image, 0, 0);
+
+    if (results.poseLandmarks) {
+        updateSquatCounter(results.poseLandmarks);
+        updateBicepCurlCounter(results.poseLandmarks);
     }
 }
 
