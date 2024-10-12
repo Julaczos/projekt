@@ -1,5 +1,6 @@
+/* Reset styles */
 * {
-  box-sizing:border-box;
+  box-sizing: border-box;
 }
 
 body {
@@ -15,10 +16,49 @@ body {
   height: 198px;
   margin: 0 auto;
   outline: 1px solid #fff;
-
   transform: scale(3) translateY(50%);
 }
 
 .game-container canvas {
   image-rendering: pixelated;
+}
+
+#counter3, #bicepCounter, #levelDisplay, #xpDisplay, #errorDisplay {
+  position: absolute;
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  margin: 10px;
+  z-index: 10; 
+}
+
+#counter3 {
+  top: 10px;
+  left: 10px;
+}
+
+#bicepCounter {
+  top: 30px;
+  left: 10px;
+}
+
+#levelDisplay {
+  top: 50px;
+  left: 10px;
+}
+
+#xpDisplay {
+  top: 70px;
+  left: 10px;
+}
+
+#errorDisplay {
+  top: 90px;
+  left: 10px;
+  color: red; /
+  font-weight: bold;
+}
+
+.game-container canvas:hover {
+  cursor: pointer; 
 }
