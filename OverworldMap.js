@@ -80,7 +80,7 @@ window.OverworldMaps = {
       }),
       npc1: new Person({
         x: utils.withGrid(45),
-        y: utils.withGrid(36),
+        y: utils.withGrid(36) - 18,
         src: "/projekt/images/npc2.png"
       })
     },
@@ -139,7 +139,39 @@ window.OverworldMaps = {
       [utils.asGridCoord(20,59)] : true,
       [utils.asGridCoord(30,64)] : true,
       [utils.asGridCoord(25,75)] : true,
-      [utils.asGridCoord(34,76)] : true,
+      [utils.asGridCoord(34,76)] : true, // test1
+      [utils.asGridCoord(22,44)] : true, //poczatek domku nr 2
+      [utils.asGridCoord(21,44)] : true,
+      [utils.asGridCoord(23,44)] : true,
+      [utils.asGridCoord(24,44)] : true,
+      [utils.asGridCoord(25,44)] : true,
+      [utils.asGridCoord(26,44)] : true,
+      [utils.asGridCoord(27,44)] : true,
+      [utils.asGridCoord(28,44)] : true,
+      [utils.asGridCoord(29,44)] : true,
+      [utils.asGridCoord(29,45)] : true,
+      [utils.asGridCoord(29,46)] : true,
+      [utils.asGridCoord(29,47)] : true,
+      [utils.asGridCoord(29,48)] : true, //
+      [utils.asGridCoord(30,46)] : true,
+      [utils.asGridCoord(30,47)] : true,
+      [utils.asGridCoord(21,45)] : true,
+      [utils.asGridCoord(21,46)] : true,
+      [utils.asGridCoord(21,47)] : true,
+      [utils.asGridCoord(21,48)] : true,
+      [utils.asGridCoord(22,48)] : true,
+      [utils.asGridCoord(22,49)] : true,
+      [utils.asGridCoord(22,50)] : true,
+      [utils.asGridCoord(23,50)] : true,
+      [utils.asGridCoord(24,50)] : true,
+      [utils.asGridCoord(23,47)] : true,
+      [utils.asGridCoord(24,48)] : true,
+      [utils.asGridCoord(25,48)] : true,
+      [utils.asGridCoord(26,48)] : true,
+      [utils.asGridCoord(27,48)] : true,
+      [utils.asGridCoord(28,48)] : true,
+      [utils.asGridCoord(29,48)] : true,
+      
     }
   },
 }
