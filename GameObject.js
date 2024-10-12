@@ -7,38 +7,42 @@ class GameObject {
     this.direction = config.direction || "down";
     this.sprite = new Sprite({
       gameObject: this,
-      src: config.src || "/projekt/images/hero.png",
+      src: config.src || "/images/characters/people/hero.png",
     });
 
     this.behaviorLoop = config.behaviorLoop || [];
     this.behaviorLoopIndex = 0;
+
   }
 
   mount(map) {
+    console.log("mounting!")
     this.isMounted = true;
     map.addWall(this.x, this.y);
 
-    setTimeout (() => {
-      this.doBehaviorEvent (map);
+    setTimeout(() => {
+      this.doBehaviorEvent(map);
     }, 10)
   }
 
   update() {
-
   }
 
-  async doBehaviorEvent(map){
+  async doBehaviorEvent(map) { 
+
+    if (map.isCutscenePlaying || this.behaviorLoop.length === 0) {
+      return;
+    }
     let eventConfig = this.behaviorLoop[this.behaviorLoopIndex];
     eventConfig.who = this.id;
 
-    const eventHandler = new OverworldEvent({ map, event: eventConfig});
-    await eventHandler.init();
+    const eventHandler = new OverworldEvent({ map, event: eventConfig });
+    await eventHandler.init(); 
 
     this.behaviorLoopIndex += 1;
     if (this.behaviorLoopIndex === this.behaviorLoop.length) {
       this.behaviorLoopIndex = 0;
-    }
-
+    } 
     this.doBehaviorEvent(map);
   }
 }
