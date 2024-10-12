@@ -108,7 +108,7 @@ async function initMediaPipe(video) {
     });
 
     pose.setOptions({
-        modelComplexity: 0,
+        modelComplexity: 1,
         smoothLandmarks: true,
         enableSegmentation: false,
         minDetectionConfidence: 0.5,
@@ -137,10 +137,14 @@ function onPoseResults(results) {
     canvasCtx.drawImage(results.image, 0, 0);
 
     if (results.poseLandmarks) {
+        drawConnectors(canvasCtx, results.poseLandmarks, POSE_CONNECTIONS, { color: '#00FF00', lineWidth: 4 });
+        drawLandmarks(canvasCtx, results.poseLandmarks, { color: '#FF0000', lineWidth: 2 });
+
         updateSquatCounter(results.poseLandmarks);
         updateBicepCurlCounter(results.poseLandmarks);
     }
 }
+
 
 window.onload = async () => {
     if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
