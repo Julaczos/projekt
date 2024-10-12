@@ -28,7 +28,7 @@ function checkLevelUp() {
 function checkGameProgress() {
     if (squatCount >= 10) {
         alert("Gratulacje! Wykonałeś 10 przysiadów, zdobywasz bonus w grze!");
-        squatCount = 0; // Resetuj licznik przysiadów
+        squatCount = 0; 
     }
 }
 
@@ -41,13 +41,6 @@ function updateSquatCounter(poseLandmarks) {
     const rightKnee = poseLandmarks[26];
     const rightAnkle = poseLandmarks[28];
 
-    if (!leftHip || !leftKnee || !leftAnkle || !rightHip || !rightKnee || !rightAnkle) {
-        document.getElementById("errorDisplay").innerText = "Część sylwetki jest niewidoczna. Ustaw się prawidłowo.";
-        return;
-    } else {
-        document.getElementById("errorDisplay").innerText = "";  // Czyści komunikat błędu
-    }
-
     const leftKneeAngle = calculateAngle(leftHip, leftKnee, leftAnkle);
     const rightKneeAngle = calculateAngle(rightHip, rightKnee, rightAnkle);
     const averageKneeAngle = (leftKneeAngle + rightKneeAngle) / 2;
@@ -59,7 +52,7 @@ function updateSquatCounter(poseLandmarks) {
         isSquatting = false;
         document.getElementById("counter3").innerText = `Przysiady: ${squatCount}`;
         gainXP(10);
-        checkGameProgress();  // Dodaj to wywołanie
+        checkGameProgress();  
     }
 }
 
@@ -72,13 +65,6 @@ function updateBicepCurlCounter(poseLandmarks) {
     const rightElbow = poseLandmarks[14];
     const rightWrist = poseLandmarks[16];
 
-    if (!leftShoulder || !leftElbow || !leftWrist || !rightShoulder || !rightElbow || !rightWrist) {
-        document.getElementById("errorDisplay").innerText = "Część sylwetki jest niewidoczna. Ustaw się prawidłowo.";
-        return;
-    } else {
-        document.getElementById("errorDisplay").innerText = "";  // Czyści komunikat błędu
-    }
-
     const leftElbowAngle = calculateAngle(leftShoulder, leftElbow, leftWrist);
     const rightElbowAngle = calculateAngle(rightShoulder, rightElbow, rightWrist);
     const averageElbowAngle = (leftElbowAngle + rightElbowAngle) / 2;
@@ -90,7 +76,7 @@ function updateBicepCurlCounter(poseLandmarks) {
         isCurling = false;
         document.getElementById("bicepCounter").innerText = `Biceps Curls: ${bicepCurlCount}`;
         gainXP(5);
-        checkGameProgress();  // Dodaj to wywołanie
+        checkGameProgress(); 
     }
 }
 
@@ -104,7 +90,7 @@ function calculateAngle(A, B, C) {
 }
 
 async function startCamera() {
-    const video = document.createElement("video");  // Tworzymy element wideo
+    const video = document.createElement("video");  
     try {
         const stream = await navigator.mediaDevices.getUserMedia({ video: true });
         video.srcObject = stream;
