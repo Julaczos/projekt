@@ -118,14 +118,33 @@ window.OverworldMaps = {
         x: utils.withGrid(10),
         y: utils.withGrid(14),
       }),
-      npc1: new Person({
+      trener: new Person({
         x: utils.withGrid(8),
         y: utils.withGrid(9),
-        src: "/projekt/images/npc1.png"
+        src: "/projekt/images/trener.png",
+        talking: [
+            { 
+              required: ["5_Squats"],
+              events: [
+            { type: "textMessage", text: "Widzisz, to nie takie trudne", faceHero: "trener" },
+            { type: "textMessage", text: "Co to ma wspólnego z problemem miasta?" },
+            { type: "textMessage", text: "Słyszałeś kiedykolwiek o Klątwie Próżniactwa?" },
+            { type: "textMessage", text: "Nie...?" },
+            { type: "textMessage", text: "Serio? Pójdź do dzieci na stadione, to ich ulubiona opowieść" },
+           ]}, 
+           { 
+            events: [
+            { type: "textMessage", text: "Wreszcie, nawet nie wiesz ile na ciebie czekałem!", faceHero: "trener" },
+            { type: "textMessage", text: "Nic z tego nie rozumiem" },
+            { type: "textMessage", text: "Spokojnie, wkrótce wszystko stanie się jasne" },
+            { type: "textMessage", text: "Jednak najpierw wykonaj 5 przysiadów, tak, ty, do kamerki" },
+            { type: "textMessage", text: "Jakiej kamerki..." },
+          ]},
+        ]
       })
     },
     cutsceneSpaces: {
-      [utils.asGridCoord(10,15)]: [
+      [utils.asGridCoord(11,16)]: [
         {
           events: [
             { type: "changeMap", map: "MainMap" }
@@ -143,7 +162,7 @@ window.OverworldMaps = {
         x: utils.withGrid(3),
         y: utils.withGrid(11),
       }),
-      npc1: new Person({
+      mentor: new Person({
         x: utils.withGrid(8),
         y: utils.withGrid(4),
         src: "/projekt/images/mentor.png",
@@ -151,13 +170,13 @@ window.OverworldMaps = {
           {
             required: ["TALKED_TO_MENTOR"],
             events: [
-              { type: "textMessage", text: "Powiesz chociaż jak sie nazywasz?", faceHero: "npc1" },
+              { type: "textMessage", text: "Powiesz chociaż jak sie nazywasz?", faceHero: "mentor" },
               { type: "textMessage", text: "Andrzej" },
             ]
           },
           {
             events: [
-              { type: "textMessage", text: "Co robisz w moim domu?!", faceHero: "npc1" },
+              { type: "textMessage", text: "Co robisz w moim domu?!", faceHero: "mentor" },
               { type: "textMessage", text: "Możesz zrobić więcej niż myślisz, synu"},
               { type: "textMessage", text: "O co ci w ogóle chodzi?"},
               { type: "textMessage", text: "Widzę, że na sercu leży ci przyszłość Sanoveris"},
