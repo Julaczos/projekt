@@ -131,7 +131,8 @@ window.OverworldMaps = {
                 { type: "textMessage", text: "Cóż, zdążyłem się domyślić" },
                 { type: "textMessage", text: "Pamiętaj, że nie tylko trening się liczy!" },
                 { type: "textMessage", text: "Tak? Co innego?" },
-                { type: "textMessage", text: "Odwiedź dietetyczkę Annę, opowie ci o wadze zdrowego odżywiania" },
+                { type: "textMessage", text: "Odwiedź dietetyczkę Annę, opowie ci o wadze zdrowego odżywiania, zwykle jest w sklepie" },
+                {type: "addStoryFlag", flag: "TALKED_TO_MARCIN"},
               ]},
             { 
               required: ["Five_Squats"],
