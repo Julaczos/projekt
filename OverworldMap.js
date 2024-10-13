@@ -67,6 +67,13 @@ class OverworldMap {
       return `${object.x},${object.y}` === `${nextCoords.x},${nextCoords.y}`
     });
     if (!this.isCutscenePlaying && match && match.talking.length) {
+
+      const relevantScenario = match.talking.find(scenario => {
+          return (scenario.required || []).every(sf => {
+          return playerState.storyFlags[sf]
+        })      
+      })
+
       this.startCutscene(match.talking[0].events)
     }
   }
@@ -142,6 +149,7 @@ window.OverworldMaps = {
         src: "/projekt/images/mentor.png",
         talking: [
           {
+            required: ["TALKED_TO_MENTOR"],
             events: [
               { type: "textMessage", text: "Co robisz w moim domu?!", faceHero: "npc1" },
               { type: "textMessage", text: "Możesz zrobić więcej niż myślisz, synu"},
@@ -151,16 +159,14 @@ window.OverworldMaps = {
               { type: "textMessage", text: "Dalej nie wyjaśniłeś o co chodzi"},
               { type: "textMessage", text: "Zrób jak mówię, a zrozumiesz"},
             ],
-          }
-        ],
-        talking: [
-          {
-              events: [
+            events: [
               { type: "textMessage", text: "Powiesz chociaż jak sie nazywasz?", faceHero: "npc1" },
               { type: "textMessage", text: "Grzegorz" },
             ]
           }
-        ]
+        ],
+
+
       })
     },
     cutsceneSpaces: {
