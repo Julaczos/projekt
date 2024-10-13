@@ -292,7 +292,7 @@ window.OverworldMaps = {
       [utils.asGridCoord(58,69)] : true,     
       [utils.asGridCoord(57,69)] : true,     
       [utils.asGridCoord(56,69)] : true,     
-      [utils.asGridCoord(59,69)] : true,    //dol 
+     // [utils.asGridCoord(59,69)] : true,    //dol 
      /* [utils.asGridCoord(29,49)] : true,     
     //  [utils.asGridCoord(29,49)] : true,     
       [utils.asGridCoord(29,49)] : true,     
@@ -322,7 +322,7 @@ window.OverworldMaps = {
           ]
         }
       ],
-      [utils.asGridCoord(59,71)]: [
+      [utils.asGridCoord(59,70)]: [
         {
           events: [
             { type: "changeMap", map: "FitnessRoom" },
