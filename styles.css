@@ -32,10 +32,24 @@ body {
   image-rendering: pixelated;
 }
 
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+.pixelify-sans-test {
+  font-family: "Pixelify Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
 #levelDisplay, #xpDisplay, #errorDisplay {
   position: absolute;
   color: #fff;
-  font-family: 'Arial', sans-serif;
   font-size: 16px;
   margin: 10px;
   z-index: 10; 
