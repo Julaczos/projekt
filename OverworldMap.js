@@ -70,6 +70,14 @@ class OverworldMap {
 
 }
 
+function generateWalkingLoop(steps, direction) {
+    const loop = [];
+    for (let i = 0; i < steps; i++) {
+        loop.push({ type: "walk", direction: direction });
+    }
+    return loop;
+}
+
 window.OverworldMaps = {
   DemoRoom: {
     lowerSrc: "/projekt/images/DemoLower.png",
@@ -97,15 +105,14 @@ window.OverworldMaps = {
         y: utils.withGrid(49),
       }),
       npc1: new Person({
-        x: utils.withGrid(45),
-        y: utils.withGrid(45),
+        x: utils.withGrid(28),
+        y: utils.withGrid(36),
         src: "/projekt/images/npc1.png",
         behaviorLoop: [
-          { type: "walk", direction: "left"},
-          { type: "stand", direction: "up", time: 800},
-          { type: "walk", direction: "up"},
-          { type: "walk", direction: "right"},
-          { type: "walk", direction: "down"},
+          generateWalkingLoop(18, "left")
+          { type: "stand", direction: "down", time: 800},
+          generateWalkingLoop(18, "right")
+          { type: "stand", direction: "up"},
         ]
       }),
       npc2: new Person({
