@@ -237,6 +237,30 @@ window.OverworldMaps = {
         y: utils.withGrid(45),
         src: "/projekt/images/npc3.png"
       }),
+      child1: new Person({
+        x: utils.withGrid(60),
+        y: utils.withGrid(23),
+        src: "/projekt/images/child1.png",
+        behaviorLoop: [
+          { type: "stand", direction: "left"},
+        ]
+      }),
+      child2: new Person({
+        x: utils.withGrid(69),
+        y: utils.withGrid(27),
+        src: "/projekt/images/child2.png",
+        behaviorLoop: [
+          { type: "stand", direction: "right"},
+        ]
+      }),
+      child3: new Person({
+        x: utils.withGrid(63),
+        y: utils.withGrid(28),
+        src: "/projekt/images/child3.png",
+        behaviorLoop: [
+          { type: "stand", direction: "left"},
+        ]
+      }),
       npc4: new Person({
         x: utils.withGrid(60),
         y: utils.withGrid(19),
