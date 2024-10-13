@@ -138,8 +138,21 @@ window.OverworldMaps = {
       }),
       npc1: new Person({
         x: utils.withGrid(8),
-        y: utils.withGrid(9),
-        src: "/projekt/images/npc3.png"
+        y: utils.withGrid(4),
+        src: "/projekt/images/mentor.png",
+        talking: [
+          {
+            events: [
+              { type: "textMessage", text: "Co robisz w moim domu?!", faceHero: "npc1" },
+              { type: "textMessage", text: "Możesz zrobić więcej niż myślisz, synu"},
+              { type: "textMessage", text: "O co ci w ogóle chodzi?"},
+              { type: "textMessage", text: "Widzę, że na sercu leży ci przyszłość Sanoveris"},
+              { type: "textMessage", text: "Udaj się do FitnessRoomu, porozmawiaj z trenerem Marcinem"},
+              { type: "textMessage", text: "Dalej nie wyjaśniłeś o co chodzi"},
+              { type: "textMessage", text: "Zrób jak mówię, a zrozumiesz"},
+            ]
+          }
+        ],
       })
     },
     cutsceneSpaces: {
@@ -149,7 +162,7 @@ window.OverworldMaps = {
             { type: "changeMap", map: "MainMap" }
           ]
         }
-      ]
+      ],
   }
   },
   MainMap: {
