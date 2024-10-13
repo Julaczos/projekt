@@ -269,6 +269,45 @@ window.OverworldMaps = {
       [utils.asGridCoord(27,49)] : true,
       [utils.asGridCoord(28,49)] : true,
       [utils.asGridCoord(29,49)] : true,     
+      [utils.asGridCoord(54,63)] : true,     //poczatek fitness room
+      [utils.asGridCoord(55,63)] : true,     
+      [utils.asGridCoord(56,63)] : true,     
+      [utils.asGridCoord(57,63)] : true,     
+      [utils.asGridCoord(58,63)] : true,     
+      [utils.asGridCoord(59,63)] : true,     
+      [utils.asGridCoord(60,63)] : true, //sciana gorna    
+      [utils.asGridCoord(60,64)] : true,     
+      [utils.asGridCoord(60,65)] : true,     
+      [utils.asGridCoord(60,66)] : true,     
+      [utils.asGridCoord(60,67)] : true,     
+      [utils.asGridCoord(60,68)] : true,     
+      [utils.asGridCoord(60,69)] : true,   //prawo  
+      [utils.asGridCoord(54,64)] : true,     
+      [utils.asGridCoord(54,65)] : true,     
+      [utils.asGridCoord(54,66)] : true,     
+      [utils.asGridCoord(54,67)] : true,     
+      [utils.asGridCoord(54,68)] : true,     
+      [utils.asGridCoord(54,69)] : true,  //lewo   
+      [utils.asGridCoord(55,69)] : true,     
+      [utils.asGridCoord(58,69)] : true,     
+      [utils.asGridCoord(57,69)] : true,     
+      [utils.asGridCoord(56,69)] : true,     
+      [utils.asGridCoord(59,69)] : true,    //dol 
+     /* [utils.asGridCoord(29,49)] : true,     
+    //  [utils.asGridCoord(29,49)] : true,     
+      [utils.asGridCoord(29,49)] : true,     
+      [utils.asGridCoord(29,49)] : true,     
+      [utils.asGridCoord(29,49)] : true,     
+      [utils.asGridCoord(29,49)] : true,     
+      [utils.asGridCoord(29,49)] : true,     
+      [utils.asGridCoord(29,49)] : true,     
+      [utils.asGridCoord(29,49)] : true,     
+      [utils.asGridCoord(29,49)] : true,     
+      [utils.asGridCoord(29,49)] : true,     
+      [utils.asGridCoord(29,49)] : true,     
+      [utils.asGridCoord(29,49)] : true,     
+      [utils.asGridCoord(29,49)] : true,   */  
+      
     },
     cutsceneSpaces: {
       [utils.asGridCoord(7,4)]: [
