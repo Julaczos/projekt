@@ -206,7 +206,7 @@ window.OverworldMaps = {
       hero: new Person({
         isPlayerControlled: true,
         x: utils.withGrid(5),
-        y: utils.withGrid(9),
+        y: utils.withGrid(10),
       }),
       npc6: new Person({
         x: utils.withGrid(8),
@@ -216,14 +216,14 @@ window.OverworldMaps = {
           {
             required: ["TALKED_TO_MENTOR"],
             events: [
-              { type: "textMessage", text: "Poznałeś już tego dziwaka?", faceHero: "mentor" },
+              { type: "textMessage", text: "Poznałeś już tego dziwaka?", faceHero: "npc6" },
               { type: "textMessage", text: "Znasz go?" },
               { type: "textMessage", text: "Ta, co jakiś czas się pojawia i mówi o sile sportu, głupoty" },
             ]
           },
           {
             events: [
-              { type: "textMessage", text: "Czaisz, że dzisiaj są moje urodziny?", faceHero: "mentor" },
+              { type: "textMessage", text: "Czaisz, że dzisiaj są moje urodziny?", faceHero: "npc6" },
               { type: "textMessage", text: "Cały dzień będę tylko jadł słodycze"},
             ]
           }
@@ -231,7 +231,7 @@ window.OverworldMaps = {
       })
     },
     cutsceneSpaces: {
-      [utils.asGridCoord(5,10)]: [
+      [utils.asGridCoord(5,11)]: [
         {
           events: [
             { type: "changeMap", map: "MainMap" }
