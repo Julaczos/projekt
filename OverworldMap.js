@@ -117,7 +117,26 @@ window.OverworldMaps = {
         isPlayerControlled: true,
         x: utils.withGrid(7),
         y: utils.withGrid(13),
-      }),    
+      }), 
+      dietetyk: new Person ({
+        x: utils.withGrid(9),
+        y: utils.withGrid(5),
+        src: "/projekt/images/dietetyk.png",
+        talking: [
+          {
+            required: ["TALKED_TO_MARCIN"],
+            events: [
+              { type: "textMessage", text: "Trener przekazał mi, że przyjdziesz, miło cię widzieć", faceHero: "dietetyk" },
+              { type: "textMessage", text: "Zacznę od prostego pytania: jak sie odżywiasz?"},
+            ]
+          },
+          {
+            events: [
+              { type: "textMessage", text: "Dzień dobry, życzę miłego dnia!", faceHero: "dietetyk" },
+            ]
+          },
+        ]
+      })
   },
   cutsceneSpaces: {
       [utils.asGridCoord(7,15)]: [
