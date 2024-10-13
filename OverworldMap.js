@@ -287,8 +287,9 @@ window.OverworldMaps = {
         {
           events: [
             { type: "changeMap", map: "FitnessRoom" }
-          ],
-          currentLocation = "FitnessRoom";
+            { type: "setVariable", variable: "currentLocation", value: "FitnessRoom" }
+          ]
+          
         }
       ]
   }
