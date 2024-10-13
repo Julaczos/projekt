@@ -123,6 +123,16 @@ window.OverworldMaps = {
         y: utils.withGrid(9),
         src: "/projekt/images/trener.png",
         talking: [
+            {
+              required: ["TALKED_TO_RUDA"],
+              events: [
+                {type: "textMessage", text: "Rozmawiałem z dziećmi na boisku i dowiedziałem się o mrocznym bycie...", faceHero: "trener" },
+                { type: "textMessage", text: "Mam nadzieję, że zdajesz sobie sprawę z swojego przeznaczenia" },
+                { type: "textMessage", text: "Cóż, zdążyłem się domyślić" },
+                { type: "textMessage", text: "Pamiętaj, że nie tylko trening się liczy!" },
+                { type: "textMessage", text: "Tak? Co innego?" },
+                { type: "textMessage", text: "Odwiedź dietetyczkę Annę, opowie ci o wadze zdrowego odżywiania" },
+              ]},
             { 
               required: ["Five_Squats"],
               events: [
