@@ -35,9 +35,8 @@ function checkLevelUp() {
 
 function checkGameProgress() {
     if (squatCount === 5) {
-        const event = { flag: "5_Squats" }; 
-        addStoryFlag({ event, resolve: () => console.log("Flaga historii dodana: 5_Squats") });
-
+        window.playerState.storyFlags["5_Squats] = true
+        console.log("Gratulacje" 
     }
 }
 
