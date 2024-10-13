@@ -527,7 +527,7 @@ window.OverworldMaps = {
           ]
         }
       ],
-      [utils.asGridCoord(43,34)]: [
+      [utils.asGridCoord(43,35)]: [
         {
           events: [
             { type: "changeMap", map: "GenBuilding" },
