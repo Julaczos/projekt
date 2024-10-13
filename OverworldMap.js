@@ -149,7 +149,6 @@ window.OverworldMaps = {
         src: "/projekt/images/mentor.png",
         talking: [
           {
-            required: ["TALKED_TO_MENTOR"],
             events: [
               { type: "textMessage", text: "Co robisz w moim domu?!", faceHero: "npc1" },
               { type: "textMessage", text: "Możesz zrobić więcej niż myślisz, synu"},
@@ -159,6 +158,7 @@ window.OverworldMaps = {
               { type: "textMessage", text: "Dalej nie wyjaśniłeś o co chodzi"},
               { type: "textMessage", text: "Zrób jak mówię, a zrozumiesz"},
             ],
+            required: ["TALKED_TO_MENTOR"],
             events: [
               { type: "textMessage", text: "Powiesz chociaż jak sie nazywasz?", faceHero: "npc1" },
               { type: "textMessage", text: "Grzegorz" },
