@@ -79,7 +79,7 @@ class Overworld {
   //   // { who: "npcA", type: "walk",  direction: "left" },
   //   // { who: "npcA", type: "walk",  direction: "left" },
   //   // { who: "npcA", type: "stand",  direction: "up", time: 800 },
-  // ])
+   ])
 
  }
 }
