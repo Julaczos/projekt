@@ -74,7 +74,7 @@ class OverworldMap {
         })      
       })
 
-      this.startCutscene(match.talking[0].events)
+      relevantScenario && this.startCutscene(relevantScenario.events)
     }
   }
 
