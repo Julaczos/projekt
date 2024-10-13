@@ -153,7 +153,7 @@ window.OverworldMaps = {
             ],
             events: [
               { type: "textMessage", text: "Powiesz chociaż jak sie nazywasz?", faceHero: "npc1" },
-              { type: "textMessage", text: "Grzegorz", faceHero: "npc1" },
+              { type: "textMessage", text: "Grzegorz" },
             ]
           }
         ],
