@@ -127,6 +127,31 @@ window.OverworldMaps = {
       ]
   }
   },
+  HerosHouse: {
+    lowerSrc: "/projekt/images/HerosHouseLower.png",
+    upperSrc: "/projekt/images/HerosHouseUpper.png",
+    gameObjects: {
+      hero: new Person({
+        isPlayerControlled: true,
+        x: utils.withGrid(3),
+        y: utils.withGrid(11),
+      }),
+      npc1: new Person({
+        x: utils.withGrid(8),
+        y: utils.withGrid(9),
+        src: "/projekt/images/npc3.png"
+      })
+    },
+    cutsceneSpaces: {
+      [utils.asGridCoord(3,12)]: [
+        {
+          events: [
+            { type: "changeMap", map: "MainMap" }
+          ]
+        }
+      ]
+  }
+  },
   MainMap: {
     lowerSrc: "/projekt/images/MainMap.png",
     upperSrc: "/projekt/images/MainMapUpper.png",
@@ -134,7 +159,7 @@ window.OverworldMaps = {
       hero: new Person({
         isPlayerControlled: true,
         x: utils.withGrid(23),
-        y: utils.withGrid(49),
+        y: utils.withGrid(50),
       }),
       npc1: new Person({
         x: utils.withGrid(28),
@@ -326,25 +351,18 @@ window.OverworldMaps = {
       [utils.asGridCoord(72,72)] : true,  */
     },
     cutsceneSpaces: {
-      [utils.asGridCoord(7,4)]: [
-        {
-          events: [
-            { who: "npc2", type: "walk",  direction: "left" },
-            { who: "npc2", type: "stand",  direction: "up", time: 500 },
-            { type: "textMessage", text:"You can't be in there!"},
-            { who: "npc2", type: "walk",  direction: "right" },
-            { who: "hero", type: "walk",  direction: "down" },
-            { who: "hero", type: "walk",  direction: "left" },
-          ]
-        }
-      ],
       [utils.asGridCoord(59,70)]: [
         {
           events: [
             { type: "changeMap", map: "FitnessRoom" },
-            { type: "setVariable", variable: "currentLocation", value: "FitnessRoom" }
           ]
-          
+        }
+      ],
+      [utils.asGridCoord(23,49)]: [
+        {
+          events: [
+            { type: "changeMap", map: "HerosHouse" },
+          ]
         }
       ]
   }
