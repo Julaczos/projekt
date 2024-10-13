@@ -157,7 +157,10 @@ window.OverworldMaps = {
               { type: "textMessage", text: "Udaj się do FitnessRoomu, porozmawiaj z trenerem Marcinem"},
               { type: "textMessage", text: "Dalej nie wyjaśniłeś o co chodzi"},
               { type: "textMessage", text: "Zrób jak mówię, a zrozumiesz"},
-            ],
+              {type: "addStoryFlag", flag: "TALKED_TO_MENTOR"}
+            ]
+          },
+          {
             required: ["TALKED_TO_MENTOR"],
             events: [
               { type: "textMessage", text: "Powiesz chociaż jak sie nazywasz?", faceHero: "npc1" },
