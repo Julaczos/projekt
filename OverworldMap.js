@@ -139,12 +139,11 @@ window.OverworldMaps = {
         "13,15", "12,15", "11,15", "10,15", "9,15", "8,15", "6,15", "5,15", "4,15", "3,15", "2,15", "1,15", "0,15",
         "0,14", "0,13", "0,12", "0,11", "0,10", "0,9", "0,8", "0,7", "0,6", "0,5", "0,4", "0,3", "0,2", "1,2"
       ].forEach(coord => {
-          let [x, y] = coord.split(",");
+          let [x, y] = coord.split(",").map(Number);
           walls[utils.asGridCoord(x, y)] = true;
       });
       return walls;
-  }
-
+  },
   },
   FitnessRoom: {
     lowerSrc: "/projekt/images/FitnessRoom.png",
