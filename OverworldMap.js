@@ -112,7 +112,7 @@ window.OverworldMaps = {
           ...generateWalkingLoop(18, "left"),
           { type: "stand", direction: "down", time: 800},
           ...generateWalkingLoop(18, "right"),
-          { type: "stand", direction: "up"},
+          { type: "stand", direction: "up", time: 800},
         ]
       }),
       npc2: new Person({
