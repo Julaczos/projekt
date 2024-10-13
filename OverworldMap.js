@@ -124,7 +124,7 @@ window.OverworldMaps = {
         src: "/projekt/images/trener.png",
         talking: [
             { 
-              required: ["5_Squats"],
+              required: ["Five_Squats"],
               events: [
             { type: "textMessage", text: "Widzisz, to nie takie trudne", faceHero: "trener" },
             { type: "textMessage", text: "Co to ma wspólnego z problemem miasta?" },
@@ -252,7 +252,7 @@ window.OverworldMaps = {
             ]
           },
           {
-            required: ["5_Squats"],
+            required: ["Five_Squats"],
             events: [
               {type: "textMessage", text: "Jeśli masz jakąś sprawę, porozmawiaj z Rudą", facehero: "child1"},
             ]
