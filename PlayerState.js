@@ -1,8 +1,7 @@
 class PlayerState {
-  constructor {
+  constructor() {  
     this.storyFlags = {
       TALKED_TO_MENTOR: true
-    };  
+    };
   }
-
 }
