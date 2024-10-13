@@ -5,3 +5,4 @@ class PlayerState {
     };
   }
 }
+window.playerState = new PlayerState();
