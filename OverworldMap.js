@@ -118,7 +118,7 @@ window.OverworldMaps = {
       })
     },
     cutsceneSpaces: {
-      [utils.asGridCoord(10,14)]: [
+      [utils.asGridCoord(10,15)]: [
         {
           events: [
             { type: "changeMap", map: "MainMap" }
@@ -291,23 +291,39 @@ window.OverworldMaps = {
       [utils.asGridCoord(55,69)] : true,     
       [utils.asGridCoord(58,69)] : true,     
       [utils.asGridCoord(57,69)] : true,     
-      [utils.asGridCoord(56,69)] : true,     
-     // [utils.asGridCoord(59,69)] : true,    //dol 
-     /* [utils.asGridCoord(29,49)] : true,     
-    //  [utils.asGridCoord(29,49)] : true,     
-      [utils.asGridCoord(29,49)] : true,     
-      [utils.asGridCoord(29,49)] : true,     
-      [utils.asGridCoord(29,49)] : true,     
-      [utils.asGridCoord(29,49)] : true,     
-      [utils.asGridCoord(29,49)] : true,     
-      [utils.asGridCoord(29,49)] : true,     
-      [utils.asGridCoord(29,49)] : true,     
-      [utils.asGridCoord(29,49)] : true,     
-      [utils.asGridCoord(29,49)] : true,     
-      [utils.asGridCoord(29,49)] : true,     
-      [utils.asGridCoord(29,49)] : true,     
-      [utils.asGridCoord(29,49)] : true,   */  
-      
+      [utils.asGridCoord(56,69)] : true,    //dol 
+      [utils.asGridCoord(68,66)] : true,    //poczatek market
+      [utils.asGridCoord(69,66)] : true,     
+      [utils.asGridCoord(70,66)] : true,     
+      [utils.asGridCoord(71,66)] : true,     
+      [utils.asGridCoord(72,66)] : true,     
+      [utils.asGridCoord(73,66)] : true,     
+      [utils.asGridCoord(74,66)] : true,     //gora marketu
+      [utils.asGridCoord(74,67)] : true,     
+      [utils.asGridCoord(74,68)] : true,     
+      [utils.asGridCoord(74,69)] : true,     
+      [utils.asGridCoord(74,70)] : true,     
+      [utils.asGridCoord(74,71)] : true,     
+      [utils.asGridCoord(74,72)] : true,     
+      [utils.asGridCoord(73,72)] : true,     
+      [utils.asGridCoord(72,72)] : true,  //dol
+      [utils.asGridCoord(71,71)] : true,  
+      [utils.asGridCoord(70,72)] : true,  
+      [utils.asGridCoord(69,72)] : true,  
+      [utils.asGridCoord(68,72)] : true,  
+      [utils.asGridCoord(68,71)] : true,  
+      [utils.asGridCoord(68,70)] : true,  
+      [utils.asGridCoord(68,69)] : true,  
+      [utils.asGridCoord(68,68)] : true,  
+      [utils.asGridCoord(68,67)] : true,  
+   /*    [utils.asGridCoord(72,72)] : true,  
+      [utils.asGridCoord(72,72)] : true,  
+      [utils.asGridCoord(72,72)] : true,  
+      [utils.asGridCoord(72,72)] : true,  
+      [utils.asGridCoord(72,72)] : true,  
+      [utils.asGridCoord(72,72)] : true,  
+      [utils.asGridCoord(72,72)] : true,  
+      [utils.asGridCoord(72,72)] : true,  */
     },
     cutsceneSpaces: {
       [utils.asGridCoord(7,4)]: [
