@@ -238,12 +238,9 @@ window.OverworldMaps = {
         src: "/projekt/images/npc3.png"
       }),
       child1: new Person({
-        x: utils.withGrid(60),
-        y: utils.withGrid(23),
+        x: utils.withGrid(64),
+        y: utils.withGrid(20),
         src: "/projekt/images/child1.png",
-        behaviorLoop: [
-          { type: "stand", direction: "right"},
-        ],
         talking: [
           {
             required: ["TALKED_TO_RUDA"],
@@ -265,20 +262,27 @@ window.OverworldMaps = {
         ]
       }),
       child2: new Person({
-        x: utils.withGrid(69),
-        y: utils.withGrid(27),
+        x: utils.withGrid(63),
+        y: utils.withGrid(20),
         src: "/projekt/images/child2.png",
-        behaviorLoop: [
-          { type: "stand", direction: "left"},
-        ],
+        talking: [
+          {
+            required: ["TALKED_TO_RUDA"],
+            events: [
+              {type: "textMessage", text: "Straszna sprawa, co nie?", facehero: "child2"}
+            ]
+          },
+          {
+            events: [
+              {type: "textMessage", text: "Pogadaj z Rudą, ma ci coś do powiedzenia", facehero: "child2"}
+            ]     
+          }
+        ]
       }),
       child3: new Person({
-        x: utils.withGrid(63),
-        y: utils.withGrid(28),
+        x: utils.withGrid(65),
+        y: utils.withGrid(20),
         src: "/projekt/images/child3.png",
-        behaviorLoop: [
-          { type: "stand", direction: "right"},
-        ],
         talking: [
           {
             required: ["TALKED_TO_RUDA"],
