@@ -81,8 +81,8 @@ function generateWalkingLoop(steps, direction) {
 
 window.OverworldMaps = {
   DemoRoom: {
-    lowerSrc: "/projekt/images/DemoLower.png",
-    upperSrc: "/projekt/images/DemoUpper.png",
+    lowerSrc: "/projekt/images/FitnessRoom.png",
+    upperSrc: "/projekt/images/FitnessRoomUpper.png",
     gameObjects: {
       hero: new Person({
         isPlayerControlled: true,
