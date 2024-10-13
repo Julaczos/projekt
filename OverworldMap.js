@@ -150,6 +150,10 @@ window.OverworldMaps = {
               { type: "textMessage", text: "Udaj się do FitnessRoomu, porozmawiaj z trenerem Marcinem"},
               { type: "textMessage", text: "Dalej nie wyjaśniłeś o co chodzi"},
               { type: "textMessage", text: "Zrób jak mówię, a zrozumiesz"},
+            ],
+            events: [
+              { type: "textMessage", text: "Powiesz chociaż jak sie nazywasz?", faceHero: "npc1" },
+              { type: "textMessage", text: "Grzegorz", faceHero: "npc1" },
             ]
           }
         ],
