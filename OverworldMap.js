@@ -114,7 +114,15 @@ window.OverworldMaps = {
           { type: "stand", direction: "down", time: 800},
           ...generateWalkingLoop(18, "left"),
           { type: "stand", direction: "up", time: 800},
-        ]
+        ],
+        talking: [
+          {
+            events: [
+              { type: "textMessage", text: "I'm busy...", faceHero: "npc1" },
+              { type: "textMessage", text: "Go away!"},
+            ]
+          }
+        ],        
       }),
       npc2: new Person({
         x: utils.withGrid(55),
@@ -231,5 +239,25 @@ window.OverworldMaps = {
       [utils.asGridCoord(28,49)] : true,
       [utils.asGridCoord(29,49)] : true,     
     }
+    cutsceneSpaces: {
+      [utils.asGridCoord(7,4)]: [
+        {
+          events: [
+            { who: "npc2", type: "walk",  direction: "left" },
+            { who: "npc2", type: "stand",  direction: "up", time: 500 },
+            { type: "textMessage", text:"You can't be in there!"},
+            { who: "npc2", type: "walk",  direction: "right" },
+            { who: "hero", type: "walk",  direction: "down" },
+            { who: "hero", type: "walk",  direction: "left" },
+          ]
+        }
+      ],
+      [utils.asGridCoord(59,69)]: [
+        {
+          events: [
+            { type: "changeMap", map: "DemoRoom" }
+          ]
+        }
+      ]
   },
 }
