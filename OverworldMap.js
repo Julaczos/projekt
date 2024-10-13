@@ -152,7 +152,7 @@ window.OverworldMaps = {
             required: ["TALKED_TO_MENTOR"],
             events: [
               { type: "textMessage", text: "Powiesz chociaż jak sie nazywasz?", faceHero: "npc1" },
-              { type: "textMessage", text: "Grzegorz" },
+              { type: "textMessage", text: "Andrzej" },
             ]
           },
           {
