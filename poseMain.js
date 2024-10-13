@@ -10,6 +10,11 @@ let currentLocation = 'MainMap';
 let videoStream;
 let pose;
 
+function updateLocation(newLocation) {
+    currentLocation = newLocation;
+    console.log("Aktualna lokalizacja zmieniona na: ", currentLocation);
+}
+
 function gainXP(amount) {
     xp += amount;
     document.getElementById("xpDisplay").innerText = `XP: ${xp} / ${xpToNextLevel}`;
