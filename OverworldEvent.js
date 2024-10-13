@@ -61,6 +61,7 @@ class OverworldEvent {
     this.map.overworld.startMap( window.OverworldMaps[this.event.map] );
     resolve();
     await checkLocationAndStartCamera();
+    console.log("Lokalizacja po zmianie: ", currentLocation);
 
   }
 
