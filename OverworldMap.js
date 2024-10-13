@@ -55,7 +55,27 @@ class OverworldMap {
 
     this.isCutscenePlaying = false;
 
-    Object.values(this.gameObjects).forEach(object => object.doBehaviorEvent(this))  }
+    Object.values(this.gameObjects).forEach(object => object.doBehaviorEvent(this))  
+  }
+
+  checkForActionCutscene() {
+    const hero = this.gameObjects["hero"];
+    const nextCoords = utils.nextPosition(hero.x, hero.y, hero.direction);
+    const match = Object.values(this.gameObjects).find(object => {
+      return `${object.x},${object.y}` === `${nextCoords.x},${nextCoords.y}`
+    });
+    if (!this.isCutscenePlaying && match && match.talking.length) {
+      this.startCutscene(match.talking[0].events)
+    }
+  }
+
+  checkForFootstepCutscene() {
+    const hero = this.gameObjects["hero"];
+    const match = this.cutsceneSpaces[ `${hero.x},${hero.y}` ];
+    if (!this.isCutscenePlaying && match) {
+      this.startCutscene( match[0].events )
+    }
+  }
 
   addWall(x,y) {
     this.walls[`${x},${y}`] = true;
