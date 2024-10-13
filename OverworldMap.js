@@ -199,6 +199,47 @@ window.OverworldMaps = {
       ],
   }
   },
+  GenBuilding: {
+    lowerSrc: "/projekt/images/GenBuildingLower.png",
+    upperSrc: "/projekt/images/GenBuildingUpper.png",
+    gameObjects: {
+      hero: new Person({
+        isPlayerControlled: true,
+        x: utils.withGrid(5),
+        y: utils.withGrid(9),
+      }),
+      npc6: new Person({
+        x: utils.withGrid(8),
+        y: utils.withGrid(4),
+        src: "/projekt/images/npc6.png",
+        talking: [
+          {
+            required: ["TALKED_TO_MENTOR"],
+            events: [
+              { type: "textMessage", text: "Poznałeś już tego dziwaka?", faceHero: "mentor" },
+              { type: "textMessage", text: "Znasz go?" },
+              { type: "textMessage", text: "Ta, co jakiś czas się pojawia i mówi o sile sportu, głupoty" },
+            ]
+          },
+          {
+            events: [
+              { type: "textMessage", text: "Czaisz, że dzisiaj są moje urodziny?", faceHero: "mentor" },
+              { type: "textMessage", text: "Cały dzień będę tylko jadł słodycze"},
+            ]
+          }
+        ]
+      })
+    },
+    cutsceneSpaces: {
+      [utils.asGridCoord(5,10)]: [
+        {
+          events: [
+            { type: "changeMap", map: "MainMap" }
+          ]
+        }
+      ],
+  }
+  },
   MainMap: {
     lowerSrc: "/projekt/images/MainMap.png",
     upperSrc: "/projekt/images/MainMapUpper.png",
@@ -483,6 +524,13 @@ window.OverworldMaps = {
         {
           events: [
             { type: "changeMap", map: "HerosHouse" },
+          ]
+        }
+      ],
+      [utils.asGridCoord(43,34)]: [
+        {
+          events: [
+            { type: "changeMap", map: "GenBuilding" },
           ]
         }
       ]
