@@ -70,7 +70,10 @@ class Overworld {
 
 
    this.map.startCutscene([
-     { type: "textMessage", text: "Coś jest nie tak z tym miastem"}
+     { type: "textMessage", text: "Miasto było kiedyś takie żywe..."},
+     { type: "textMessage", text: "Teraz wygląda jakby umierało. Co się tutaj stało?"},
+     { type: "textMessage", text: "Lepiej wrócę do domu"},
+    
    ])
 
  }
