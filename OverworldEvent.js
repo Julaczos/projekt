@@ -66,8 +66,8 @@ class OverworldEvent {
 
   }
 
-  setVariable(resolve) {
-    window[this.event.variable] = this.event.value; 
+  addStoryFlag (resolve) {
+    window.playerState.storyFlags[this.event.flag] = true;
     resolve();
   }
 
