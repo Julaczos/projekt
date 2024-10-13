@@ -102,21 +102,30 @@ function generateWalkingLoop(steps, direction) {
 }
 
 window.OverworldMaps = {
-  DemoRoom: {
+  FitnessRoom: {
     lowerSrc: "/projekt/images/FitnessRoom.png",
     upperSrc: "/projekt/images/FitnessRoomUpper.png",
     gameObjects: {
       hero: new Person({
         isPlayerControlled: true,
         x: utils.withGrid(10),
-        y: utils.withGrid(6),
+        y: utils.withGrid(14),
       }),
       npc1: new Person({
         x: utils.withGrid(8),
         y: utils.withGrid(9),
         src: "/projekt/images/npc1.png"
       })
-    }
+    },
+    cutsceneSpaces: {
+      [utils.asGridCoord(10,14)]: [
+        {
+          events: [
+            { type: "changeMap", map: "MainMap" }
+          ]
+        }
+      ]
+  }
   },
   MainMap: {
     lowerSrc: "/projekt/images/MainMap.png",
@@ -277,7 +286,7 @@ window.OverworldMaps = {
       [utils.asGridCoord(59,69)]: [
         {
           events: [
-            { type: "changeMap", map: "DemoRoom" }
+            { type: "changeMap", map: "FitnessRoom" }
           ]
         }
       ]
