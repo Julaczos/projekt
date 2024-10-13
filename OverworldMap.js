@@ -109,9 +109,9 @@ window.OverworldMaps = {
         y: utils.withGrid(36),
         src: "/projekt/images/npc1.png",
         behaviorLoop: [
-          ...generateWalkingLoop(18, "left"),
-          { type: "stand", direction: "down", time: 800},
           ...generateWalkingLoop(18, "right"),
+          { type: "stand", direction: "down", time: 800},
+          ...generateWalkingLoop(18, "left"),
           { type: "stand", direction: "up", time: 800},
         ]
       }),
