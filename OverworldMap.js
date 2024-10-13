@@ -243,6 +243,20 @@ window.OverworldMaps = {
         src: "/projekt/images/child1.png",
         behaviorLoop: [
           { type: "stand", direction: "right"},
+        ],
+        talking: [
+          {
+            required: ["TALKED_TO_RUDA"],
+            events: [
+              {type: "textMessage", text: "Czego jeszcze potrzebujesz?", facehero: "child1"},
+            ]
+          },
+          {
+            required: ["5_Squats"],
+            events: [
+              {type: "textMessage", text: "Jeśli masz jakąś sprawę, porozmawiaj z Rudą", facehero: "child1"},
+            ]
+          }
         ]
       }),
       child2: new Person({
