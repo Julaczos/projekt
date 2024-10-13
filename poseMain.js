@@ -35,7 +35,7 @@ function checkLevelUp() {
 
 function checkGameProgress() {
     if (squatCount === 5) {
-        window.playerState.storyFlags["5_Squats"] = true;
+        window.playerState.storyFlags["Five_Squats"] = true;
         console.log("Gratulacje");
     }
 }
