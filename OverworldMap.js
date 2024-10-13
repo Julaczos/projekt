@@ -248,13 +248,18 @@ window.OverworldMaps = {
           {
             required: ["TALKED_TO_RUDA"],
             events: [
-              {type: "textMessage", text: "Czego jeszcze potrzebujesz?", facehero: "child1"},
+              {type: "textMessage", text: "Nie mam siły...", facehero: "child1"},
             ]
           },
           {
             required: ["Five_Squats"],
             events: [
-              {type: "textMessage", text: "Jeśli masz jakąś sprawę, porozmawiaj z Rudą", facehero: "child1"},
+              {type: "textMessage", text: "Ehh, jeśli masz jakąś sprawę, porozmawiaj z Rudą", facehero: "child1"},
+            ]
+          },
+          {
+            events: [
+              {type: "textMessage", text: "Nic mi się nie chce", facehero: "child1"},
             ]
           }
         ]
@@ -265,7 +270,7 @@ window.OverworldMaps = {
         src: "/projekt/images/child2.png",
         behaviorLoop: [
           { type: "stand", direction: "left"},
-        ]
+        ],
       }),
       child3: new Person({
         x: utils.withGrid(63),
@@ -273,6 +278,33 @@ window.OverworldMaps = {
         src: "/projekt/images/child3.png",
         behaviorLoop: [
           { type: "stand", direction: "right"},
+        ],
+        talking: [
+          {
+            required: ["TALKED_TO_RUDA"],
+            events: [
+              {type: "textMessage", text: "Powodzenia w walce", facehero: "child3"}
+            ]
+          },
+          {
+            required: ["Five_Squats"],
+            events: [
+              {type: "textMessage", text: "Dlaczego nie bawicie się na boisku? Przecież to piękny dzień", facehero: "child3"},
+              {type: "textMessage", text: "Chcielibyśmy... ale nie mamy siły. Jesteśmy... zmęczeni..."},
+              {type: "textMessage", text: "To przez... Klątwę Próżniactwa"},
+              {type: "textMessage", text: "Klątwa Próżniactwa? Co to za klątwa? "},
+              {type: "textMessage", text: "Moja babcia mówiła, że to przez brak zdrowej diety i sportu"},
+              {type: "textMessage", text: "Wiesz może, co można z tym zrobić?"},
+              {type: "textMessage", text: "Ponoć sławny bohater przybędzie i pokona mroczny byt, który to wszystko spowodował"},
+              {type: "textMessage", text: "Cóż, w takim razie czas zacząć treningi, do zobaczenia!"},
+              {type: "addStoryFlag", flag: "TALKED_TO_RUDA"}
+            ]
+          },
+          {
+            events: [
+              {type: "textMessage", text: "Turuturu"},
+            ]
+          }
         ]
       }),
       npc4: new Person({
