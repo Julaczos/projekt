@@ -565,7 +565,7 @@ window.OverworldMaps = {
           ]
         }
       ],
-      [utils.asGridCoord(71,71)]: [
+      [utils.asGridCoord(71,72)]: [
         {
           events: [
             { type: "changeMap", map: "Store" },
