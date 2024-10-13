@@ -57,11 +57,18 @@ class OverworldEvent {
     message.init( document.querySelector(".game-container") )
   }
 
+function updateLocation(newLocation) {
+    currentLocation = newLocation;
+    console.log("Aktualna lokalizacja zmieniona na: ", currentLocation);
+}
+
+  
   async changeMap(resolve) {
     this.map.overworld.startMap( window.OverworldMaps[this.event.map] );
-    resolve();
+    updateLocation(this.event.map); 
     await checkLocationAndStartCamera();
     console.log("Lokalizacja po zmianie: ", currentLocation);
+    resolve();
 
   }
 
