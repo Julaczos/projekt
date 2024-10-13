@@ -1,7 +1,7 @@
 class PlayerState {
   constructor() {  
     this.storyFlags = {
-    //  TALKED_TO_MENTOR: true
+      5_Squats: true
     };
   }
 }
