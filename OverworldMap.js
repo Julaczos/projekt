@@ -286,7 +286,7 @@ window.OverworldMaps = {
       [utils.asGridCoord(59,69)]: [
         {
           events: [
-            { type: "changeMap", map: "FitnessRoom" }
+            { type: "changeMap", map: "FitnessRoom" },
             { type: "setVariable", variable: "currentLocation", value: "FitnessRoom" }
           ]
           
