@@ -34,9 +34,10 @@ function checkLevelUp() {
 }
 
 function checkGameProgress() {
-    if (squatCount >= 10) {
-        alert("Gratulacje! Wykonałeś 10 przysiadów, zdobywasz bonus w grze!");
-        squatCount = 0; 
+    if (squatCount === 5) {
+        const event = { flag: "5_Squats" }; 
+        addStoryFlag({ event, resolve: () => console.log("Flaga historii dodana: 5_Squats") });
+
     }
 }
 
