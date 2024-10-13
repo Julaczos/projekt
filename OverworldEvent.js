@@ -62,6 +62,11 @@ class OverworldEvent {
     resolve();
   }
 
+  setVariable(resolve) {
+    window[this.event.variable] = this.event.value; 
+    resolve();
+  }
+
   init() {
     return new Promise(resolve => {
       this[this.event.type](resolve)      
