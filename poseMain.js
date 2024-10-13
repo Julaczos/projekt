@@ -103,7 +103,6 @@ async function startCamera() {
         return stream;
     } catch (err) {
         console.error("Błąd podczas uzyskiwania dostępu do kamerki: ", err);
-        alert("Nie można uzyskać dostępu do kamery. Upewnij się, że udzielono odpowiednich uprawnień.");
     }
 }
 
