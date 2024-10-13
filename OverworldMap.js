@@ -292,6 +292,7 @@ window.OverworldMaps = {
           
         }
       ]
+      console.log(currentLocation);
   }
 }
 }
