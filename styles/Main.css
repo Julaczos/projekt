@@ -84,22 +84,12 @@ body {
   text-align: center;
 }
 
-.button-container {
-  position: fixed;
-  bottom: 20px; 
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px; 
-}
 
-#videoButton, #audioButton, #closeVideoButton {
+#videoButton {
   position: fixed;
   bottom: 20px; 
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px; 
+  left: 60%;
+  transform: translateX(-40%);
   padding: 10px 20px;
   background-color: #7fc2ff;
   color: #3A160D;
@@ -110,6 +100,35 @@ body {
   font-family: "Pixelify Sans", sans-serif; 
 }
 
+ #audioButton {
+   position: fixed;
+   bottom: 20px;  
+   left: 40%;
+  transform: translateX(-60%);
+     padding: 10px 20px;
+  background-color: #7fc2ff;
+  color: #3A160D;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: "Pixelify Sans", sans-serif; 
+ }
+
+#closeVideoButton {
+    position: fixed;
+  bottom: 20px; 
+  left: 60%;
+  transform: translateX(-40%);
+  padding: 10px 20px;
+  background-color: #7fc2ff;
+  color: #3A160D;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: "Pixelify Sans", sans-serif; 
+}
 
 #gameVideo {
   display: none; 
