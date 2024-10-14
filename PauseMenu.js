@@ -69,6 +69,7 @@ class PauseMenu {
 
     document.getElementById("closeStats").addEventListener("click", () => {
       statsElement.remove();
+      stats_visible = false;
     });
   }
 
