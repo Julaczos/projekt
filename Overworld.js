@@ -62,7 +62,7 @@ async init() {
   this.titleScreen = new TitleScreen({
     progress: this.progress
   })
-  const useSaveFile = await this.titleScreen.init(container);
+//  const useSaveFile = await this.titleScreen.init(container);
 
   this.bindActionInput();
   this.bindHeroPositionCheck();
