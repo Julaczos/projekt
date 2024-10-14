@@ -222,7 +222,7 @@ walls: function() {
       [utils.asGridCoord(11,16)]: [
         {
           events: [
-            { type: "changeMap", map: "MainMap" }
+            { type: "changeMap", map: "MainMap", x: utils.withGrid(59), y: utils.withGrid(69), direction: "down" }
           ]
         }
       ]
@@ -477,7 +477,7 @@ walls: function() {
       [utils.asGridCoord(59,70)]: [
         {
           events: [
-            { type: "changeMap", map: "FitnessRoom", x: utils.withGrid(10), y: utils.withGrid(14), direction: "up" },
+            { type: "changeMap", map: "FitnessRoom", x: utils.withGrid(11), y: utils.withGrid(15), direction: "up" },
           ]
         }
       ],
