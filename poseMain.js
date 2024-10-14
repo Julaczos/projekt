@@ -24,14 +24,14 @@ function updateLocation(newLocation) {
 }
 
 function gainXP(amount) {
-    xp += amount;
+    window.xp += amount;
     document.getElementById("xpDisplay").innerText = `XP: ${xp} / ${xpToNextLevel}`;
     checkLevelUp();
 }
 
 function checkLevelUp() {
     if (xp >= xpToNextLevel) {
-        level++;
+        window.level++;
         xp -= xpToNextLevel;
         xpToNextLevel = Math.floor(xpToNextLevel * 1.5);
 
@@ -64,7 +64,7 @@ function updateSquatCounter(poseLandmarks) {
     if (averageKneeAngle < 70 && !isSquatting) {
         isSquatting = true; 
     } else if (averageKneeAngle > 160 && isSquatting) {
-        squatCount++;
+        window.squatCount++;
         isSquatting = false;
         document.getElementById("counter3").innerText = `Przysiady: ${squatCount}`;
         gainXP(10);
@@ -88,7 +88,7 @@ function updateBicepCurlCounter(poseLandmarks) {
     if (averageElbowAngle < 30 && !isCurling) {
         isCurling = true; 
     } else if (averageElbowAngle > 150 && isCurling) {
-        bicepCurlCount++;
+        window.bicepCurlCount++;
         isCurling = false;
         document.getElementById("bicepCounter").innerText = `Biceps Curls: ${bicepCurlCount}`;
         gainXP(5);
