@@ -111,6 +111,7 @@ function generateWalkingLoop(steps, direction) {
 
 window.OverworldMaps = {
   Store: {
+    id: "Store",
     lowerSrc: "/projekt/images/StoreLower.png",
     upperSrc: "/projekt/images/StoreUpper.png",
     gameObjects: {
@@ -172,6 +173,7 @@ walls: function() {
 
   },
   FitnessRoom: {
+    id: "FitnessRoom",
     lowerSrc: "/projekt/images/FitnessRoom.png",
     upperSrc: "/projekt/images/FitnessRoomUpper.png",
     gameObjects: {
@@ -227,6 +229,7 @@ walls: function() {
   }
   },
   HerosHouse: {
+    id: "HerosHouse",
     lowerSrc: "/projekt/images/HerosHouseLower.png",
     upperSrc: "/projekt/images/HerosHouseUpper.png",
     gameObjects: {
@@ -273,6 +276,7 @@ walls: function() {
   }
   },
   GenBuilding: {
+    id: "GenBuilding",
     lowerSrc: "/projekt/images/GenBuildingLower.png",
     upperSrc: "/projekt/images/GenBuildingUpper.png",
     gameObjects: {
@@ -314,6 +318,7 @@ walls: function() {
   }
   },
   MainMap: {
+    id: "MainMap",
     lowerSrc: "/projekt/images/MainMap.png",
     upperSrc: "/projekt/images/MainMapUpper.png",
     gameObjects: {
@@ -472,7 +477,7 @@ walls: function() {
       [utils.asGridCoord(59,70)]: [
         {
           events: [
-            { type: "changeMap", map: "FitnessRoom" },
+            { type: "changeMap", map: "FitnessRoom", x: utils.withGrid(10), y: utils.withGrid(14), direction: "up" },
           ]
         }
       ],
