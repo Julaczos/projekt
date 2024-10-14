@@ -48,6 +48,12 @@ class PauseMenu {
   }
 
   showStatistics() {
+    console.log("Wyświetlanie statystyk...");
+    console.log("Poziom:", window.level);
+    console.log("XP:", window.xp);
+    console.log("Squat Count:", window.squatCount);
+    console.log("Biceps Count:", window.bicepCurlCount);
+    
     const statsElement = document.createElement("div");
     statsElement.classList.add("statsOverlay");
     statsElement.innerHTML = `
