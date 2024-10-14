@@ -55,3 +55,4 @@ class PauseMenu {
       this.close();
   })
 }
+}
