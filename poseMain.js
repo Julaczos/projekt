@@ -1,11 +1,11 @@
-let squatCount = 0;
+export let squatCount = 0;
 let isSquatting = false;
-let bicepCurlCount = 0;
+export let bicepCurlCount = 0;
 let isCurling = false;
 
-let level = 1;
-let xp = 0;
-let xpToNextLevel = 100;
+export let level = 1;
+export let xp = 0;
+export let xpToNextLevel = 100;
 let currentLocation = 'MainMap';
 let videoStream;
 let pose;
