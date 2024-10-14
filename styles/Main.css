@@ -84,11 +84,16 @@ body {
   text-align: center;
 }
 
-#videoButton {
+.button-container {
   position: fixed;
   bottom: 20px; 
   left: 50%;
   transform: translateX(-50%);
+  display: flex;
+  gap: 10px; 
+}
+
+#videoButton, #audioButton {
   padding: 10px 20px;
   background-color: #7fc2ff;
   color: #3A160D;
@@ -98,6 +103,11 @@ body {
   font-size: 16px;
   font-family: "Pixelify Sans", sans-serif; 
 }
+
+/* #audioButton {
+  background-color: #ffb37f; 
+  
+} */
 
 #gameVideo {
   display: none; 
