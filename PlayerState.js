@@ -1,7 +1,7 @@
 class PlayerState {
   constructor() {  
     this.storyFlags = {
-      Five_Squats: true
+      //Five_Squats: true
     };
   }
 }
