@@ -12,6 +12,10 @@
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
 </head>
 <body>
+    <video id="gameVideo" width="640" height="360" controls style="display: none;">
+        <source src="/projekt/images/test.mp4" type="video/mp4">
+        Twój przeglądarka nie obsługuje tego formatu wideo.
+    </video>
     <div class="game-container">
         <canvas id="outputCanvas" class="game-canvas" width="352" height="198"></canvas>
     </div>
@@ -20,13 +24,9 @@
     <div id="bicepCounter">Biceps Curls: 0</div>
     <div id="xpDisplay">XP: 0 / 100</div>
     <div id="levelDisplay">Poziom: 1</div>
-    <div id="instructions">Naciśnij 'Play', aby rozpocząć grę</div>
+    <div id="instructions">WSAD (strzałki) by się poruszać, enter by rozmawiać</div>
     <button id="videoButton" onclick="playVideo()">Włącz wideo</button>
-    <video id="gameVideo" width="640" height="360" controls style="display: none;">
-        <source src="/projekt/images/test.mp4" type="video/mp4">
-        Twój przeglądarka nie obsługuje tego formatu wideo.
-    </video>
-    <button id="closeVideoButton" onclick="closeVideo()" style="display: none;">Zamknij wideo</button>
+    <button id="closeVideoButton" onclick="closeVideo()">Zamknij wideo</button>
     <script>
         function playVideo() {
             const video = document.getElementById("gameVideo");
