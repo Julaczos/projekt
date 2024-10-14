@@ -9,7 +9,7 @@ function toggleVideo() {
 
     if (video.style.display === "none") {
         video.style.display = "block";
-        closeButton.style.display = "block";
+     //   closeButton.style.display = "block";
         videoButton.style.display = "none";
         video.play();
 
