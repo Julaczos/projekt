@@ -72,6 +72,9 @@ class Overworld {
  }
  
  init() {
+
+  this.progress = new Progress();
+  
   this.startMap(window.OverworldMaps.MainMap);
 
   this.bindActionInput();
