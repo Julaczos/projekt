@@ -20,8 +20,35 @@
     <div id="bicepCounter">Biceps Curls: 0</div>
     <div id="xpDisplay">XP: 0 / 100</div>
     <div id="levelDisplay">Poziom: 1</div>
+    <div id="instructions">Naciśnij 'Play', aby rozpocząć grę</div>
+    <button id="videoButton" onclick="playVideo()">Włącz wideo</button>
+    <video id="gameVideo" width="640" height="360" controls style="display: none;">
+        <source src="projekt/images/test.mp4" type="video/mp4">
+        Twój przeglądarka nie obsługuje tego formatu wideo.
+    </video>
+    <button id="closeVideoButton" onclick="closeVideo()" style="display: none;">Zamknij wideo</button>
+    <script>
+        function playVideo() {
+            const video = document.getElementById("gameVideo");
+            const closeButton = document.getElementById("closeVideoButton");
+            
+            video.style.display = "block"; 
+            closeButton.style.display = "block"; 
+            video.play(); 
+        }
 
+        function closeVideo() {
+            const video = document.getElementById("gameVideo");
+            const closeButton = document.getElementById("closeVideoButton");
+            
+            video.pause(); 
+            video.style.display = "none"; 
+            closeButton.style.display = "none"; 
+        }
+        
+    </script>
 
+    
     <script src="PlayerState.js"></script>
     <script src="utils.js"></script>
     <script src="DirectionInput.js"></script>
