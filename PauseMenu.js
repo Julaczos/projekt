@@ -3,27 +3,34 @@ class PauseMenu {
     this.onComplete = onComplete;
   }
 
-  getOptions(pageKey) {
-    if (pageKey === "root") {
-      return [
-        {
-          label: "Zapisz",
-          description: "Zapisz swój progres",
-          handler: () => {
-            //later on
-          }
-        },
-        {
-          label: "Zamknij",
-          description: "Zamknij menu",
-          handler: () => {
-            this.close();
-          }
+getOptions(pageKey) {
+  if (pageKey === "root") {
+    return [
+      {
+        label: "Zapisz",
+        description: "Zapisz swój progres",
+        handler: () => {
         }
-      ]
-    }
-    return [];
+      },
+      {
+        label: "Statystyki",
+        description: "Zobacz swoje statystyki",
+        handler: () => {
+        //  this.showStatistics();
+        }
+      },
+      {
+        label: "Zamknij",
+        description: "Zamknij menu",
+        handler: () => {
+          this.close();
+        }
+      }
+    ];
   }
+  return [];
+}
+
   
   createElement(){
     this.element = document.createElement ("div");
