@@ -93,7 +93,7 @@ body {
   gap: 10px; 
 }
 
-#videoButton, #audioButton {
+#videoButton, #audioButton, #closeVideoButton {
   padding: 10px 20px;
   background-color: #7fc2ff;
   color: #3A160D;
