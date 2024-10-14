@@ -14,7 +14,7 @@ getOptions(pageKey) {
       },
       {
         label: "Statystyki",
-        description: "Zobacz swoje statystyki",
+        description: "Zobacz statystyki",
         handler: () => {
         //  this.showStatistics();
         }
