@@ -1,5 +1,5 @@
 class PauseMenu {
-  constructor({ onComplete }) {
+  constructor({progress,  onComplete }) {
     this.onComplete = onComplete;
   }
 
@@ -10,7 +10,8 @@ class PauseMenu {
           label: "Zapisz",
           description: "Zapisz swój progres",
           handler: () => {
-            // Tutaj można dodać kod do zapisywania
+            this.progress.save();
+            this.close();
           }
         },
         {
