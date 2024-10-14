@@ -269,7 +269,7 @@ walls: function() {
       [utils.asGridCoord(3,12)]: [
         {
           events: [
-            { type: "changeMap", map: "MainMap", x: utils.withGrid(23), y: utils.withGrid(48), direction: "down"  }
+            { type: "changeMap", map: "MainMap", x: utils.withGrid(23), y: utils.withGrid(49), direction: "down"  }
           ]
         }
       ],
