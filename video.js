@@ -5,7 +5,7 @@ function toggleVideo() {
 
     if (video.paused) {
         video.style.display = "block";
-        closeButton.style.display = "block";
+        closeButton.style.display = "none";
         video.play();
         videoButton.textContent = "Zamknij wideo"; 
     } else {
