@@ -8,6 +8,8 @@ let xp = 0;
 let xpToNextLevel = 100;
 let currentLocation = 'MainMap';
 
+let videoStream;
+
 window.squatCount = squatCount;
 window.bicepCurlCount = bicepCurlCount;
 window.level = level;
