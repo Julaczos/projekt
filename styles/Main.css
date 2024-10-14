@@ -88,8 +88,8 @@ body {
 #videoButton {
   position: fixed;
   bottom: 20px; 
-  left: 60%;
-  transform: translateX(-40%);
+  left: 53%;
+  transform: translateX(-47%);
   padding: 10px 20px;
   background-color: #7fc2ff;
   color: #3A160D;
@@ -103,8 +103,8 @@ body {
  #audioButton {
    position: fixed;
    bottom: 20px;  
-   left: 40%;
-  transform: translateX(-60%);
+   left: 47%;
+  transform: translateX(-53%);
      padding: 10px 20px;
   background-color: #7fc2ff;
   color: #3A160D;
@@ -118,8 +118,8 @@ body {
 #closeVideoButton {
     position: fixed;
   bottom: 20px; 
-  left: 60%;
-  transform: translateX(-40%);
+  left: 53%;
+  transform: translateX(-47%);
   padding: 10px 20px;
   background-color: #7fc2ff;
   color: #3A160D;
