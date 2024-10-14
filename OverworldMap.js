@@ -144,7 +144,7 @@ window.OverworldMaps = {
       [utils.asGridCoord(7,15)]: [
         {
           events: [
-            { type: "changeMap", map: "MainMap" }
+            { type: "changeMap", map: "MainMap", x: utils.withGrid(71), y: utils.withGrid(72), direction: "down"}
           ]
         }
       ]
@@ -269,7 +269,7 @@ walls: function() {
       [utils.asGridCoord(3,12)]: [
         {
           events: [
-            { type: "changeMap", map: "MainMap" }
+            { type: "changeMap", map: "MainMap", x: utils.withGrid(23), y: utils.withGrid(48), direction: "down"  }
           ]
         }
       ],
@@ -311,7 +311,7 @@ walls: function() {
       [utils.asGridCoord(5,11)]: [
         {
           events: [
-            { type: "changeMap", map: "MainMap" }
+            { type: "changeMap", map: "MainMap", x: utils.withGrid(43), y: utils.withGrid(35), direction: "down"  }
           ]
         }
       ],
@@ -484,21 +484,21 @@ walls: function() {
       [utils.asGridCoord(23,49)]: [
         {
           events: [
-            { type: "changeMap", map: "HerosHouse" },
+            { type: "changeMap", map: "HerosHouse", x: utils.withGrid(3), y: utils.withGrid(12), direction: "up"},
           ]
         }
       ],
       [utils.asGridCoord(43,35)]: [
         {
           events: [
-            { type: "changeMap", map: "GenBuilding" },
+            { type: "changeMap", map: "GenBuilding", x: utils.withGrid(5), y: utils.withGrid(10), direction: "up"},
           ]
         }
       ],
       [utils.asGridCoord(71,72)]: [
         {
           events: [
-            { type: "changeMap", map: "Store" },
+            { type: "changeMap", map: "Store", x: utils.withGrid(7), y: utils.withGrid(14), direction: "up"},
           ]
         }
       ]
