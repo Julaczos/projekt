@@ -1,3 +1,5 @@
+let stats_visible = false;
+
 class PauseMenu {
   constructor({progress,  onComplete }) {
     this.progress = progress;
@@ -19,7 +21,7 @@ class PauseMenu {
           label: "Statystyki",
           description: "Zobacz statystyki",
           handler: () => {
-            this.showStatistics();
+            if (!stats_visible) this.showStatistics();
           }
         },
         {
@@ -50,12 +52,7 @@ class PauseMenu {
   }
 
   showStatistics() {
-    console.log("Wyświetlanie statystyk...");
-    console.log("Poziom:", window.level);
-    console.log("XP:", window.xp);
-    console.log("Squat Count:", window.squatCount);
-    console.log("Biceps Count:", window.bicepCurlCount);
-    
+    stats_visible = true;
     const statsElement = document.createElement("div");
     statsElement.classList.add("statsOverlay");
     statsElement.innerHTML = `
