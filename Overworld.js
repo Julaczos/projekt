@@ -55,14 +55,9 @@ class Overworld {
   this.map.overworld = this;
   this.map.mountObjects();
  }
-
-async init() {
+ 
+ init() {
   this.startMap(window.OverworldMaps.MainMap);
-
-  this.titleScreen = new TitleScreen({
- //   progress: this.progress
-  })
-//  const useSaveFile = await this.titleScreen.init(container);
 
   this.bindActionInput();
   this.bindHeroPositionCheck();
