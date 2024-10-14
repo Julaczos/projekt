@@ -58,7 +58,11 @@ class OverworldEvent {
   }
   
   async changeMap(resolve) {
-    this.map.overworld.startMap( window.OverworldMaps[this.event.map] );
+    this.map.overworld.startMap( window.OverworldMaps[this.event.map], {
+      x: this.event.x,
+      y: this.event.y,
+      direction: this.event.direction,
+    });
     updateLocation(this.event.map); 
     await checkLocationAndStartCamera();
     resolve();
