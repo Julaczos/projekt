@@ -1,5 +1,6 @@
 class PauseMenu {
   constructor({progress,  onComplete }) {
+    this.progress = progress;
     this.onComplete = onComplete;
   }
 
