@@ -29,7 +29,7 @@ class PauseMenu {
     this.element = document.createElement ("div");
     this.element.classList.add("PauseMenu")
     this.element.innerHTML = (`
-      <h2>Pause Menu</h2>
+      <h2>Pauza</h2>
     `)
   }
 
