@@ -72,13 +72,13 @@ class OverworldEvent {
 
   pause(resolve) {
     this.map.isPaused = true;
-
-    const menu = new PauseMenu ({
+    const menu = new PauseMenu({
       onComplete: () => {
-      resolve();
+        resolve();
         this.map.isPaused = false;
         this.map.overworld.startGameLoop();
-    }),
+      }
+    });
     menu.init(document.querySelector(".game-container"));
   }
 
