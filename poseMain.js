@@ -32,19 +32,17 @@ function gainXP(amount) {
 function checkLevelUp() {
     if (xp >= xpToNextLevel) {
         window.level++;
-        xp -= xpToNextLevel;
-        xpToNextLevel = Math.floor(xpToNextLevel * 1.5);
+        window.xp -= xpToNextLevel;
+        window.xpToNextLevel = Math.floor(xpToNextLevel * 1.5);
 
-        document.getElementById("levelDisplay").innerText = `Poziom: ${level}`;
-        document.getElementById("xpDisplay").innerText = `XP: ${xp} / ${xpToNextLevel}`;
-        console.log(`Gratulacje! Osiągnięto poziom ${level}`);
+        document.getElementById("levelDisplay").innerText = `Poziom: ${window.level}`;
+        document.getElementById("xpDisplay").innerText = `XP: ${window.xp} / ${window.xpToNextLevel}`;
     }
 }
 
 function checkGameProgress() {
     if (squatCount === 5) {
         window.playerState.storyFlags["Five_Squats"] = true;
-        console.log("Gratulacje");
     }
 }
 
@@ -66,7 +64,7 @@ function updateSquatCounter(poseLandmarks) {
     } else if (averageKneeAngle > 160 && isSquatting) {
         window.squatCount++;
         isSquatting = false;
-        document.getElementById("counter3").innerText = `Przysiady: ${squatCount}`;
+        document.getElementById("counter3").innerText = `Przysiady: ${window.squatCount}`;
         gainXP(10);
         checkGameProgress();  
     }
@@ -90,7 +88,7 @@ function updateBicepCurlCounter(poseLandmarks) {
     } else if (averageElbowAngle > 150 && isCurling) {
         window.bicepCurlCount++;
         isCurling = false;
-        document.getElementById("bicepCounter").innerText = `Biceps Curls: ${bicepCurlCount}`;
+        document.getElementById("bicepCounter").innerText = `Biceps Curls: ${window.bicepCurlCount}`;
         gainXP(5);
         checkGameProgress(); 
     }
