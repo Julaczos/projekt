@@ -60,8 +60,8 @@ class PauseMenu {
       <p>Poziom: ${window.level}</p>
       <p>Doświadczenie: ${window.xp} / ${window.xpToNextLevel}</p>
       <p>Przysiady: ${window.squatCount}</p>
-      <p>Biceps Curls: ${window.bicepCurlCount}</p>
-      <p>Lokalizacja: ${window.currentLocation}</p>
+      <p>Podnoszenie ciężarków: ${window.bicepCurlCount}</p>
+      <p>Skłony: ${window.bicepCurlCount}</p>
       <button id="closeStats">Zamknij</button>
     `;
 
