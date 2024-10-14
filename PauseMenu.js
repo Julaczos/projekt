@@ -37,7 +37,6 @@ class PauseMenu {
     this.element.classList.add("PauseMenu");
     this.element.innerHTML = (`
       <h2>Pauza</h2>
-      <div class="stats"></div> <!-- Placeholder dla statystyk -->
     `);
   }
 
@@ -49,25 +48,19 @@ class PauseMenu {
   }
 
   showStatistics() {
-    const existingStatsElement = this.element.querySelector(".statsOverlay");
-    if (existingStatsElement) {
-      existingStatsElement.remove();
-      return; 
-    }
-
     const statsElement = document.createElement("div");
     statsElement.classList.add("statsOverlay");
     statsElement.innerHTML = `
       <h3>Twoje Statystyki</h3>
-      <p>Poziom: ${window.GlobalStats.level}</p>
-      <p>Doświadczenie: ${window.GlobalStats.xp} / ${window.GlobalStats.xpToNextLevel}</p>
-      <p>Przysiady: ${window.GlobalStats.squatCount}</p>
-      <p>Biceps Curls: ${window.GlobalStats.bicepCurlCount}</p>
-      <p>Lokalizacja: ${window.GlobalStats.currentLocation}</p>
+      <p>Poziom: ${window.level}</p>
+      <p>Doświadczenie: ${window.xp} / ${window.xpToNextLevel}</p>
+      <p>Przysiady: ${window.squatCount}</p>
+      <p>Biceps Curls: ${window.bicepCurlCount}</p>
+      <p>Lokalizacja: ${window.currentLocation}</p>
       <button id="closeStats">Zamknij</button>
     `;
 
-    this.element.appendChild(statsElement);
+    document.body.appendChild(statsElement);
 
     document.getElementById("closeStats").addEventListener("click", () => {
       statsElement.remove();
