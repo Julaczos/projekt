@@ -34,7 +34,10 @@ class PauseMenu {
   }
 
   close (){
-    
+    this.esc?.unbind();
+    this.keyboardMenu.end();
+    this.element.remove();
+    this.onComplete();
   }
 
   init (container) {
