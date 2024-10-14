@@ -1,14 +1,18 @@
-export let squatCount = 0;
+let squatCount = 0;
 let isSquatting = false;
-export let bicepCurlCount = 0;
+let bicepCurlCount = 0;
 let isCurling = false;
 
-export let level = 1;
-export let xp = 0;
-export let xpToNextLevel = 100;
+let level = 1;
+let xp = 0;
+let xpToNextLevel = 100;
 let currentLocation = 'MainMap';
-let videoStream;
-let pose;
+
+window.squatCount = squatCount;
+window.bicepCurlCount = bicepCurlCount;
+window.level = level;
+window.xp = xp;
+window.xpToNextLevel = xpToNextLevel;
 
 function updateLocation(newLocation) {
     currentLocation = newLocation;
