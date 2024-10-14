@@ -77,8 +77,19 @@ class Overworld {
  init() {
 
   this.progress = new Progress();
+
+  let initialHeroState = null;
+  const saveFile = this.progress.getSaveFile();
+  if (saveFile) {
+    this.progress.load();
+    initialHeroState = {
+      x: this.progress.startingHeroX,
+      y: this.progress.startingHeroY,
+      direction: this.progress.startingHeroDirection,
+    }
+  }  
   
-  this.startMap(window.OverworldMaps.MainMap);
+  this.startMap(window.OverworldMaps[this.progress.mapId], initialHeroState);
 
   this.bindActionInput();
   this.bindHeroPositionCheck();
