@@ -18,6 +18,7 @@
 .PauseMenu .KeyboardMenu {
   position: relative;
   border: 0;
+  font-family: 'Pixelify Sans', sans-serif; 
 }
 
 .PauseMenu h2 {
@@ -28,4 +29,17 @@
   text-align: center;
   border-bottom: 1px solid #A48465;
   font-family: 'Pixelify Sans', sans-serif; 
+}
+
+.PauseMenu .KeyboardMenu button {
+  font-family: 'Pixelify Sans', sans-serif; 
+  font-size: 12px;
+  color: var(--menu-font-color);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.PauseMenu .KeyboardMenu button:hover {
+  background-color: var(--menu-selected-background);
 }
