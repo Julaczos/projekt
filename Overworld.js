@@ -93,13 +93,7 @@ class Overworld {
   } else
   {
    this.startMap(window.OverworldMaps.MainMap);
-    this.bindActionInput();
-    this.bindHeroPositionCheck();
-  
-    this.directionInput = new DirectionInput();
-    this.directionInput.init();
-  
-    this.startGameLoop();
+   
        this.map.startCutscene([
          { type: "textMessage", text: "Miasto było kiedyś takie żywe..."},
          { type: "textMessage", text: "Teraz wygląda jakby umierało. Co się tutaj stało?"},
