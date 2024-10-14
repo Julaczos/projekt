@@ -13,6 +13,7 @@ window.bicepCurlCount = bicepCurlCount;
 window.level = level;
 window.xp = xp;
 window.xpToNextLevel = xpToNextLevel;
+window.currentLocation = currentLocation;
 
 function updateLocation(newLocation) {
     currentLocation = newLocation;
