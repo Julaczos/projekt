@@ -52,6 +52,7 @@
   background-color: var(--menu-background);
   padding: 10px;
   border: 1px solid var(--menu-border-color);
+  z-index: 900; 
 }
 
 
