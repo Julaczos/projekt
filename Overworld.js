@@ -67,8 +67,11 @@ class Overworld {
    this.map.gameObjects.hero.x = heroInitialState.x;
    this.map.gameObjects.hero.y = heroInitialState.y;
    this.map.gameObjects.hero.direction = heroInitialState.direction;
-   
   }
+  this.progress.mapId = mapConfig.id;
+  this.progress.startingHeroX = this.map.gameObjects.hero.x;
+  this.progress.startingHeroY = this.map.gameObjects.hero.y;
+  this.progress.startingHeroDirection = this.map.gameObjects.hero.direction;
  }
  
  init() {
