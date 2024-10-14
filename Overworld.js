@@ -56,7 +56,7 @@ class Overworld {
   this.map.mountObjects();
  }
 
- init() {
+async init() {
   this.startMap(window.OverworldMaps.MainMap);
 
   this.titleScreen = new TitleScreen({
