@@ -33,7 +33,7 @@ function toggleVideo() {
 }
 
 
-document.getElementById("backgroundAudio").volume = 0.5;
+document.getElementById("backgroundAudio").volume = 0.2;
 
 function toggleAudio() {
     const audio = document.getElementById("backgroundAudio");
