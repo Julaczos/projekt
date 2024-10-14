@@ -15,6 +15,7 @@ function toggleVideo() {
 
         if (!audio.paused) {
             audio.pause(); 
+            audioButton.textContent = "Włącz audio";
         }
 
         videoButton.textContent = "Zamknij wideo"; 
