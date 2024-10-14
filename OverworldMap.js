@@ -222,7 +222,7 @@ walls: function() {
       [utils.asGridCoord(11,16)]: [
         {
           events: [
-            { type: "changeMap", map: "MainMap", x: utils.withGrid(59), y: utils.withGrid(69), direction: "down" }
+            { type: "changeMap", map: "MainMap", x: utils.withGrid(59), y: utils.withGrid(70), direction: "down" }
           ]
         }
       ]
