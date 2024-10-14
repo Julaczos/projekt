@@ -15,3 +15,16 @@ function toggleVideo() {
         videoButton.textContent = "Włącz wideo"; 
     }
 }
+
+function toggleAudio() {
+    const audio = document.getElementById("backgroundAudio");
+    const audioButton = document.getElementById("audioButton");
+
+    if (audio.paused) {
+        audio.play();
+        audioButton.textContent = "Wyłącz audio";
+    } else {
+        audio.pause();
+        audioButton.textContent = "Włącz audio";
+    }
+}
