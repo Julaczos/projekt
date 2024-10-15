@@ -1,8 +1,6 @@
 class TitleScreen {
   constructor({ progress }) {
     this.progress = progress;
-    this.container = null;
-    this.keyboardMenu = null;
   }
 
   getOptions(resolve) {
@@ -34,31 +32,32 @@ class TitleScreen {
     ].filter(v => v);
   }
 
-  showCreditsModal() {
+showCredits() {
     const modal = document.createElement("div");
-    modal.className = "modal";
+    modal.classList.add("credits-modal");
+
     modal.innerHTML = `
-      <div class="modal-content">
-        <span class="close-button" id="closeModal">&times;</span>
-        <h2 class="credits-title">Twórcy Gry</h2>
-        <p class="credits-text">Programista: Julia Szerszeń</p>
-        <p class="credits-text">Pomysłodawca: Patryk Brandys</p>
-        <p class="credits-text">Assety: https://limezu.itch.io</p>
-      </div>
+        <div class="modal-content">
+            <span class="close-button">Powrót</span>
+            <h2>Twórcy</h2>
+            <p>Wszyscy twórcy projektu GymAI:</p>
+            <ul>
+                <li>Twórca 1</li>
+                <li>Twórca 2</li>
+                <li>Twórca 3</li>
+                <li>Twórca 4</li>
+            </ul>
+        </div>
     `;
 
     document.body.appendChild(modal);
 
-    document.getElementById("closeModal").addEventListener("click", () => {
-      modal.remove(); 
-    });
-
- /*   modal.addEventListener("click", (event) => {
-      if (event.target === modal) {
+    const closeButton = modal.querySelector(".close-button");
+    closeButton.addEventListener("click", () => {
         modal.remove(); 
-      }
-    }); */
-  }
+    });
+}
+
 
   createElement() {
     this.element = document.createElement("div");
