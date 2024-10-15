@@ -7,16 +7,16 @@ class TitleScreen {
     const safeFile = this.progress.getSaveFile();
     return [
       { 
-        label: "New Game",
-        description: "Start a new pizza adventure.",
+        label: "Nowa Gra",
+        description: "Rozpocznij nową przygodę",
         handler: () => {
           this.close();
           resolve();
         }
       },
       safeFile ? {
-        label: "Continue Game",
-        description: "Resume your adventure",
+        label: "Kontynuuj Grę",
+        description: "Wczytaj stan gry",
         handler: () => {
           this.close();
           resolve(safeFile);
@@ -29,7 +29,7 @@ class TitleScreen {
     this.element = document.createElement("div");
     this.element.classList.add("TitleScreen");
     this.element.innerHTML = (`
-      <img class="TitleScreen_logo" src="/images/logo.png" alt="Pizza Legends" />
+      <img class="TitleScreen_logo" src="/projekt/images/logo.png" alt="GymAI" />
     `)
 
   }
