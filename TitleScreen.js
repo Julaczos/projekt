@@ -1,7 +1,8 @@
 class TitleScreen {
   constructor({ progress }) {
     this.progress = progress;
-    this.container = null; 
+    this.container = null;
+    this.keyboardMenu = null;
   }
 
   getOptions(resolve) {
@@ -27,52 +28,61 @@ class TitleScreen {
         label: "Twórcy",
         description: "Poznaj twórców gry",
         handler: () => {
-          this.showCredits();
+          this.showCreditsModal(); 
         }
       }
     ].filter(v => v);
   }
 
-showCredits() {
-  this.element.innerHTML = `
-    <h2 class="credits-title">Twórcy Gry</h2>
-    <p class="credits-text">Programista: Julia Szerszeń</p>
-    <p class="credits-text">Pomysłodawca: Patryk Brandys</p>
-    <p class="credits-text">Assety: https://limezu.itch.io</p>
-    <button id="backToTitleScreen" class="credits-button">Powrót</button>
-  `;
+  showCreditsModal() {
+    const modal = document.createElement("div");
+    modal.className = "modal";
+    modal.innerHTML = `
+      <div class="modal-content">
+        <span class="close-button" id="closeModal">&times;</span>
+        <h2 class="credits-title">Twórcy Gry</h2>
+        <p class="credits-text">Programista: Imię Programisty</p>
+        <p class="credits-text">Grafik: Imię Grafika</p>
+        <p class="credits-text">Muzyka: Imię Kompozytora</p>
+      </div>
+    `;
 
-  document.getElementById("backToTitleScreen").addEventListener("click", () => {
-    this.close();  
-    this.init(this.container); 
-  });
-}
+    document.body.appendChild(modal);
+
+    document.getElementById("closeModal").addEventListener("click", () => {
+      modal.remove(); 
+    });
+
+ /*   modal.addEventListener("click", (event) => {
+      if (event.target === modal) {
+        modal.remove(); 
+      }
+    }); */
+  }
 
   createElement() {
     this.element = document.createElement("div");
     this.element.classList.add("TitleScreen");
-    this.element.innerHTML = (`
+    this.element.innerHTML = `
       <h1 class="TitleScreen_text">GymAI</h1>
-    `);
-
-    this.keyboardMenu = new KeyboardMenu();
-    this.keyboardMenu.init(this.element);
-    this.keyboardMenu.setOptions(this.getOptions(() => {
-    }));
+    `;
   }
 
   close() {
-    this.keyboardMenu.end();
+    if (this.keyboardMenu) {
+      this.keyboardMenu.end();
+    }
     this.element.remove();
-
   }
 
   init(container) {
-    this.container = container; 
+    this.container = container;
     return new Promise(resolve => {
       this.createElement();
       container.appendChild(this.element);
-     this.keyboardMenu.setOptions(this.getOptions(resolve));
+      this.keyboardMenu = new KeyboardMenu();
+      this.keyboardMenu.init(this.element);
+      this.keyboardMenu.setOptions(this.getOptions(resolve));
     });
   }
 }
