@@ -39,9 +39,9 @@
 
 .TitleScreen .DescriptionBox {
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 65%; 
-  transform: translate(-30%, -50%); 
+  transform: translate(-30%, -40%); 
   background: transparent;
   color: #fff;
   border: 0;
