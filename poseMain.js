@@ -74,6 +74,7 @@ function updateSquatCounter(poseLandmarks) {
     if (averageKneeAngle < 70 && !isSquatting) {
         isSquatting = true; 
     } else if (averageKneeAngle > 160 && isSquatting) {
+        console.log("przysiad zrobiony");
         window.squatCount++;
         isSquatting = false;
         document.getElementById("squatCounter").innerText = `Przysiady: ${window.squatCount}`;
@@ -105,6 +106,7 @@ function updateBicepCurlCounter(poseLandmarks) {
     if (averageElbowAngle < 30 && !isCurling) {
         isCurling = true; 
     } else if (averageElbowAngle > 150 && isCurling) {
+        console.log("podnoszenie zrobione");
         window.bicepCurlCount++;
         isCurling = false;
         document.getElementById("bicepCounter").innerText = `Biceps Curls: ${window.bicepCurlCount}`;
