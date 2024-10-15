@@ -26,18 +26,18 @@ class TitleScreen {
         label: "Twórcy",
         description: "Poznaj twórców gry",
         handler: () => {
-          this.showCredits();
+          this.showCredits(container);
         }
       }
     ].filter(v => v);
   }
 
-showCredits() {
+showCredits(container) {
   this.element.innerHTML = `
     <h2 class="credits-title">Twórcy Gry</h2>
-    <p class="credits-text">Programista: Imię Programisty</p>
-    <p class="credits-text">Grafik: Imię Grafika</p>
-    <p class="credits-text">Muzyka: Imię Kompozytora</p>
+    <p class="credits-text">Programista: Julia Szerszeń</p>
+    <p class="credits-text">Pomysłodawca: Patryk Brandys</p>
+    <p class="credits-text">Assety: https://limezu.itch.io</p>
     <button id="backToTitleScreen" class="credits-button">Powrót</button>
   `;
 
