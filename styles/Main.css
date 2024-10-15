@@ -71,7 +71,10 @@ body {
   top: 50px;
   left: 10px;
   color: red; 
-  font-weight: bold;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 18px;
+  text-align: center;
 }
 
 #instructions {
