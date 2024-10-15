@@ -31,9 +31,9 @@
   cursor: pointer;
   border-radius: 5px;
   font-family: "Pixelify Sans", sans-serif; 
-  top: 60%;
+  top: 80%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -80%);
   justify-content: center;
   text-align: center;
 }
