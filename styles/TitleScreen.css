@@ -9,10 +9,10 @@
 
 .TitleScreen_text {
   font-family: 'Pixelify Sans', sans-serif;
-  font-size: 55px;
+  font-size: 48px;
   color: #7fc2ff;
   text-align: center;
-  margin-top: 50px;
+  margin-top: 40px;
 }
 
 
@@ -23,10 +23,11 @@
   background: transparent;
   border: 0;
 }
+
 .TitleScreen button {
   background-color: #7fc2ff;
   color: #3A160D;
-  font-size: 24px;
+  font-size: 16px;
   font-family: "Pixelify Sans", sans-serif; 
   justify-content: center;
   padding:0;
