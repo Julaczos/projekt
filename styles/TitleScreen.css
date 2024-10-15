@@ -29,8 +29,11 @@
   color: #3A160D;
   font-size: 12px;
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 5px;
   font-family: "Pixelify Sans", sans-serif; 
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -40%); 
   justify-content: center;
   text-align: center;
 }
