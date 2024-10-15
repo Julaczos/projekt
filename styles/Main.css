@@ -73,7 +73,7 @@ body {
   color: red; 
   left: 50%;
   transform: translateX(-50%);
-  font-size: 18px;
+  font-size: 22px;
   text-align: center;
 }
 
@@ -83,7 +83,7 @@ body {
   left: 50%;
   transform: translateX(-50%);
   color: #fff;
-  font-size: 18px;
+  font-size: 22px;
   text-align: center;
 }
 
