@@ -41,9 +41,9 @@ class TitleScreen {
       <div class="modal-content">
         <span class="close-button" id="closeModal">&times;</span>
         <h2 class="credits-title">Twórcy Gry</h2>
-        <p class="credits-text">Programista: Imię Programisty</p>
-        <p class="credits-text">Grafik: Imię Grafika</p>
-        <p class="credits-text">Muzyka: Imię Kompozytora</p>
+        <p class="credits-text">Programista: Julia Szerszeń</p>
+        <p class="credits-text">Pomysłodawca: Patryk Brandys</p>
+        <p class="credits-text">Assety: https://limezu.itch.io</p>
       </div>
     `;
 
