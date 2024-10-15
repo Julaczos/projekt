@@ -110,8 +110,7 @@ class Overworld {
 
   this.startGameLoop();
 
-   if (czy === true) {
-    console.log ("pozdro");
+   if (czy === false) {
       this.map.startCutscene([
        { type: "textMessage", text: "Miasto było kiedyś takie żywe..."},
        { type: "textMessage", text: "Teraz wygląda jakby umierało. Co się tutaj stało?"},
