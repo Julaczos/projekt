@@ -39,14 +39,10 @@ showCredits() {
     modal.innerHTML = `
         <div class="modal-content">
             <span class="close-button">Powrót</span>
-            <h2>Twórcy</h2>
-            <p>Wszyscy twórcy projektu GymAI:</p>
-            <ul>
-                <li>Twórca 1</li>
-                <li>Twórca 2</li>
-                <li>Twórca 3</li>
-                <li>Twórca 4</li>
-            </ul>
+            <h2>Twórcy gry</h2>
+            <p>Programista: Julia Szerszeń</p>
+            <p>Pomysłodawca: Patryk Brandys</p>
+            <p>Assety: https://limezu.itch.io</p>
         </div>
     `;
 
