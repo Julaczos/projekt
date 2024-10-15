@@ -79,36 +79,26 @@ class Overworld {
  
  async init() {
 
- const container = document.querySelector(".game-container");
-  
+  const container = document.querySelector(".game-container");
+
   this.progress = new Progress();
 
-  this.titleScreen = new TitleScreen ({
-    progress: this.progress;
-   })
-  await this.titleScreen.init(container);
-  
+  this.titleScreen = new TitleScreen({
+    progress: this.progress
+  })
+  const useSaveFile = await this.titleScreen.init(container);
+
   let initialHeroState = null;
-  const saveFile = this.progress.getSaveFile();
-  if (saveFile) {
+  if (useSaveFile) {
     this.progress.load();
     initialHeroState = {
       x: this.progress.startingHeroX,
       y: this.progress.startingHeroY,
       direction: this.progress.startingHeroDirection,
     }
-  } else
-  {
-   this.startMap(window.OverworldMaps.MainMap);
-   
-       this.map.startCutscene([
-         { type: "textMessage", text: "Miasto było kiedyś takie żywe..."},
-         { type: "textMessage", text: "Teraz wygląda jakby umierało. Co się tutaj stało?"},
-         { type: "textMessage", text: "Lepiej wrócę do domu"},
-       ])   
-    }
-  
-  this.startMap(window.OverworldMaps[this.progress.mapId], initialHeroState);
+  }
+
+  this.startMap(window.OverworldMaps[this.progress.mapId], initialHeroState );
 
   this.bindActionInput();
   this.bindHeroPositionCheck();
@@ -119,7 +109,11 @@ class Overworld {
   this.startGameLoop();
 
 
-
+   this.map.startCutscene([
+     { type: "textMessage", text: "Miasto było kiedyś takie żywe..."},
+     { type: "textMessage", text: "Teraz wygląda jakby umierało. Co się tutaj stało?"},
+     { type: "textMessage", text: "Lepiej wrócę do domu"},
+   ])
 
  }
 }
