@@ -26,12 +26,30 @@ class TitleScreen {
       label: "Twórcy",
       description: "Poznaj twórców gry",
       handler: () => {
-        //tu coś będzie
+        this.showCredits();
       }
     }
     ].filter(v => v);
   }
 
+  showCredits() {
+    const creditsElement = document.createElement("div");
+    creditsElement.classList.add("creditsOverlay");
+    creditsElement.innerHTML = `
+      <h2>Twórcy Gry</h2>
+      <p>Programista: Julia Szerszeń</p>
+      <p>Pomysłodawca: Patryk Brandys</p>
+      <p>Assety: https://limezu.itch.io</p>
+      <button id="closeCredits">Zamknij</button>
+    `;
+
+    document.body.appendChild(creditsElement);
+    document.getElementById("closeCredits").addEventListener("click", () => {
+      creditsElement.remove(); 
+    });
+  }
+
+  
 createElement() {
     this.element = document.createElement("div");
     this.element.classList.add("TitleScreen");
