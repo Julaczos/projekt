@@ -26,7 +26,7 @@ class TitleScreen {
         label: "Twórcy",
         description: "Poznaj twórców gry",
         handler: () => {
-          this.showCreditsModal(); 
+          this.showCredits(); 
         }
       }
     ].filter(v => v);
