@@ -81,11 +81,19 @@
 }
 
 .modal-content {
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
+  background-color: black;
   text-align: center;
-  width: 300px; 
+  width: 1056px; 
+  height: 594px; 
+  overflow-y: auto; 
+}
+
+.modal-content h2 {
+    color: #7fc2ff;
+}
+
+.modal-content p {
+    color: #7fc2ff; 
 }
 
 .close-button {
