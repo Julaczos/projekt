@@ -32,19 +32,20 @@ class TitleScreen {
     ].filter(v => v);
   }
 
-  showCredits() {
-    this.element.innerHTML = `
-      <h2>Twórcy Gry</h2>
-      <p>Programista: Imię Programisty</p>
-      <p>Grafik: Imię Grafika</p>
-      <p>Muzyka: Imię Kompozytora</p>
-      <button id="backToTitleScreen">Powrót</button>
-    `;
+showCredits() {
+  this.element.innerHTML = `
+    <h2 class="credits-title">Twórcy Gry</h2>
+    <p class="credits-text">Programista: Imię Programisty</p>
+    <p class="credits-text">Grafik: Imię Grafika</p>
+    <p class="credits-text">Muzyka: Imię Kompozytora</p>
+    <button id="backToTitleScreen" class="credits-button">Powrót</button>
+  `;
 
-    document.getElementById("backToTitleScreen").addEventListener("click", () => {
-      this.createElement(); 
-    });
-  }
+  document.getElementById("backToTitleScreen").addEventListener("click", () => {
+    this.close();  
+    this.init(container); 
+  });
+}
 
   createElement() {
     this.element = document.createElement("div");
