@@ -90,13 +90,16 @@
 
 .modal-content h2 {
     color: #7fc2ff;
+  font-size: 30px;
 }
 
 .modal-content p {
     color: #7fc2ff; 
+  font-size: 20px;
 }
 
 .close-button {
+  color: white;
   cursor: pointer;
   font-size: 24px;
   float: right; 
