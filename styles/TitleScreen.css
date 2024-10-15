@@ -104,10 +104,12 @@
 }
 
 .close-button {
-  color: #7fc2ff;
-  cursor: pointer;
-  font-size: 40px;
-  float: right; 
+    color: #7fc2ff;
+    cursor: pointer;
+    font-size: 40px;
+    position: absolute;/
+    top: 20px; 
+    right: 10px;
 }
 
 
