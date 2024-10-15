@@ -32,9 +32,14 @@
   border-radius: 10px;
   font-family: "Pixelify Sans", sans-serif; 
   justify-content: center;
+  text-align: center;
 }
 
 .TitleScreen .DescriptionBox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
   background: transparent;
   color: #fff;
   border: 0;
