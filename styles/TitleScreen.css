@@ -48,3 +48,21 @@
   text-align: center;
 }
 
+.credits-title {
+  color: #7fc2ff;
+  font-size: 24px;
+}
+
+.credits-text {
+  color: #7fc2ff;
+  font-size: 16px;
+}
+
+.credits-button {
+  background-color: #7fc2ff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
