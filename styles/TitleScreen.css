@@ -12,13 +12,13 @@
   font-size: 48px;
   color: #7fc2ff;
   text-align: center;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 
 .TitleScreen .KeyboardMenu {
   position: relative;
-  width: 100px;
+  width: 150px;
   margin: 0 auto;
   background: transparent;
   border: 0;
