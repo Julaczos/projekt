@@ -88,8 +88,10 @@ class Overworld {
   })
   const useSaveFile = await this.titleScreen.init(container);
 
+  let czy = false;
   let initialHeroState = null;
   if (useSaveFile) {
+    czy = true;
     this.progress.load();
     initialHeroState = {
       x: this.progress.startingHeroX,
@@ -108,12 +110,13 @@ class Overworld {
 
   this.startGameLoop();
 
-
-   this.map.startCutscene([
-     { type: "textMessage", text: "Miasto było kiedyś takie żywe..."},
-     { type: "textMessage", text: "Teraz wygląda jakby umierało. Co się tutaj stało?"},
-     { type: "textMessage", text: "Lepiej wrócę do domu"},
-   ])
+   if (czy === true) {
+      this.map.startCutscene([
+       { type: "textMessage", text: "Miasto było kiedyś takie żywe..."},
+       { type: "textMessage", text: "Teraz wygląda jakby umierało. Co się tutaj stało?"},
+       { type: "textMessage", text: "Lepiej wrócę do domu"},
+     ])
+   }
 
  }
 }
