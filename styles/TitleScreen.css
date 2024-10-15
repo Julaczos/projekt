@@ -33,10 +33,11 @@
   font-family: "Pixelify Sans", sans-serif; 
   top: 60%;
   left: 50%;
-  transform: translate(-50%, -40%); 
+  transform: translate(-50%, -50%);
   justify-content: center;
   text-align: center;
 }
+
 
 .TitleScreen .DescriptionBox {
   position: absolute;
