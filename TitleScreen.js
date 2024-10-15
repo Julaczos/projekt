@@ -43,6 +43,7 @@ showCredits() {
             <p>Programista: Julia Szerszeń</p>
             <p>Pomysłodawca: Patryk Brandys</p>
             <p>Assety: https://limezu.itch.io</p>
+            <p>Muzyka: Colorful Flowers by Tokyo Music Walker | https://soundcloud.com/user-356546060</p>
         </div>
     `;
 
