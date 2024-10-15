@@ -8,15 +8,23 @@ class Progress {
   }
 
   save() {
-    window.localStorage.setItem(this.saveFileKey, JSON.stringify({
-      mapId: this.mapId,
-      startingHeroX: this.startingHeroX,
-      startingHeroY: this.startingHeroY,
-      startingHeroDirection: this.startingHeroDirection,
-      playerState: {
-        storyFlags: playerState.storyFlags
-      }
-    }))
+    if (mapId != "FitnessRoom"
+        {
+          window.localStorage.setItem(this.saveFileKey, JSON.stringify({
+            mapId: this.mapId,
+            startingHeroX: this.startingHeroX,
+            startingHeroY: this.startingHeroY,
+            startingHeroDirection: this.startingHeroDirection,
+            playerState: {
+              storyFlags: playerState.storyFlags
+            }
+          }))      
+        }
+    else 
+    {
+      alert ("Nie możesz zapisywac w FitnessRoom!");
+    }
+
   }
 
   getSaveFile() {
