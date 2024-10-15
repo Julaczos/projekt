@@ -22,56 +22,53 @@ class TitleScreen {
           resolve(safeFile);
         }
       } : null,
-    {
-      label: "Twórcy",
-      description: "Poznaj twórców gry",
-      handler: () => {
-        this.showCredits();
+      {
+        label: "Twórcy",
+        description: "Poznaj twórców gry",
+        handler: () => {
+          this.showCredits();
+        }
       }
-    }
     ].filter(v => v);
   }
 
   showCredits() {
-    const creditsElement = document.createElement("div");
-    creditsElement.classList.add("creditsOverlay");
-    creditsElement.innerHTML = `
+    this.element.innerHTML = `
       <h2>Twórcy Gry</h2>
-      <p>Programista: Julia Szerszeń</p>
-      <p>Pomysłodawca: Patryk Brandys</p>
-      <p>Assety: https://limezu.itch.io</p>
-      <button id="closeCredits">Zamknij</button>
+      <p>Programista: Imię Programisty</p>
+      <p>Grafik: Imię Grafika</p>
+      <p>Muzyka: Imię Kompozytora</p>
+      <button id="backToTitleScreen">Powrót</button>
     `;
 
-    document.body.appendChild(creditsElement);
-    document.getElementById("closeCredits").addEventListener("click", () => {
-      creditsElement.remove(); 
+    document.getElementById("backToTitleScreen").addEventListener("click", () => {
+      this.createElement(); 
     });
   }
 
-  
-createElement() {
+  createElement() {
     this.element = document.createElement("div");
     this.element.classList.add("TitleScreen");
     this.element.innerHTML = (`
       <h1 class="TitleScreen_text">GymAI</h1>
     `);
-}
 
+    this.keyboardMenu = new KeyboardMenu();
+    this.keyboardMenu.init(this.element);
+    this.keyboardMenu.setOptions(this.getOptions(() => {
+    }));
+  }
 
   close() {
     this.keyboardMenu.end();
     this.element.remove();
   }
-  
+
   init(container) {
     return new Promise(resolve => {
       this.createElement();
       container.appendChild(this.element);
-      this.keyboardMenu = new KeyboardMenu();
-      this.keyboardMenu.init(this.element);
-      this.keyboardMenu.setOptions(this.getOptions(resolve))
-    })
+      this.keyboardMenu.setOptions(this.getOptions(resolve));
+    });
   }
-
 }
