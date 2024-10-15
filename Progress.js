@@ -8,7 +8,7 @@ class Progress {
   }
 
   save() {
-    if (mapId != "FitnessRoom"
+    if (mapId != "FitnessRoom")
         {
           window.localStorage.setItem(this.saveFileKey, JSON.stringify({
             mapId: this.mapId,
