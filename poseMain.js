@@ -55,19 +55,30 @@ function updateSquatCounter(poseLandmarks) {
     const rightKnee = poseLandmarks[26];
     const rightAnkle = poseLandmarks[28];
 
+    if (
+        !leftHip || !leftKnee || !leftAnkle || !rightHip || !rightKnee || !rightAnkle ||
+        leftHip.visibility < 0.5 || leftKnee.visibility < 0.5 || leftAnkle.visibility < 0.5 || 
+        rightHip.visibility < 0.5 || rightKnee.visibility < 0.5 || rightAnkle.visibility < 0.5) {
+            document.getElementById("errorDisplay").innerText = "Część sylwetki jest niewidoczna. Ustaw się prawidłowo.";
+            return;
+    } else {
+        document.getElementById("errorDisplay").innerText = "Cała sylwetka widoczna, gratulacje!";
+    }
+
+
     const leftKneeAngle = calculateAngle(leftHip, leftKnee, leftAnkle);
     const rightKneeAngle = calculateAngle(rightHip, rightKnee, rightAnkle);
+
     const averageKneeAngle = (leftKneeAngle + rightKneeAngle) / 2;
 
     if (averageKneeAngle < 70 && !isSquatting) {
         isSquatting = true; 
     } else if (averageKneeAngle > 160 && isSquatting) {
-        window.squatCount++;
+        squatCount++;
         isSquatting = false;
-        document.getElementById("counter3").innerText = `Przysiady: ${window.squatCount}`;
+        document.getElementById("squatCounter").innerText = `Przysiady: ${window.squatCount}`;
         gainXP(10);
-        checkGameProgress();  
-    }
+    } 
 }
 
 function updateBicepCurlCounter(poseLandmarks) {
@@ -79,18 +90,25 @@ function updateBicepCurlCounter(poseLandmarks) {
     const rightElbow = poseLandmarks[14];
     const rightWrist = poseLandmarks[16];
 
+    if (!leftShoulder || !leftElbow || !leftWrist || !rightShoulder || !rightElbow || !rightWrist ||
+       leftShoulder.visibility < 0.5 || leftElbow.visibility < 0.5 || leftWrist.visibility < 0.5 || rightShoulder.visibility < 0.5 || rightElbow.visibility < 0.5 || rightWrist.visibility < 0.5) {
+        document.getElementById("errorDisplay").innerText = "Część sylwetki jest niewidoczna. Ustaw się prawidłowo.";
+        return;
+    } else {
+        document.getElementById("errorDisplay").innerText = "Cała sylwetka widoczna, gratulacje!";  
+    }
+
     const leftElbowAngle = calculateAngle(leftShoulder, leftElbow, leftWrist);
     const rightElbowAngle = calculateAngle(rightShoulder, rightElbow, rightWrist);
-    const averageElbowAngle = (leftElbowAngle + rightElbowAngle) / 2;
 
+    const averageElbowAngle = (leftElbowAngle + rightElbowAngle) / 2;
     if (averageElbowAngle < 30 && !isCurling) {
         isCurling = true; 
     } else if (averageElbowAngle > 150 && isCurling) {
-        window.bicepCurlCount++;
+        bicepCurlCount++;
         isCurling = false;
         document.getElementById("bicepCounter").innerText = `Biceps Curls: ${window.bicepCurlCount}`;
         gainXP(5);
-        checkGameProgress(); 
     }
 }
 
