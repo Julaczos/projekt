@@ -25,14 +25,14 @@ class TitleScreen {
     ].filter(v => v);
   }
 
-  createElement() {
+createElement() {
     this.element = document.createElement("div");
     this.element.classList.add("TitleScreen");
     this.element.innerHTML = (`
-      <img class="TitleScreen_logo" src="/projekt/images/logo.png" alt="GymAI" />
-    `)
+      <h1 class="TitleScreen_text">GymAI</h1>
+    `);
+}
 
-  }
 
   close() {
     this.keyboardMenu.end();
