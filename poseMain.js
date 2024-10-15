@@ -183,6 +183,7 @@ async function checkLocationAndStartCamera() {
             console.log("Kamerka już działa.");
         }
     } else {
+        document.getElementById("errorDisplay").innerText = " ";
         console.log("Gracz nie znajduje się w FitnessRoom. Wyłączanie kamerki...");
         if (videoStream) {
             let tracks = videoStream.getTracks();
