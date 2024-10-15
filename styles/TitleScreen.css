@@ -24,29 +24,18 @@
   border: 0;
 }
 
-.button-container {
-  display: flex;
-  flex-direction: column; 
-  align-items: center;
-  position: absolute; 
-  top: 80%;
-  left: 50%; 
-  transform: translate(-50%, -50%);
-}
-
-.button-container button {
+.TitleScreen button {
   background-color: #7fc2ff;
   color: #3A160D;
   font-size: 12px;
   cursor: pointer;
   border-radius: 5px;
-  font-family: "Pixelify Sans", sans-serif;
-  margin: 10px 0; 
-/*  padding: 10px 20px; */
+  font-family: "Pixelify Sans", sans-serif; 
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -80%);
   text-align: center;
 }
-
-
 
 .TitleScreen .DescriptionBox {
   position: absolute;
