@@ -12,7 +12,7 @@
   font-size: 48px;
   color: #7fc2ff;
   text-align: center;
-  margin-top: 40px;
+  margin-top: 30px;
 }
 
 
@@ -27,10 +27,12 @@
 .TitleScreen button {
   background-color: #7fc2ff;
   color: #3A160D;
-  font-size: 16px;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 10px;
   font-family: "Pixelify Sans", sans-serif; 
   justify-content: center;
-  padding:0;
+  padding: 10px 20px;
 }
 
 .TitleScreen .DescriptionBox {
