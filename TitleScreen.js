@@ -1,6 +1,7 @@
 class TitleScreen {
   constructor({ progress }) {
     this.progress = progress;
+    this.container = null; 
   }
 
   getOptions(resolve) {
@@ -26,13 +27,13 @@ class TitleScreen {
         label: "Twórcy",
         description: "Poznaj twórców gry",
         handler: () => {
-          this.showCredits(container);
+          this.showCredits();
         }
       }
     ].filter(v => v);
   }
 
-showCredits(container) {
+showCredits() {
   this.element.innerHTML = `
     <h2 class="credits-title">Twórcy Gry</h2>
     <p class="credits-text">Programista: Julia Szerszeń</p>
@@ -43,7 +44,7 @@ showCredits(container) {
 
   document.getElementById("backToTitleScreen").addEventListener("click", () => {
     this.close();  
-    this.init(container); 
+    this.init(this.container); 
   });
 }
 
@@ -66,6 +67,7 @@ showCredits(container) {
   }
 
   init(container) {
+    this.container = container; 
     return new Promise(resolve => {
       this.createElement();
       container.appendChild(this.element);
