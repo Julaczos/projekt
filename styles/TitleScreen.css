@@ -85,6 +85,7 @@
   text-align: center;
   width: 352px; 
   height: 198px; 
+  justify-content: center;
 }
 
 .modal-content h2 {
@@ -98,7 +99,7 @@
 }
 
 .close-button {
-  color: white;
+  color: #7fc2ff;
   cursor: pointer;
   font-size: 24px;
   float: right; 
