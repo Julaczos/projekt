@@ -1,7 +1,8 @@
 class TitleScreen {
   constructor({ progress }) {
     this.progress = progress;
-    this.container = null; 
+    this.container = null;
+    this.keyboardMenu = null; 
   }
 
   getOptions(resolve) {
@@ -33,38 +34,46 @@ class TitleScreen {
     ].filter(v => v);
   }
 
-showCredits() {
-  this.element.innerHTML = `
-    <h2 class="credits-title">Twórcy Gry</h2>
-    <p class="credits-text">Programista: Julia Szerszeń</p>
-    <p class="credits-text">Pomysłodawca: Patryk Brandys</p>
-    <p class="credits-text">Assety: https://limezu.itch.io</p>
-    <button id="backToTitleScreen" class="credits-button">Powrót</button>
-  `;
+  showCredits() {
+    this.element.innerHTML = `
+      <h2 class="credits-title">Twórcy Gry</h2>
+      <p class="credits-text">Programista: Imię Programisty</p>
+      <p class="credits-text">Grafik: Imię Grafika</p>
+      <p class="credits-text">Muzyka: Imię Kompozytora</p>
+      <button id="backToTitleScreen" class="credits-button">Powrót</button>
+    `;
 
-  document.getElementById("backToTitleScreen").addEventListener("click", () => {
-    this.close();  
-    this.init(this.container); 
-  });
-}
+    document.getElementById("backToTitleScreen").addEventListener("click", () => {
+      this.returnToTitleScreen(); 
+    });
+  }
+
+  returnToTitleScreen() {
+    this.close(); 
+    this.createElement(); 
+    this.container.appendChild(this.element); 
+    this.initKeyboardMenu();
+  }
 
   createElement() {
     this.element = document.createElement("div");
     this.element.classList.add("TitleScreen");
-    this.element.innerHTML = (`
+    this.element.innerHTML = `
       <h1 class="TitleScreen_text">GymAI</h1>
-    `);
+    `;
+  }
 
+  initKeyboardMenu() {
     this.keyboardMenu = new KeyboardMenu();
     this.keyboardMenu.init(this.element);
-    this.keyboardMenu.setOptions(this.getOptions(() => {
-    }));
+    this.keyboardMenu.setOptions(this.getOptions(() => {})); 
   }
 
   close() {
-    this.keyboardMenu.end();
+    if (this.keyboardMenu) {
+      this.keyboardMenu.end();
+    }
     this.element.remove();
-
   }
 
   init(container) {
@@ -72,7 +81,7 @@ showCredits() {
     return new Promise(resolve => {
       this.createElement();
       container.appendChild(this.element);
-     this.keyboardMenu.setOptions(this.getOptions(resolve));
+      this.initKeyboardMenu(); 
     });
   }
 }
