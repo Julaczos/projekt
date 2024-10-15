@@ -21,7 +21,14 @@ class TitleScreen {
           this.close();
           resolve(safeFile);
         }
-      } : null
+      } : null,
+    {
+      label: "Twórcy",
+      description: "Poznaj twórców gry",
+      handler: () => {
+        //tu coś będzie
+      }
+    }
     ].filter(v => v);
   }
 
