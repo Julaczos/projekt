@@ -62,9 +62,7 @@ showCredits() {
   }
 
   close() {
-    if (this.keyboardMenu) {
-      this.keyboardMenu.end();
-    }
+    this.keyboardMenu.end();
     this.element.remove();
 
   }
@@ -74,9 +72,7 @@ showCredits() {
     return new Promise(resolve => {
       this.createElement();
       container.appendChild(this.element);
-      this.keyboardMenu = new KeyboardMenu();
-      this.keyboardMenu.init(this.element);
-      this.keyboardMenu.setOptions(this.getOptions(resolve));
+     this.keyboardMenu.setOptions(this.getOptions(resolve));
     });
   }
 }
