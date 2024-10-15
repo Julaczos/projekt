@@ -79,3 +79,14 @@
     transform: translateX(-50%); 
 }
 
+.modal-content h2 {
+    font-size: 45px;
+    color: #7fc2ff;
+}
+
+.modal-content p {
+    font-size: 34px; 
+    color: #7fc2ff;
+}
+
+
