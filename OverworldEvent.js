@@ -69,12 +69,6 @@ class OverworldEvent {
 
   }
 
-const enemy = {
-  name: "Wrogi Pizza",
-  hp: 40,
-  level: 1,
-};
-
 const battle = new Battle({
   enemy: enemy,
   onComplete: () => {
