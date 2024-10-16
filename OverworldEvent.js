@@ -68,14 +68,17 @@ class OverworldEvent {
     resolve();
 
   }
+  
+  battle(resolve) {
+    const battle = new Battle({
+      enemy: enemy,
+      onComplete: () => {
+        resolve();
+      }
+    })
+    battle.init(document.querySelector(".game-container"));
 
-const battle = new Battle({
-  enemy: enemy,
-  onComplete: () => {
-    console.log("Walka zakończona.");
-  },
-});
-battle.init(document.querySelector(".game-container"));
+  }
 
 
   addStoryFlag (resolve) {
