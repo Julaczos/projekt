@@ -87,16 +87,14 @@ class Battle {
   createElement() {
     this.element = document.createElement("div");
     this.element.classList.add("Battle");
-    this.element.innerHTML = `
-      <div class="Battle_hero">
-        <h3>${this.combatants.player.name}</h3>
-        <p>HP: ${this.combatants.player.hp}/${this.combatants.player.maxHp}</p>
-      </div>
-      <div class="Battle_enemy">
-        <h3>${this.combatants.enemy.name}</h3>
-        <p>HP: ${this.combatants.enemy.hp}/${this.combatants.enemy.maxHp}</p>
-      </div>
-    `;
+    this.element.innerHTML = (`
+    <div class="Battle_hero">
+      <img src="${'/projekt/images/hero.png'}" alt="Hero" />
+    </div>
+    <div class="Battle_enemy">
+      <img src=${'/projekt/images/npc3.png'} alt="Enemy" />
+    </div>
+    `)
   }
 
   init(container) {
