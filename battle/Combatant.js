@@ -53,7 +53,7 @@ class Combatant {
       this.characterElement.setAttribute("data-team", this.team);
   
       this.characterElement.innerHTML = (`
-        <img src="${this.team === "player" ? '/images/characters/people/hero.png' : '/images/characters/people/npc3.png'}" alt="${this.team}" />
+        <img src="${this.team === "player" ? '/projekt/images/hero.png' : '/projekt/images/npc3.png'}" alt="${this.team}" />
       `);
   
       container.appendChild(this.characterElement);
@@ -64,7 +64,7 @@ class Combatant {
       this.updateHealthBar();
       
       if (this.hp === 0) {
-        this.faint();  // Postać traci przytomność
+        this.faint(); 
       }
     }
   
@@ -83,14 +83,12 @@ class Combatant {
   
     levelUp() {
       this.level += 1;
-      this.xp = 0;  // Resetujemy XP po osiągnięciu poziomu
-      this.maxXp *= 1.5;  // Zwiększamy wymagane XP dla następnego poziomu
-      // Można dodać logikę zwiększenia innych statystyk przy poziomie
+      this.xp = 0;  
+      this.maxXp *= 1.5; 
     }
   
     faint() {
       console.log(`${this.team} stracił przytomność!`);
-      // Tutaj można dodać logikę dla sytuacji, kiedy postać przegrywa
     }
   }
   
