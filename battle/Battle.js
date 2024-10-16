@@ -72,9 +72,8 @@ class Battle {
       console.log("Niestety, przegrałeś walkę.");
     }
 
-    if (this.onComplete) {
-      this.onComplete();
-    }
+    // Pokaż przycisk "Zakończ walkę"
+    this.showEndBattleButton();
   }
 
   checkLevelUp() {
@@ -86,6 +85,17 @@ class Battle {
 
       console.log(`Awansowałeś na poziom ${window.playerState.playerStats.level}! Nowe statystyki: HP ${window.playerState.playerStats.maxHp}.`);
     }
+  }
+
+  showEndBattleButton() {
+    const endButton = document.createElement("button");
+    endButton.classList.add("end-battle-button");
+    endButton.textContent = "Zakończ walkę";
+    this.element.appendChild(endButton);
+
+    endButton.addEventListener("click", () => {
+      this.onComplete();
+    });
   }
 
   createElement() {
