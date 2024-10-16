@@ -94,6 +94,7 @@ class Battle {
     this.element.appendChild(endButton);
 
     endButton.addEventListener("click", () => {
+      console.log ("klikam");
       this.onComplete();
     });
   }
