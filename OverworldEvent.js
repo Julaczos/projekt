@@ -69,14 +69,20 @@ class OverworldEvent {
 
   }
 
-  battle(resolve) {
-    const battle = new Battle({
-      onComplete: () => {
-        resolve();
-      }
-    })
-    battle.init(document.querySelector(".game-container"));
-  }
+const enemy = {
+  name: "Wrogi Pizza",
+  hp: 40,
+  level: 1,
+};
+
+const battle = new Battle({
+  enemy: enemy,
+  onComplete: () => {
+    console.log("Walka zakończona.");
+  },
+});
+battle.init(document.querySelector(".game-container"));
+
 
   addStoryFlag (resolve) {
     window.playerState.storyFlags[this.event.flag] = true;
