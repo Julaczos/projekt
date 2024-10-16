@@ -69,7 +69,14 @@ class OverworldEvent {
 
   }
   
-function battle(resolve, enemy) {
+battle(resolve) {
+  const enemy = {
+    name: "Wrogi Pizza", 
+    hp: 40,
+    maxHp: 40,
+    level: 1,
+  };
+
   const battle = new Battle({
     enemy: enemy, 
     onComplete: () => {
@@ -77,7 +84,7 @@ function battle(resolve, enemy) {
     },
   });
 
-  battle.init(document.querySelector(".game-container"));
+  battle.init(document.querySelector(".game-container")); 
 }
 
 
