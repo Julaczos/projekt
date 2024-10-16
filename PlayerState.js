@@ -6,3 +6,13 @@ class PlayerState {
   }
 }
 window.playerState = new PlayerState();
+
+window.playerStats = {
+  hp: 50,
+  maxHp: 50,
+  xp: 0,
+  maxXp: 100,
+  level: 1,
+  status: null,
+};
+
