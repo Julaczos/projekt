@@ -112,9 +112,10 @@ class Overworld {
 
    if (czy === false) {
       this.map.startCutscene([
-       { type: "textMessage", text: "Miasto było kiedyś takie żywe..."},
-       { type: "textMessage", text: "Teraz wygląda jakby umierało. Co się tutaj stało?"},
-       { type: "textMessage", text: "Lepiej wrócę do domu"},
+        { type: "battle"},
+     //  { type: "textMessage", text: "Miasto było kiedyś takie żywe..."},
+    //   { type: "textMessage", text: "Teraz wygląda jakby umierało. Co się tutaj stało?"},
+    //   { type: "textMessage", text: "Lepiej wrócę do domu"},
      ])
    }
 
