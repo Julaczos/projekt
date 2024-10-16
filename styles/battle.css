@@ -4,6 +4,7 @@
     right:0;
     top:0;
     bottom:0;
+    background-color: #3E4A89;
     background-size: cover;
     image-rendering: pixelated;
   }
@@ -11,7 +12,7 @@
   .Battle_hero, .Battle_enemy {
     position: absolute;
     transform: scale(2);
-    width: 32px;
+    width: 16px;
     height: 32px;
     overflow: hidden;
   }
@@ -23,8 +24,13 @@
     left: 1px;
   }
   .Battle_hero img {
-    transform: translateY(-64px); /* Nudge hero spritesheet */
+    transform: translateX(-16px); 
   }
+
+  .Battle_hero img {
+    transform: translateX(-48px); 
+  }
+
   .Battle_enemy {
     top: 42px;
     right: -1px;
