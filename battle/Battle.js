@@ -100,49 +100,60 @@ class Battle {
   }
 
   createElement() {
-    this.element = document.createElement("div");
-    this.element.classList.add("Battle");
+  this.element = document.createElement("div");
+  this.element.classList.add("Battle");
 
-    this.hpDisplay = document.createElement("div");
-    this.hpDisplay.classList.add("hp-display");
-    this.hpDisplay.innerHTML = `
-      <h2>${window.playerState.playerStats.name} HP: ${window.playerState.playerStats.hp}/${window.playerState.playerStats.maxHp}</h2>
-      <h2>${this.enemy.name} HP: ${this.enemy.hp}/${this.enemy.maxHp}</h2>
-    `;
-    
-    const attackButtons = this.attacks.map(attack => `
-      <button class="attack-button" data-attack="${attack.name}">${attack.name}</button>
-    `).join("");
+  this.hpDisplay = document.createElement("div");
+  this.hpDisplay.classList.add("hp-display");
+  this.hpDisplay.innerHTML = `
+    <h2>${window.playerState.playerStats.name} HP: ${window.playerState.playerStats.hp}/${window.playerState.playerStats.maxHp}</h2>
+    <h2>${this.enemy.name} HP: ${this.enemy.hp}/${this.enemy.maxHp}</h2>
+  `;
 
-    this.element.innerHTML = `
-      <div class="Battle_hero">
-        <img src="${'/projekt/images/hero.png'}" alt="Hero" />
-      </div>
-      <div class="Battle_enemy">
-        <img src="${'/projekt/images/npc3.png'}" alt="Enemy" />
-      </div>
-      <div class="battle-controls">
-        ${attackButtons}
-      </div>
-    `;
-    
-    this.element.appendChild(this.hpDisplay);
-    
-    this.element.querySelectorAll('.attack-button').forEach(button => {
-      button.addEventListener('click', (event) => {
-        const selectedAttack = this.attacks.find(attack => attack.name === event.target.dataset.attack);
-        this.takeTurn(selectedAttack);
-        this.updateHpDisplay();
-      });
+  const attackButtons = this.attacks.map(attack => `
+    <button class="attack-button" data-attack="${attack.name}">${attack.name}</button>
+  `).join("");
+
+  this.element.innerHTML = `
+    <div class="Battle_hero">
+      <img src="${'/projekt/images/hero.png'}" alt="Hero" />
+    </div>
+    <div class="Battle_enemy">
+      <img src="${'/projekt/images/npc3.png'}" alt="Enemy" />
+    </div>
+    <div class="battle-controls">
+      ${attackButtons}
+    </div>
+  `;
+
+  this.element.appendChild(this.hpDisplay);
+
+  this.element.querySelectorAll('.attack-button').forEach(button => {
+    button.addEventListener('click', (event) => {
+      const selectedAttack = this.attacks.find(attack => attack.name === event.target.dataset.attack);
+      this.takeTurn(selectedAttack);
+      this.updateHpDisplay();
     });
-  }
+  });
 
-  updateHpDisplay() {
-    this.hpDisplay.innerHTML = `
-      <h2>${window.playerState.playerStats.name} HP: ${window.playerState.playerStats.hp}/${window.playerState.playerStats.maxHp}</h2>
-      <h2>${this.enemy.name} HP: ${this.enemy.hp}/${this.enemy.maxHp}</h2>
-    `;
-  }
+  const endBattleButton = document.createElement("button");
+  endBattleButton.textContent = "Zakończ walkę";
+  endBattleButton.classList.add("end-battle-button");
+
+  endBattleButton.addEventListener("click", () => {
+    console.log("Walka zakończona przez użytkownika.");
+    this.isBattleOver = true;
+
+    this.element.remove();
+
+    if (this.onComplete) {
+      this.onComplete();
+    }
+  });
+
+  this.element.appendChild(endBattleButton);
+}
+
 
   init(container) {
     this.createElement();
