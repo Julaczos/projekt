@@ -52,9 +52,6 @@ class Combatant {
       this.characterElement.classList.add("Combatant");
       this.characterElement.setAttribute("data-team", this.team);
   
-      this.characterElement.innerHTML = (`
-        <img src="${this.team === "player" ? '/projekt/images/hero.png' : '/projekt/images/npc3.png'}" alt="${this.team}" />
-      `);
   
       container.appendChild(this.characterElement);
     }
