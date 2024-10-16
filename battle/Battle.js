@@ -1,113 +1,141 @@
 class Battle {
-  constructor({ onComplete }) {
+  constructor({ enemy, onComplete }) {
+    this.enemy = enemy;
     this.onComplete = onComplete;
+    this.isBattleOver = false;
 
-    this.combatants = {
-      player: {
-        name: "Gracz",
-        level: 1,
-        xp: 0,
-        maxXp: 100,
-        hp: 100,
-        maxHp: 100,
-        strength: 10,
-        defense: 5,
+    this.attacks = [
+      {
+        name: "Szybki Cios",
+        damage: 5,
       },
-      enemy: {
-        name: "Przeciwnik",
-        level: 1,
-        hp: 50,
-        maxHp: 50,
-        strength: 8,
-        defense: 3,
+      {
+        name: "Silny Cios",
+        damage: 10,
       },
-    };
-
-    this.isBattleOver = false; 
+      {
+        name: "Specjalny Atak",
+        damage: 15,
+      },
+    ];
   }
 
-  attack(attacker, defender) {
-    const damage = Math.max(0, attacker.strength - defender.defense);
+  attack(attacker, defender, attack) {
+    const damage = Math.max(0, attack.damage);
     defender.hp = Math.max(0, defender.hp - damage);
-
-    console.log(`${attacker.name} zadaje ${damage} obrażeń ${defender.name}.`);
+    console.log(`${attacker.name} używa ${attack.name} i zadaje ${damage} obrażeń ${defender.name}.`);
     console.log(`${defender.name} ma teraz ${defender.hp} HP.`);
-
+    
     if (defender.hp <= 0) {
       console.log(`${defender.name} został pokonany!`);
       this.isBattleOver = true;
-      this.endBattle(attacker, defender);
+      return this.endBattle(attacker, defender);
     }
   }
 
-  takeTurn() {
-    if (this.isBattleOver) return;
-
-    this.attack(this.combatants.player, this.combatants.enemy);
-
-    if (!this.isBattleOver) {
-      this.attack(this.combatants.enemy, this.combatants.player);
+  takeTurn(selectedAttack) {
+    if (this.isBattleOver) {
+      console.log("Walka już się zakończyła.");
+      return;
     }
 
-    if (this.combatants.player.hp <= 0) {
-      console.log("Gracz został pokonany. Przegrana walka.");
+    this.attack(window.playerState.playerStats, this.enemy, selectedAttack);
+
+    if (!this.isBattleOver) {
+      this.attack(this.enemy, window.playerState.playerStats, this.enemyAttack());
+    }
+
+    if (window.playerState.playerStats.hp <= 0) {
+      console.log(`${window.playerState.playerStats.name} został pokonany. Przegrana walka!`);
       this.isBattleOver = true;
     }
   }
 
-  endBattle(winner, loser) {
-    if (winner === this.combatants.player) {
-      console.log("Wygrałeś walkę!");
-      const xpGain = loser.level * 20;
-      this.combatants.player.xp += xpGain;
-      console.log(`Zdobyłeś ${xpGain} XP.`);
+  enemyAttack() {
+    const damage = 8;
+    console.log(`${this.enemy.name} atakuje!`);
+    return {
+      name: "Atak Przeciwnika",
+      damage: damage,
+    };
+  }
 
+  endBattle(winner, loser) {
+    if (winner === window.playerState.playerStats) {
+      console.log("Gratulacje! Wygrałeś walkę!");
+      const xpGain = loser.level * 20;
+      window.playerState.playerStats.xp += xpGain;
+
+      console.log(`Zdobyto ${xpGain} XP. Gracz ma teraz ${window.playerState.playerStats.xp}/${window.playerState.playerStats.maxXp} XP.`);
       this.checkLevelUp();
     } else {
-      console.log("Przeciwnik wygrał walkę.");
+      console.log("Niestety, przegrałeś walkę.");
     }
 
-    this.onComplete();
+    if (this.onComplete) {
+      this.onComplete();
+    }
   }
 
   checkLevelUp() {
-    const player = this.combatants.player;
-    if (player.xp >= player.maxXp) {
-      player.level++;
-      player.xp = 0;
-      player.maxXp *= 1.5;
-      player.strength += 2;
-      player.maxHp += 10;
-      player.hp = player.maxHp;
+    if (window.playerState.playerStats.xp >= window.playerState.playerStats.maxXp) {
+      window.playerState.playerStats.level += 1;
+      window.playerState.playerStats.xp = 0;
+      window.playerState.playerStats.maxXp *= 1.5;
+      window.playerState.playerStats.hp = window.playerState.playerStats.maxHp;
 
-      console.log(`Awans na poziom ${player.level}!`);
+      console.log(`Awansowałeś na poziom ${window.playerState.playerStats.level}! Nowe statystyki: HP ${window.playerState.playerStats.maxHp}.`);
     }
   }
 
   createElement() {
     this.element = document.createElement("div");
     this.element.classList.add("Battle");
-    this.element.innerHTML = (`
-    <div class="Battle_hero">
-      <img src="${'/projekt/images/hero.png'}" alt="Hero" />
-    </div>
-    <div class="Battle_enemy">
-      <img src=${'/projekt/images/npc3.png'} alt="Enemy" />
-    </div>
-    `)
+
+    this.hpDisplay = document.createElement("div");
+    this.hpDisplay.classList.add("hp-display");
+    this.hpDisplay.innerHTML = `
+      <h2>${window.playerState.playerStats.name} HP: ${window.playerState.playerStats.hp}/${window.playerState.playerStats.maxHp}</h2>
+      <h2>${this.enemy.name} HP: ${this.enemy.hp}/${this.enemy.maxHp}</h2>
+    `;
+    
+    const attackButtons = this.attacks.map(attack => `
+      <button class="attack-button" data-attack="${attack.name}">${attack.name}</button>
+    `).join("");
+
+    this.element.innerHTML = `
+      <div class="Battle_hero">
+        <img src="${'/images/characters/people/hero.png'}" alt="Hero" />
+      </div>
+      <div class="Battle_enemy">
+        <img src="${'/images/characters/people/npc3.png'}" alt="Enemy" />
+      </div>
+      <div class="battle-controls">
+        ${attackButtons}
+      </div>
+    `;
+    
+    this.element.appendChild(this.hpDisplay);
+    
+    this.element.querySelectorAll('.attack-button').forEach(button => {
+      button.addEventListener('click', (event) => {
+        const selectedAttack = this.attacks.find(attack => attack.name === event.target.dataset.attack);
+        this.takeTurn(selectedAttack);
+        this.updateHpDisplay();
+      });
+    });
+  }
+
+  updateHpDisplay() {
+    this.hpDisplay.innerHTML = `
+      <h2>${window.playerState.playerStats.name} HP: ${window.playerState.playerStats.hp}/${window.playerState.playerStats.maxHp}</h2>
+      <h2>${this.enemy.name} HP: ${this.enemy.hp}/${this.enemy.maxHp}</h2>
+    `;
   }
 
   init(container) {
     this.createElement();
     container.appendChild(this.element);
-
-    const battleInterval = setInterval(() => {
-      if (!this.isBattleOver) {
-        this.takeTurn();
-      } else {
-        clearInterval(battleInterval); 
-        this.element.remove(); 
-      }
-    }, 1000);
+    this.updateHpDisplay();
   }
 }
