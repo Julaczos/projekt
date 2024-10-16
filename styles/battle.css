@@ -21,18 +21,18 @@
   }
   .Battle_hero {
     bottom: 57px;
-    left: 10px;
+    left: 30px;
   }
   .Battle_hero img {
-    transform: translateX(-32px); 
+    transform: translateX(-16px); 
   }
 
   .Battle_enemy img {
-    transform: translateX(-16px); 
+    transform: translateX(-48px); 
   }
 
   .Battle_enemy {
     top: 42px;
-    right: -10px;
+    right: -40px;
   }
   
