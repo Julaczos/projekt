@@ -1,7 +1,8 @@
 class SubmissionMenu { 
-  constructor({ caster, enemy, onComplete, items }) {  // Removed replacements parameter
+  constructor({ caster, enemy, onComplete, items, replacements }) {
     this.caster = caster;
     this.enemy = enemy;
+    this.replacements = replacements;
     this.onComplete = onComplete;
 
     let quantityMap = {};
@@ -15,10 +16,10 @@ class SubmissionMenu {
             actionId: item.actionId,
             quantity: 1,
             instanceId: item.instanceId,
-          };
-        }
+          }
+       }
       }
-    });
+    })
     this.items = Object.values(quantityMap);
   }
 
@@ -28,7 +29,7 @@ class SubmissionMenu {
       label: "Go Back",
       description: "Return to previous page",
       handler: () => {
-        this.keyboardMenu.setOptions(this.getPages().root);
+        this.keyboardMenu.setOptions(this.getPages().root)
       }
     };
 
@@ -38,14 +39,24 @@ class SubmissionMenu {
           label: "Attack",
           description: "Choose an attack",
           handler: () => {
-            this.keyboardMenu.setOptions(this.getPages().attacks);
+            //Do something when chosen...
+            this.keyboardMenu.setOptions( this.getPages().attacks )
           }
         },
         {
           label: "Items",
           description: "Choose an item",
           handler: () => {
-            this.keyboardMenu.setOptions(this.getPages().items);
+            //Go to items page...
+            this.keyboardMenu.setOptions( this.getPages().items )
+          }
+        },
+        {
+          label: "Swap",
+          description: "Change to another pizza",
+          handler: () => { 
+            //See pizza options
+            this.keyboardMenu.setOptions( this.getPages().replacements )
           }
         },
       ],
@@ -56,9 +67,9 @@ class SubmissionMenu {
             label: action.name,
             description: action.description,
             handler: () => {
-              this.menuSubmit(action);
+              this.menuSubmit(action)
             }
-          };
+          }
         }),
         backOption
       ],
@@ -69,45 +80,67 @@ class SubmissionMenu {
             label: action.name,
             description: action.description,
             right: () => {
-              return "x" + item.quantity;
+              return "x"+item.quantity;
             },
             handler: () => {
-              this.menuSubmit(action, item.instanceId);
+              this.menuSubmit(action, item.instanceId)
             }
-          };
+          }
+        }),
+        backOption
+      ],
+      replacements: [
+        ...this.replacements.map(replacement => {
+          return {
+            label: replacement.name,
+            description: replacement.description,
+            handler: () => {
+              //Swap me in, coach!
+              this.menuSubmitReplacement(replacement)
+            }
+          }
         }),
         backOption
       ]
-    };
+    }
   }
 
-  menuSubmit(action, instanceId = null) {
+  menuSubmitReplacement(replacement) {
+    this.keyboardMenu?.end();
+    this.onComplete({
+      replacement
+    })
+  }
+
+  menuSubmit(action, instanceId=null) {
+
     this.keyboardMenu?.end();
 
     this.onComplete({
       action,
       target: action.targetType === "friendly" ? this.caster : this.enemy,
       instanceId
-    });
+    })
   }
 
   decide() {
-    // Enemies should randomly decide what to do...
-    this.menuSubmit(Actions[this.caster.actions[0]]);
+    //TODO: Enemies should randomly decide what to do...
+    this.menuSubmit(Actions[ this.caster.actions[0] ]);
   }
 
   showMenu(container) {
     this.keyboardMenu = new KeyboardMenu();
     this.keyboardMenu.init(container);
-    this.keyboardMenu.setOptions(this.getPages().root);
+    this.keyboardMenu.setOptions( this.getPages().root )
   }
 
   init(container) {
+
     if (this.caster.isPlayerControlled) {
-      // Show some UI
-      this.showMenu(container);
+      //Show some UI
+      this.showMenu(container)
     } else {
-      this.decide();
+      this.decide()
     }
   }
 }
