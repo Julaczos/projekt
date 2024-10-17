@@ -10,6 +10,11 @@ class PlayerState {
       level: 1,
       status: null,
     };
+    this.items = [
+      { actionId: "item_recoverHp", instanceId: "item1" },
+      { actionId: "item_recoverHp", instanceId: "item2" },
+      { actionId: "item_recoverHp", instanceId: "item3" },
+    ]
   }
 }
 window.playerState = new PlayerState();
