@@ -18,3 +18,4 @@ class PlayerState {
   }
 }
 window.playerState = new PlayerState();
+window.playerStats = window.playerState.playerStats;
