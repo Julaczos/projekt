@@ -26,18 +26,24 @@ class Battle {
     this.usedInstanceIds = {};
   }
 
-  addCombatant(id, team, config) {
-    this.combatants[id] = new Combatant({
-      name: config.name,
-      hp: config.hp,
-      maxHp: config.maxHp,
-      level: config.level,
-      team,
-      isPlayerControlled: team === "player"
-    }, this);
-
-    this.activeCombatants[team] = id;
+addCombatant(id, team, config) {
+  if (!config || !config.name || !config.hp || !config.maxHp || !config.level) {
+    console.error("Invalid config object passed to addCombatant:", config);
+    return;
   }
+
+  this.combatants[id] = new Combatant({
+    name: config.name,
+    hp: config.hp,
+    maxHp: config.maxHp,
+    level: config.level,
+    team,
+    isPlayerControlled: team === "player"
+  }, this);
+
+  this.activeCombatants[team] = id;
+}
+
 
   createElement() {
     this.element = document.createElement("div");
