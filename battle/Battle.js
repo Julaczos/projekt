@@ -50,7 +50,7 @@ addCombatant(id, team, config) {
     this.element.classList.add("Battle");
     this.element.innerHTML = (`
       <div class="Battle_hero">
-        <img src="${'projekt/images/hero.png'}" alt="Hero" />
+        <img src="${'/projekt/images/hero.png'}" alt="Hero" />
       </div>
       <div class="Battle_enemy">
         <img src="${this.enemy.src}" alt="${this.enemy.name}" />
