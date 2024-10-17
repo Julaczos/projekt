@@ -10,40 +10,36 @@ class Battle {
       enemy: null,
     };
 
-    this.addCombatant("player", "player", window.playerStats);
-
-    this.addCombatant("enemy", "enemy", this.enemy);
+    this.addCombatant("player", window.playerStats);
+    this.addCombatant("enemy", this.enemy);
 
     this.items = [];
 
     window.playerState.items.forEach(item => {
       this.items.push({
         ...item,
-        team: "player"
       });
     });
 
     this.usedInstanceIds = {};
   }
 
-addCombatant(id, team, config) {
-  if (!config || !config.name || !config.hp || !config.maxHp || !config.level) {
-    console.error("Invalid config object passed to addCombatant:", config);
-    return;
+  addCombatant(id, config) {
+    if (!config || !config.name || !config.hp || !config.maxHp || !config.level) {
+      console.error("Invalid config object passed to addCombatant:", config);
+      return;
+    }
+
+    this.combatants[id] = new Combatant({
+      name: config.name,
+      hp: config.hp,
+      maxHp: config.maxHp,
+      level: config.level,
+      isPlayerControlled: id === "player"
+    }, this);
+
+    this.activeCombatants[id] = id;
   }
-
-  this.combatants[id] = new Combatant({
-    name: config.name,
-    hp: config.hp,
-    maxHp: config.maxHp,
-    level: config.level,
-    team,
-    isPlayerControlled: team === "player"
-  }, this);
-
-  this.activeCombatants[team] = id;
-}
-
 
   createElement() {
     this.element = document.createElement("div");
@@ -62,23 +58,11 @@ addCombatant(id, team, config) {
     this.createElement();
     container.appendChild(this.element);
 
-    this.playerTeam = new Team("player", window.playerStats.name);
-    this.enemyTeam = new Team("enemy", this.enemy.name);
-
     Object.keys(this.combatants).forEach(key => {
       let combatant = this.combatants[key];
       combatant.id = key;
       combatant.init(this.element);
-
-      if (combatant.team === "player") {
-        this.playerTeam.combatants.push(combatant);
-      } else if (combatant.team === "enemy") {
-        this.enemyTeam.combatants.push(combatant);
-      }
     });
-
-    this.playerTeam.init(this.element);
-    this.enemyTeam.init(this.element);
 
     this.turnCycle = new TurnCycle({
       battle: this,
