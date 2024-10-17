@@ -2,19 +2,21 @@ window.Enemies = {
   "tomasz": {
     name: "Tomasz",
     src: "/projekt/images/npc12.png",
-    defense: 2,
-    attack: 3,
-    stamina: 6,
     hp: 70,
     maxHp: 100,
+    level: 5,
+    attack: 3,
+    defense: 2,
+    stamina: 6,
   },
   "robert": {
     name: "Robert",
     src: "/projekt/images/npc13.png",
-    defense: 4,
-    attack: 7,
-    stamina: 2,
     hp: 50,
     maxHp: 50,
+    level: 3,
+    attack: 7,
+    defense: 4,
+    stamina: 2,
   }
-}
+};
