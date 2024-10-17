@@ -6,7 +6,7 @@ class Overworld {
    this.map = null;
  }
 
-  startGameLoop() {
+  startGameLoop() {  
     const step = () => {
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
