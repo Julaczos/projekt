@@ -1,156 +1,123 @@
 class Battle {
   constructor({ enemy, onComplete }) {
+
     this.enemy = enemy;
     this.onComplete = onComplete;
-    this.isBattleOver = false;
 
-    this.attacks = [
-      {
-        name: "Szybki Cios",
-        damage: 5,
-      },
-      {
-        name: "Silny Cios",
-        damage: 10,
-      },
-      {
-        name: "Specjalny Atak",
-        damage: 15,
-      },
-    ];
+    this.combatants = {
+    }
+
+    this.activeCombatants = {
+      player: null, 
+      enemy: null, 
+    }
+
+    window.playerState.lineup.forEach(id => {
+      this.addCombatant(id, "player", window.playerState.pizzas[id])
+    });
+    Object.keys(this.enemy.pizzas).forEach(key => {
+      this.addCombatant("e_"+key, "enemy", this.enemy.pizzas[key])
+    })
+
+
+    this.items = []
+
+    window.playerState.items.forEach(item => {
+      this.items.push({
+        ...item,
+        team: "player"
+      })
+    })
+
+    this.usedInstanceIds = {};
+
   }
 
-  attack(attacker, defender, attack) {
-    const damage = Math.max(0, attack.damage);
-    defender.hp = Math.max(0, defender.hp - damage);
-    console.log(`${attacker.name} używa ${attack.name} i zadaje ${damage} obrażeń ${defender.name}.`);
-    console.log(`${defender.name} ma teraz ${defender.hp} HP.`);
+  addCombatant(id, team, config) {
+      this.combatants[id] = new Combatant({
+        ...Pizzas[config.pizzaId],
+        ...config,
+        team,
+        isPlayerControlled: team === "player"
+      }, this)
 
-    if (defender.hp <= 0) {
-      console.log(`${defender.name} został pokonany!`);
-      this.isBattleOver = true;
-      return this.endBattle(attacker, defender);
-    }
-  }
 
-  takeTurn(selectedAttack) {
-    if (this.isBattleOver) {
-      console.log("Walka już się zakończyła.");
-      return;
-    }
-
-    this.attack(window.playerState.playerStats, this.enemy, selectedAttack);
-
-    if (!this.isBattleOver) {
-      this.attack(this.enemy, window.playerState.playerStats, this.enemyAttack());
-    }
-
-    if (window.playerState.playerStats.hp <= 0) {
-      console.log(`${window.playerState.playerStats.name} został pokonany. Przegrana walka!`);
-      this.isBattleOver = true;
-    }
-  }
-
-  enemyAttack() {
-    const damage = 8;
-    console.log(`${this.enemy.name} atakuje!`);
-    return {
-      name: "Atak Przeciwnika",
-      damage: damage,
-    };
-  }
-
-  endBattle(winner, loser) {
-    if (winner === window.playerState.playerStats) {
-      console.log("Gratulacje! Wygrałeś walkę!");
-      const xpGain = loser.level * 20;
-      window.playerState.playerStats.xp += xpGain;
-
-      console.log(`Zdobyto ${xpGain} XP. Gracz ma teraz ${window.playerState.playerStats.xp}/${window.playerState.playerStats.maxXp} XP.`);
-      this.checkLevelUp();
-    } else {
-      console.log("Niestety, przegrałeś walkę.");
-    }
-
-    if (this.onComplete) {
-      this.onComplete();
-    }
-  }
-
-  checkLevelUp() {
-    if (window.playerState.playerStats.xp >= window.playerState.playerStats.maxXp) {
-      window.playerState.playerStats.level += 1;
-      window.playerState.playerStats.xp = 0;
-      window.playerState.playerStats.maxXp *= 1.5;
-      window.playerState.playerStats.hp = window.playerState.playerStats.maxHp;
-
-      console.log(`Awansowałeś na poziom ${window.playerState.playerStats.level}! Nowe statystyki: HP ${window.playerState.playerStats.maxHp}.`);
-    }
+      console.log(this)
+      this.activeCombatants[team] = this.activeCombatants[team] || id
   }
 
   createElement() {
     this.element = document.createElement("div");
     this.element.classList.add("Battle");
-
-    this.hpDisplay = document.createElement("div");
-    this.hpDisplay.classList.add("hp-display");
-    this.hpDisplay.innerHTML = `
-      <h2>${window.playerState.playerStats.name} HP: ${window.playerState.playerStats.hp}/${window.playerState.playerStats.maxHp}</h2>
-      <h2>${this.enemy.name} HP: ${this.enemy.hp}/${this.enemy.maxHp}</h2>
-    `;
-
-    const attackButtons = this.attacks.map(attack => `
-      <button class="attack-button" data-attack="${attack.name}">${attack.name}</button>
-    `).join("");
-
-    this.element.innerHTML = `
-      <div class="Battle_hero">
-        <img src="${'/projekt/images/hero.png'}" alt="Hero" />
-      </div>
-      <div class="Battle_enemy">
-        <img src="${'/projekt/images/npc3.png'}" alt="Enemy" />
-      </div>
-      <div class="battle-controls">
-        ${attackButtons}
-      </div>
-    `;
-
-    this.element.appendChild(this.hpDisplay);
-
-    this.element.querySelectorAll('.attack-button').forEach(button => {
-      button.addEventListener('click', (event) => {
-        const selectedAttack = this.attacks.find(attack => attack.name === event.target.dataset.attack);
-        this.takeTurn(selectedAttack);
-        this.updateHpDisplay();
-      });
-    });
-
-    const endBattleButton = document.createElement("button");
-    endBattleButton.textContent = "Zakończ walkę";
-    endBattleButton.classList.add("end-battle-button");
-
-    endBattleButton.addEventListener("click", () => {
-      console.log("Walka zakończona przez użytkownika.");
-      this.isBattleOver = true;
-      this.element.remove();
-      if (this.onComplete) {
-        this.onComplete();
-      }
-    });
-
-    this.element.appendChild(endBattleButton);
-  }
-
-  updateHpDisplay() {
-    this.hpDisplay.innerHTML = `
-      <h2>${window.playerState.playerStats.name} HP: ${window.playerState.playerStats.hp}/${window.playerState.playerStats.maxHp}</h2>
-      <h2>${this.enemy.name} HP: ${this.enemy.hp}/${this.enemy.maxHp}</h2>
-    `;
+    this.element.innerHTML = (`
+    <div class="Battle_hero">
+      <img src="${'/images/characters/people/hero.png'}" alt="Hero" />
+    </div>
+    <div class="Battle_enemy">
+      <img src=${this.enemy.src} alt=${this.enemy.name} />
+    </div>
+    `)
   }
 
   init(container) {
     this.createElement();
     container.appendChild(this.element);
-    this.updateHpDisplay();
+
+    this.playerTeam = new Team("player", "Hero");
+    this.enemyTeam = new Team("enemy", "Bully");
+
+    Object.keys(this.combatants).forEach(key => {
+      let combatant = this.combatants[key];
+      combatant.id = key;
+      combatant.init(this.element)
+      
+      if (combatant.team === "player") {
+        this.playerTeam.combatants.push(combatant);
+      } else if (combatant.team === "enemy") {
+        this.enemyTeam.combatants.push(combatant);
+      }
+    })
+
+    this.playerTeam.init(this.element);
+    this.enemyTeam.init(this.element);
+
+    this.turnCycle = new TurnCycle({
+      battle: this,
+      onNewEvent: event => {
+        return new Promise(resolve => {
+          const battleEvent = new BattleEvent(event, this)
+          battleEvent.init(resolve);
+        })
+      },
+      onWinner: winner => {
+
+        if (winner === "player") {
+          const playerState = window.playerState;
+          Object.keys(playerState.pizzas).forEach(id => {
+            const playerStatePizza = playerState.pizzas[id];
+            const combatant = this.combatants[id];
+            if (combatant) {
+              playerStatePizza.hp = combatant.hp;
+              playerStatePizza.xp = combatant.xp;
+              playerStatePizza.maxXp = combatant.maxXp;
+              playerStatePizza.level = combatant.level;
+            }
+          })
+
+          playerState.items = playerState.items.filter(item => {
+            return !this.usedInstanceIds[item.instanceId]
+          })
+
+
+        }
+
+        this.element.remove();
+        this.onComplete();
+      }
+    })
+    this.turnCycle.init();
+
+
   }
+
 }
