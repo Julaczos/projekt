@@ -1,22 +1,30 @@
 window.Enemies = {
-  "tomasz": {
-    name: "Tomasz",
-    src: "/projekt/images/npc12.png",
-    hp: 70,
-    maxHp: 100,
-    level: 5,
-    attack: 3,
-    defense: 2,
-    stamina: 6,
+  "erio": {
+    name: "Erio",
+    src: "/images/characters/people/erio.png",
+    pizzas: {
+      "a": {
+        pizzaId: "s001",
+        maxHp: 50,
+        level: 1,
+      },
+      "b": {
+        pizzaId: "s002",
+        maxHp: 50,
+        level: 1,
+      },
+    }
   },
-  "robert": {
-    name: "Robert",
-    src: "/projekt/images/npc13.png",
-    hp: 50,
-    maxHp: 50,
-    level: 3,
-    attack: 7,
-    defense: 4,
-    stamina: 2,
+  "beth": {
+    name: "Beth",
+    src: "/images/characters/people/npc1.png",
+    pizzas: {
+      "a": {
+        hp: 1,
+        pizzaId: "f001",
+        maxHp: 50,
+        level: 1,
+      },
+    }
   }
-};
+}

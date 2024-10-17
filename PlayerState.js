@@ -1,15 +1,26 @@
 class PlayerState {
-  constructor() {  
-    this.storyFlags = {};
-    this.playerStats = {
-      name: "player",
-      hp: 50,
-      maxHp: 50,
-      xp: 0,
-      maxXp: 100,
-      level: 1,
-      status: null,
-    };
+  constructor() {
+    this.pizzas = {
+      "p1": {
+        pizzaId: "s001",
+        hp: 30,
+        maxHp: 50,
+        xp: 90,
+        maxXp: 100,
+        level: 1,
+        status: { type: "saucy" },
+      },
+      "p2": {
+        pizzaId: "v001",
+        hp: 50,
+        maxHp: 50,
+        xp: 75,
+        maxXp: 100,
+        level: 1,
+        status: null,
+      }
+    }
+    this.lineup = ["p1", "p2"];
     this.items = [
       { actionId: "item_recoverHp", instanceId: "item1" },
       { actionId: "item_recoverHp", instanceId: "item2" },
@@ -18,4 +29,3 @@ class PlayerState {
   }
 }
 window.playerState = new PlayerState();
-window.playerStats = window.playerState.playerStats;
