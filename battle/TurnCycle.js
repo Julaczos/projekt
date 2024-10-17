@@ -3,14 +3,12 @@ class TurnCycle {
     this.battle = battle;
     this.onNewEvent = onNewEvent;
     this.onWinner = onWinner;
-    this.currentTeam = "player"; // or "enemy"
+    this.currentTeam = "player"; 
   }
 
   async turn() {
-    const casterId = this.battle.activeCombatants[this.currentTeam];
-    const caster = this.battle.combatants[casterId];
-    const enemyId = this.battle.activeCombatants[caster.team === "player" ? "enemy" : "player"];
-    const enemy = this.battle.combatants[enemyId];
+    const caster = this.battle.combatants["player"];
+    const enemy = this.battle.combatants["enemy"];
 
     const submission = await this.onNewEvent({
       type: "submissionMenu",
@@ -40,11 +38,10 @@ class TurnCycle {
     const targetDead = submission.target.hp <= 0;
     if (targetDead) {
       await this.onNewEvent({
-        type: "textMessage", text: `${submission.target.name} is ruined!`
+        type: "textMessage", text: `${submission.target.name} is defeated!`
       });
 
-      if (submission.target.team === "enemy") {
-        const playerActiveCombatantId = this.battle.activeCombatants.player;
+      if (submission.target === enemy) {
         const xp = submission.target.givesXp;
 
         await this.onNewEvent({
@@ -54,7 +51,7 @@ class TurnCycle {
         await this.onNewEvent({
           type: "giveXp",
           xp,
-          combatant: this.battle.combatants[playerActiveCombatantId]
+          combatant: caster
         });
       }
     }
@@ -63,7 +60,7 @@ class TurnCycle {
     if (winner) {
       await this.onNewEvent({
         type: "textMessage",
-        text: "Winner!"
+        text: `${winner} wins the battle!`
       });
       this.onWinner(winner);
       return;
@@ -95,21 +92,18 @@ class TurnCycle {
   }
 
   getWinningTeam() {
-    let aliveTeams = {};
-    Object.values(this.battle.combatants).forEach(c => {
-      if (c.hp > 0) {
-        aliveTeams[c.team] = true;
-      }
-    });
-    if (!aliveTeams["player"]) { return "enemy"; }
-    if (!aliveTeams["enemy"]) { return "player"; }
+    const playerAlive = this.battle.combatants["player"].hp > 0;
+    const enemyAlive = this.battle.combatants["enemy"].hp > 0;
+
+    if (!playerAlive) return "enemy";
+    if (!enemyAlive) return "player";
     return null;
   }
 
   async init() {
     await this.onNewEvent({
       type: "textMessage",
-      text: `${this.battle.enemy.name} wants to throw down!`
+      text: `${this.battle.enemy.name} has appeared!`
     });
 
     this.turn();
