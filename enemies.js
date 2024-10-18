@@ -1,6 +1,6 @@
 window.Enemies = {
-  "erio": {
-    name: "Erio",
+  "tomasz": {
+    name: "Tomasz",
     src: "/projekt/images/npc12.png",
     pizzas: {
       "a": {
@@ -8,15 +8,10 @@ window.Enemies = {
         maxHp: 50,
         level: 1,
       },
-      "b": {
-        pizzaId: "s002",
-        maxHp: 50,
-        level: 1,
-      },
     }
   },
-  "beth": {
-    name: "Beth",
+  "robert": {
+    name: "Robert",
     src: "/projekt/images/npc1.png",
     pizzas: {
       "a": {

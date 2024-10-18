@@ -43,25 +43,6 @@
   display:none;
 }
 
-.Combatant_name {
-  position: absolute;
-  left:-2px;
-  top:-8px;
-  white-space: nowrap;
-  background: var(--menu-font-color);
-  color: #fff;
-  font-size: 5px; 
-  padding-left: 2px;
-  padding-right: 2px;
-  margin: 0;
-}
-.Combatant_type {
-  position: absolute;
-  left: 3px;
-  top: -2px;
-  width: 16px;
-  height: 16px;
-}
 
 .Combatant_life-container {
   position: absolute;
