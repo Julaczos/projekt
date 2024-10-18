@@ -21,8 +21,8 @@
   
   /* Display them as opted in by data-attributes */
   .Team [data-dead="true"] .dead-pizza {
-    display:block;
+    display:none;
   }
   .Team [data-active="true"] .active-pizza-indicator {
-    display:block;
+    display:none;
   }
