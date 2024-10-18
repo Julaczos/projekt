@@ -36,16 +36,23 @@
     right: 30px;
   }
 
-.Battle_enemy-name {
+.Battle_enemy {
   position: absolute;
-  top: 50%; 
-  left: 50%;
-transform: translate(-50%, -50%); 
-  text-align: center;
-  font-size: 5px;
-  color: white;
-  font-family: 'Pixelify Sans', sans-serif; 
+  top: 50%;
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  text-align: center; 
 }
+
+.Battle_enemy-name {
+  position: relative; 
+  margin-bottom: 10px; 
+  font-size: 6px; 
+  color: white;
+  text-shadow: 1px 1px 2px black;
+  font-family: sans-serif;
+}
+
 
 
 
