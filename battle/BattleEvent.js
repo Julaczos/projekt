@@ -8,6 +8,20 @@ class BattleEvent {
     const result = Math.random() < 0.5 ? "tak" : "nie";
     console.log(`Wynik yesOrNo: ${result}`);
     await utils.wait(300);
+    
+    // Zmiana stanu na podstawie wyniku
+    if (result === "tak") {
+      const { caster, target, damage } = this.event; // Przykład, jak możesz zdefiniować caster i target
+
+      if (damage) {
+        target.update({ hp: target.hp - damage });
+        console.log(`${caster.name} zadał dodatkowe obrażenia: ${damage}`);
+        target.pizzaElement.classList.add("battle-damage-blink");
+      }
+    } else {
+      console.log(`${this.event.caster.name} zdecydował się nie zadawać dodatkowych obrażeń.`);
+    }
+
     resolve(result);
   }
 
