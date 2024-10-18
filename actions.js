@@ -18,19 +18,13 @@ window.Actions = {
       { type: "stateChange", damage: null }
     ],
     execute: function(caster, target) {
-      console.log("Funkcja execute została wywołana."); // Debugowanie
       const hitSuccess = Math.random() < 0.5;
-      console.log(`Hit success: ${hitSuccess}`); // Debugowanie
-
-      // Wypisanie komunikatu o ataku
       console.log(this.success[0].text.replace("{CASTER}", caster).replace("{ACTION}", this.name));
 
       if (hitSuccess) {
         console.log(this.success[1].text.replace("{CASTER}", caster).replace("{ACTION}", this.name));
-
-        const damage = 20; // Ustal obrażenia
+        const damage = 20; 
         this.success[2].damage = damage; 
-
         console.log(`Zadane obrażenia: ${damage} dla ${target}`);
       } else {
         console.log(`${caster} nie trafił!`);
@@ -95,5 +89,11 @@ function performAction(actionName, caster, target) {
   }
 }
 
-// Przykładowe wywołanie akcji 'saucyStatus'
-performAction("saucyStatus", "Gracz", "Przeciwnik");
+// Przykładowa funkcja symulująca menu wyboru akcji
+function selectAction(actionName, caster, target) {
+  console.log(`Wybrano akcję: ${actionName}`);
+  performAction(actionName, caster, target); // Wywołanie akcji
+}
+
+// Symulacja wyboru akcji przez gracza
+selectAction("saucyStatus", "Gracz", "Przeciwnik");
