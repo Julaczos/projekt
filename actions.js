@@ -1,9 +1,9 @@
 window.Actions = {
   damage1: {
-    name: "Whomp!",
-    description: "Pillowy punch of dough",
+    name: "Zielony Cios",
+    description: "Uderzenie wzmacniane siłą roślinnych składników odżywczych",
     success: [
-      { type: "textMessage", text: "{CASTER} uses {ACTION}!"},
+      { type: "textMessage", text: "{CASTER} używa ataku {ACTION}!"},
       { type: "animation", animation: "spin"},
       { type: "stateChange", damage: 10}
     ]
