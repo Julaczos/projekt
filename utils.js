@@ -45,8 +45,4 @@ const utils = {
     });
     document.dispatchEvent(event);
   },
-  
-  randomYesOrNo() {
-    return Math.random() < 0.5 ? "tak" : "nie"; 
-  }
 };
