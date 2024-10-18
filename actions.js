@@ -8,7 +8,7 @@ window.Actions = {
       { type: "stateChange", damage: 10}
     ]
   },
-  saucyStatus: {
+saucyStatus: {
     name: "Zdrowy Kop",
     description: "Kopniak z 50% szansy trafienia",
     success: [
@@ -16,34 +16,45 @@ window.Actions = {
       { type: "animation", animation: "glob", color: "#7160db" },
       { type: "yesOrNo" }
     ],
-    execute: function(caster, target, resolve) {
-      const hitSuccess = Math.random() < 0.5;
-  
-      console.log(this.success[0].text.replace("{CASTER}", caster).replace("{ACTION}", this.name));
-  
-      if (hitSuccess) {
-        console.log(this.success[1].text.replace("{CASTER}", caster).replace("{ACTION}", this.name));
-        const damage = 20;
-        this.success[2].damage = damage; 
-        console.log(`Zadane obrażenia: ${damage} dla ${target}`);
+    execute: async function(caster, target, resolve) {
+      const battleEvent = new BattleEvent({ 
+        type: "textMessage", 
+        text: this.success[0].text, 
+        caster: caster,
+        target: target,
+        action: this.name 
+      }, this.battle);
+      await battleEvent.textMessage(() => {});
+
+      // Uruchom animację
+      const animationEvent = new BattleEvent({
+        type: "animation",
+        animation: this.success[1].animation,
+        color: this.success[1].color
+      }, this.battle);
+      await animationEvent.animation(() => {});
+
+      // Wywołaj yesOrNo
+      const yesNoEvent = new BattleEvent({
+        type: "yesOrNo",
+        caster: caster,
+        target: target,
+        damage: 20 // Możesz ustawić inne wartości
+      }, this.battle);
+      const result = await yesNoEvent.yesOrNo(() => {});
+
+      // Jeżeli odpowiedź to "tak", wykonaj zmiany stanu
+      if (result === "tak") {
+        target.update({ hp: target.hp - 20 }); // Zadaj obrażenia
+        console.log(`${caster.name} zadał 20 obrażeń ${target.name}!`);
       } else {
-        console.log(`${caster} nie trafił!`);
+        console.log(`${caster.name} nie trafił!`);
       }
-      
-      this.success.forEach(effect => {
-        if (effect.type === "stateChange") {
-          if (effect.damage) {
-            console.log(`Efekt obrażeń: ${effect.damage}`);
-          } else if (effect.status) {
-            console.log(`Efekt statusu: ${effect.status.type}`);
-          }
-        }
-      });
-      
-      resolve();
+
+      resolve(); // Zakończ wykonywanie
     }
   },
-  
+
   clumsyStatus: {
     name: "Olive Oil",
     description: "Slippery mess of deliciousness",
