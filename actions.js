@@ -18,13 +18,16 @@ window.Actions = {
       { type: "stateChange", damage: null }
     ],
     execute: function(caster, target) {
-      const hitSuccess = Math.random() < 0.5;
+      const hitSuccess = Math.random() < 0.5; // 50% szansy na trafienie
+      // Używamy replace na tekście, żeby zastąpić zmienne
       console.log(this.success[0].text.replace("{CASTER}", caster).replace("{ACTION}", this.name));
 
       if (hitSuccess) {
         console.log(this.success[1].text.replace("{CASTER}", caster).replace("{ACTION}", this.name));
-        const damage = 20; 
-        this.success[2].damage = damage; 
+        
+        const damage = 20; // Przypisujemy obrażenia
+        this.success[2].damage = damage; // Ustawiamy obrażenia w success
+        
         console.log(`Zadane obrażenia: ${damage} dla ${target}`);
       } else {
         console.log(`${caster} nie trafił!`);
