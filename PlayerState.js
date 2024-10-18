@@ -8,9 +8,10 @@ class PlayerState {
         xp: 90,
         maxXp: 100,
         level: 1,
-      }
+      },
+
     }
-    this.lineup = ["p1", "p2"];
+    this.lineup = ["p1"];
     this.items = [
       { actionId: "item_recoverHp", instanceId: "item1" },
       { actionId: "item_recoverHp", instanceId: "item2" },
