@@ -1,7 +1,7 @@
 .Combatant {
   width: 67px;
   height: 14px;
-  background:"/projekt/images/UI.png";
+  background: url("/projekt/images/UI.png");
   position:absolute;
 }
 
