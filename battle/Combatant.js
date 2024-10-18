@@ -35,7 +35,6 @@ class Combatant {
       <div class="Combatant_character_crop">
         <img class="Combatant_character" alt="${this.name}" src="${this.src}" />
       </div>
-      <img class="Combatant_type" src="${this.icon}" alt="${this.type}" />
       <svg viewBox="0 0 26 3" class="Combatant_life-container">
         <rect x=0 y=0 width="0%" height=1 fill="#82ff71" />
         <rect x=0 y=1 width="0%" height=2 fill="#3ef126" />
