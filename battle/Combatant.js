@@ -30,7 +30,6 @@ class Combatant {
     this.hudElement.setAttribute("data-combatant", this.id);
     this.hudElement.setAttribute("data-team", this.team);
     this.hudElement.innerHTML = (`
-      <p class="Combatant_name">${this.name}</p>
       <p class="Combatant_level"></p>
       <div class="Combatant_character_crop">
       </div>
