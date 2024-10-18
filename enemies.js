@@ -8,11 +8,6 @@ window.Enemies = {
         maxHp: 50,
         level: 1,
       },
-      "b": {
-        pizzaId: "s002",
-        maxHp: 50,
-        level: 1,
-      },
     }
   },
   "robert": {
