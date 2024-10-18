@@ -18,7 +18,7 @@ window.Actions = {
     ],
     execute: function(caster, target) {
       const hitSuccess = Math.random() < 0.5;
-
+      console.log(hitSuccess);
       console.log(this.success[0].text.replace("{CASTER}", caster).replace("{ACTION}", this.name));
 
       if (hitSuccess) {
