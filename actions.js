@@ -14,7 +14,35 @@ window.Actions = {
     success: [
       { type: "textMessage", text: "{CASTER} używa ataku {ACTION}!" },
       { type: "animation", animation: "glob", color: "#7160db" },
-    ]
+      { type: "stateChange", damage: null } 
+    ],
+    execute: function(caster, target) {
+      const hitSuccess = Math.random() < 0.5;
+
+      console.log(this.success[0].text.replace("{CASTER}", caster).replace("{ACTION}", this.name));
+
+      if (hitSuccess) {
+        console.log(this.success[1].text.replace("{CASTER}", caster).replace("{ACTION}", this.name));
+        
+        const damage = 20;
+        this.success[2].damage = damage; 
+
+        console.log(`Zadane obrażenia: ${damage} dla ${target}`);
+      } else {
+        console.log(`${caster} nie trafił!`);
+      }
+
+      this.success.forEach(effect => {
+        console.log(`Efekt: ${effect.type}`);
+        if (effect.type === "stateChange") {
+          if (effect.damage) {
+            console.log(`Efekt obrażeń: ${effect.damage}`);
+          } else if (effect.status) {
+            console.log(`Efekt statusu: ${effect.status.type}`);
+          }
+        }
+      });
+    }
   },
   clumsyStatus: {
     name: "Olive Oil",
@@ -23,9 +51,10 @@ window.Actions = {
       { type: "textMessage", text: "{CASTER} używa {ACTION}!" },
       { type: "animation", animation: "glob", color: "#dafd2a" },
       { type: "stateChange", status: { type: "clumsy", expiresIn: 3 } },
-      { type: "textMessage", text: "{TARGET} is slipping all around!" },
+      { type: "textMessage", text: "{TARGET} jest śliski!" },
     ]
   },
+  // Items
   item_recoverStatus: {
     name: "Heating Lamp",
     description: "Feeling fresh and warm",
@@ -42,41 +71,7 @@ window.Actions = {
     success: [
       { type: "textMessage", text: "{CASTER} sprinkles on some {ACTION}!" },
       { type: "stateChange", recover: 10 },
-      { type: "textMessage", text: "{CASTER} recovers HP!" },
+      { type: "textMessage", text: "{CASTER} odzyskuje HP!" },
     ]
   },
 };
-
-function executeAction(actionName, caster, target) {
-  const action = window.Actions[actionName];
-  
-  if (!action) {
-    console.error(`Action "${actionName}" not found.`);
-    return;
-  }
-
-  console.log(action.success[0].text.replace("{CASTER}", caster).replace("{ACTION}", action.name));
-
-  if (actionName === "saucyStatus") {
-    const hitSuccess = utils.randomYesOrNo() === "tak"; 
-
-    if (hitSuccess) {
-      console.log(action.success[1].text.replace("{CASTER}", caster).replace("{ACTION}", action.name));
-      const damageEffect = { type: "stateChange", damage: 20 };
-      console.log(`Damage dealt: ${damageEffect.damage} to ${target}`);
-    } else {
-      console.log(`${caster} nie trafił!`);
-    }
-  }
-
-  action.success.forEach(effect => {
-    console.log(`Effect: ${effect.type}`);
-    if (effect.type === "stateChange") {
-      if (effect.damage) {
-        console.log(`Damage effect: ${effect.damage}`);
-      } else if (effect.status) {
-        console.log(`Status effect: ${effect.status.type}`);
-      }
-    }
-  });
-}
