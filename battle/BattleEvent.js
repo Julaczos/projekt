@@ -9,9 +9,8 @@ class BattleEvent {
     console.log(`Wynik yesOrNo: ${result}`);
     await utils.wait(300);
     
-    // Zmiana stanu na podstawie wyniku
+    
     if (result === "tak") {
-      const { caster, target, damage } = this.event; // Przykład, jak możesz zdefiniować caster i target
 
       if (damage) {
         target.update({ hp: target.hp - damage });
