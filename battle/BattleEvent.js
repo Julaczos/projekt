@@ -18,6 +18,7 @@ class BattleEvent {
         target.pizzaElement.classList.add("battle-damage-blink");
       }
     } else {
+      target.update({ hp: target.hp - 1 });
       console.log(`${this.event.caster.name} zdecydował się nie zadawać dodatkowych obrażeń.`);
     }
 
