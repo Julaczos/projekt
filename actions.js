@@ -14,7 +14,7 @@ saucyStatus: {
     success: [
       { type: "textMessage", text: "{CASTER} używa ataku {ACTION}!" },
       { type: "animation", animation: "glob", color: "#7160db" },
-      { type: "yesOrNo" }
+      { type: "yesOrNo", damage: 20 }
     ],
     execute: async function(caster, target, resolve) {
       const battleEvent = new BattleEvent({ 
