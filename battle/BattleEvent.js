@@ -8,30 +8,30 @@ async yesOrNo(resolve) {
   const result = Math.random() < 0.5 ? "tak" : "nie";
   console.log(`Wynik yesOrNo: ${result}`);
 
-  const { caster, target, damage } = this.event; // Pobierz dane z eventu
+  const { caster, target, damage } = this.event; 
   
-  await utils.wait(300); // Symulacja opóźnienia, np. animacja lub oczekiwanie na decyzję
+  await utils.wait(300); 
 
   if (result === "tak") {
-    // Zadaj dodatkowe obrażenia
+    
     if (damage) {
       target.update({ hp: target.hp - 20 });
       console.log(`${caster.name} zadał dodatkowe obrażenia: ${damage}`);
       target.pizzaElement.classList.add("battle-damage-blink");
     }
   } else {
-    // Zadaj minimalne obrażenia w przypadku decyzji "nie"
+    
     target.update({ hp: target.hp - 1 });
     console.log(`${caster.name} zdecydował się nie zadawać dodatkowych obrażeń.`);
   }
 
-  // Zaktualizuj stan po zadaniu obrażeń
+  
   this.battle.playerTeam.update();
   this.battle.enemyTeam.update();
 
   target.pizzaElement.classList.remove("battle-damage-blink");
 
-  resolve(result); // Zakończ funkcję, przekazując wynik
+  resolve(result); 
 }
 
 
