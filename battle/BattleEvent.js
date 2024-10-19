@@ -4,26 +4,36 @@ class BattleEvent {
     this.battle = battle;
   }
 
-  async yesOrNo(resolve) {
-    const result = Math.random() < 0.5 ? "tak" : "nie";
-    console.log(`Wynik yesOrNo: ${result}`);
-    await utils.wait(300);
-    
-    
-    if (result === "tak") {
+async yesOrNo(resolve) {
+  const result = Math.random() < 0.5 ? "tak" : "nie";
+  console.log(`Wynik yesOrNo: ${result}`);
 
-      if (damage) {
-        target.update({ hp: target.hp - damage });
-        console.log(`${caster.name} zadał dodatkowe obrażenia: ${damage}`);
-        target.pizzaElement.classList.add("battle-damage-blink");
-      }
-    } else {
-      target.update({ hp: target.hp - 1 });
-      console.log(`${this.event.caster.name} zdecydował się nie zadawać dodatkowych obrażeń.`);
+  const { caster, target, damage } = this.event; // Pobierz dane z eventu
+  
+  await utils.wait(300); // Symulacja opóźnienia, np. animacja lub oczekiwanie na decyzję
+
+  if (result === "tak") {
+    // Zadaj dodatkowe obrażenia
+    if (damage) {
+      target.update({ hp: target.hp - 20 });
+      console.log(`${caster.name} zadał dodatkowe obrażenia: ${damage}`);
+      target.pizzaElement.classList.add("battle-damage-blink");
     }
-
-    resolve(result);
+  } else {
+    // Zadaj minimalne obrażenia w przypadku decyzji "nie"
+    target.update({ hp: target.hp - 1 });
+    console.log(`${caster.name} zdecydował się nie zadawać dodatkowych obrażeń.`);
   }
+
+  // Zaktualizuj stan po zadaniu obrażeń
+  this.battle.playerTeam.update();
+  this.battle.enemyTeam.update();
+
+  target.pizzaElement.classList.remove("battle-damage-blink");
+
+  resolve(result); // Zakończ funkcję, przekazując wynik
+}
+
 
   textMessage(resolve) {
     const text = this.event.text
