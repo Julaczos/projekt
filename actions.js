@@ -26,7 +26,7 @@ saucyStatus: {
       }, this.battle);
       await battleEvent.textMessage(() => {});
 
-      // Uruchom animację
+      
       const animationEvent = new BattleEvent({
         type: "animation",
         animation: this.success[1].animation,
@@ -34,16 +34,16 @@ saucyStatus: {
       }, this.battle);
       await animationEvent.animation(() => {});
 
-      // Wywołaj yesOrNo
+    
       const yesNoEvent = new BattleEvent({
         type: "yesOrNo",
         caster: caster,
         target: target,
-        damage: 20 // Możesz ustawić inne wartości
+        damage: 20
       }, this.battle);
       const result = await yesNoEvent.yesOrNo(() => {});
 
-      // Jeżeli odpowiedź to "tak", wykonaj zmiany stanu
+    
       if (result === "tak") {
         target.update({ hp: target.hp - 20 }); // Zadaj obrażenia
         console.log(`${caster.name} zadał 20 obrażeń ${target.name}!`);
@@ -51,18 +51,18 @@ saucyStatus: {
         console.log(`${caster.name} nie trafił!`);
       }
 
-      resolve(); // Zakończ wykonywanie
+      resolve(); 
     }
   },
 
   clumsyStatus: {
-    name: "Olive Oil",
-    description: "Slippery mess of deliciousness",
+    name: "Naoliwienie",
+    description: "Śliskie źródło witamin A, B, C, D, E, K",
     success: [
-      { type: "textMessage", text: "{CASTER} uses {ACTION}!"},
+      { type: "textMessage", text: "{CASTER} używa ataku {ACTION}!"},
       { type: "animation", animation: "glob", color: "#dafd2a" },
       { type: "stateChange", status: { type: "clumsy", expiresIn: 3 } },
-      { type: "textMessage", text: "{TARGET} is slipping all around!"},
+      { type: "textMessage", text: "{TARGET} jest cały śliski"},
     ]
   },
   //Items
@@ -77,12 +77,12 @@ saucyStatus: {
     ]
   },
   item_recoverHp: {
-    name: "Parmesan",
+    name: "Lecznicze jabłko",
     targetType: "friendly",
     success: [
-      { type:"textMessage", text: "{CASTER} sprinkles on some {ACTION}!", },
+      { type:"textMessage", text: "{CASTER} zjada trochę owocu {ACTION}!", },
       { type:"stateChange", recover: 10, },
-      { type:"textMessage", text: "{CASTER} recovers HP!", },
+      { type:"textMessage", text: "{CASTER} odzyskuje zdrowie", },
     ]
   },
 }
