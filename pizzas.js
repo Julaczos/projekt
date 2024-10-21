@@ -8,7 +8,7 @@ window.PizzaTypes = {
   
   window.Pizzas = {
     "s001": {
-      name: "Slice Samurai",
+      name: "Tomasz",
       description: "Pizza desc here",
       src: "/projekt/images/pizzaPicture.png",
       type: PizzaTypes.spicy,
