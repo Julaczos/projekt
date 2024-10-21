@@ -54,7 +54,7 @@ class TurnCycle {
     const targetDead = submission.target.hp <= 0;
     if (targetDead) {
       await this.onNewEvent({ 
-        type: "textMessage", text: `${submission.target.name} is ruined!`
+        type: "textMessage", text: `${submission.target.name} upada`
       })
 
       if (submission.target.team === "enemy") {
@@ -78,7 +78,7 @@ class TurnCycle {
     if (winner) {
       await this.onNewEvent({
         type: "textMessage",
-        text: "Winner!"
+        text: "Zwycięzca!"
       })
       this.onWinner(winner);
       return;

@@ -61,7 +61,7 @@ saucyStatus: {
     success: [
       { type: "textMessage", text: "{CASTER} używa ataku {ACTION}!"},
       { type: "animation", animation: "glob", color: "#dafd2a" },
-      { type: "stateChange", status: { type: "clumsy", expiresIn: 3 } },
+      { type: "stateChange", status: { type: "śliski", expiresIn: 3 } },
       { type: "textMessage", text: "{TARGET} jest cały śliski"},
     ]
   },
