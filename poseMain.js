@@ -169,7 +169,7 @@ function onPoseResults(results) {
 }
 
 async function checkLocationAndStartCamera() {
-    console.log("Aktualna lokalizacja: ", currentLocation);  // Sprawdzenie, jaka jest aktualna lokalizacja
+    console.log("Aktualna lokalizacja: ", currentLocation); 
     
     if (currentLocation === 'FitnessRoom') {
         console.log("Gracz znajduje się w FitnessRoom. Próba uruchomienia kamerki...");

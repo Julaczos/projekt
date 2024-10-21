@@ -65,7 +65,6 @@ saucyStatus: {
       { type: "textMessage", text: "{TARGET} jest cały śliski"},
     ]
   },
-  //Items
   item_recoverStatus: {
     name: "Heating Lamp",
     description: "Feeling fresh and warm",

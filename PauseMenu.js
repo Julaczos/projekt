@@ -76,7 +76,7 @@ class PauseMenu {
   init(container) {
     this.createElement();
     this.keyboardMenu = new KeyboardMenu({
-      // descriptionContainer: game-container
+       descriptionContainer: game-container
     });
     this.keyboardMenu.init(this.element);
     this.keyboardMenu.setOptions(this.getOptions("root"));
