@@ -8,7 +8,7 @@ window.Actions = {
       { type: "stateChange", damage: 10}
     ]
   },
-saucyStatus: {
+damage50: {
     name: "Zdrowy Kop",
     description: "Kopniak z 50% szansy trafienia",
     success: [
@@ -77,6 +77,7 @@ saucyStatus: {
   },
   item_recoverHp: {
     name: "Lecznicze jabłko",
+    description: "Szybka dawka energii i siły",
     targetType: "friendly",
     success: [
       { type:"textMessage", text: "{CASTER} zjada trochę owocu {ACTION}!", },

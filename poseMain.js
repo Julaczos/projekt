@@ -75,10 +75,10 @@ function updateSquatCounter(poseLandmarks) {
         isSquatting = true; 
     } else if (averageKneeAngle > 160 && isSquatting) {
         console.log("przysiad zrobiony");
-        window.squatCount++;
+        window.playerState.squatCount++;
         isSquatting = false;
         document.getElementById("squatCounter").innerText = `Przysiady: ${window.squatCount}`;
-        gainXP(10);
+        window.playerState.gainXPForPizza("p1", 10);
     } 
 }
 
@@ -107,10 +107,10 @@ function updateBicepCurlCounter(poseLandmarks) {
         isCurling = true; 
     } else if (averageElbowAngle > 150 && isCurling) {
         console.log("podnoszenie zrobione");
-        window.bicepCurlCount++;
+        window.playerState.bicepCurlCount++;
         isCurling = false;
         document.getElementById("bicepCounter").innerText = `Biceps Curls: ${window.bicepCurlCount}`;
-        gainXP(5);
+        window.playerState.gainXPForPizza("p1", 5);
     }
 }
 

@@ -4,7 +4,7 @@ window.Enemies = {
     src: "/projekt/images/npc12.png",
     pizzas: {
       "a": {
-        pizzaId: "s001",
+        pizzaId: "s002",
         maxHp: 50,
         level: 1,
       },

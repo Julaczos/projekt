@@ -57,11 +57,11 @@ class PauseMenu {
     statsElement.classList.add("statsOverlay");
     statsElement.innerHTML = `
       <h3>Twoje Statystyki</h3>
-      <p>Poziom: ${window.level}</p>
-      <p>Doświadczenie: ${window.xp} / ${window.xpToNextLevel}</p>
-      <p>Przysiady: ${window.squatCount}</p>
-      <p>Podnoszenie ciężarków: ${window.bicepCurlCount}</p>
-      <p>Skłony: ${window.bicepCurlCount}</p>
+      <p>Poziom: ${window.playerState.pizzas.p1.level}</p>
+      <p>Doświadczenie: ${window.playerState.pizzas.p1.xp} / ${window.playerState.pizzas.p1.maxXp}</p>
+      <p>Przysiady: ${window.playerState.squatCount}</p>
+      p>Podnoszenie ciężarków: ${window.playerState.bicepCurlCount}</p>
+      <p>Skłony: ${window.playerState.bicepCurlCount}</p>
       <button id="closeStats">Zamknij</button>
     `;
 
