@@ -319,7 +319,7 @@ walls: function() {
   },
   MainMap: {
     id: "MainMap",
-    lowerSrc: "/projekt/images/MainMap.png",
+    lowerSrc: "/projekt/images/MainMapLower.png",
     upperSrc: "/projekt/images/MainMapUpper.png",
     gameObjects: {
       hero: new Person({
