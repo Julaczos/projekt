@@ -172,6 +172,35 @@ walls: function() {
 
 
   },
+
+  Hospital: {
+    id: "Hospital",
+    lowerSrc: "/projekt/images/HospitalLower.png",
+    upperSrc: "/projekt/images/HospitalUpper.png",
+    gameObjects: {
+        hero: new Person({
+        isPlayerControlled: true,
+        x: utils.withGrid(4),
+        y: utils.withGrid(12),
+      }),
+      lekarz: new Person({
+        x: utils.withGrid(7),
+        y: utils.withGrid(5),
+        src: "/projekt/images/npc11.png",
+      })
+    },
+    cutsceneSpaces: {
+      [utils.asGridCoord(4,13)]: [
+        {
+          events: [
+            { type: "changeMap", map: "MainMap", x: utils.withGrid(40), y: utils.withGrid(78), direction: "down" }
+          ]
+        }
+      ]
+  }
+  },
+
+  
   FitnessRoom: {
     id: "FitnessRoom",
     lowerSrc: "/projekt/images/FitnessRoom.png",
@@ -501,7 +530,14 @@ walls: function() {
             { type: "changeMap", map: "Store", x: utils.withGrid(7), y: utils.withGrid(14), direction: "up"},
           ]
         }
-      ]
+      ],
+      [utils.asGridCoord(40,78)]: [
+        {
+          events: [
+            { type: "changeMap", map: "Hospital", x: utils.withGrid(4), y: utils.withGrid(13), direction: "up"},
+          ]
+        }
+      ],
   }
 }
 }
