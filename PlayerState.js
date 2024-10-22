@@ -19,7 +19,7 @@ class PlayerState {
     this.squatCount = 0; 
     this.bicepCurlCount = 0; 
     this.storyFlags = {
-      Five_Squats=true;
+      Five_Squats=true,
     };
   }
 
