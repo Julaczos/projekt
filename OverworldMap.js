@@ -190,10 +190,10 @@ walls: function() {
       })
     },
     cutsceneSpaces: {
-      [utils.asGridCoord(4,13)]: [
+      [utils.asGridCoord(4,14)]: [
         {
           events: [
-            { type: "changeMap", map: "MainMap", x: utils.withGrid(40), y: utils.withGrid(78), direction: "down" }
+            { type: "changeMap", map: "MainMap", x: utils.withGrid(40), y: utils.withGrid(79), direction: "down" }
           ]
         }
       ]
@@ -531,10 +531,10 @@ walls: function() {
           ]
         }
       ],
-      [utils.asGridCoord(40,78)]: [
+      [utils.asGridCoord(40,79)]: [
         {
           events: [
-            { type: "changeMap", map: "Hospital", x: utils.withGrid(4), y: utils.withGrid(13), direction: "up"},
+            { type: "changeMap", map: "Hospital", x: utils.withGrid(4), y: utils.withGrid(14), direction: "up"},
           ]
         }
       ],
