@@ -139,6 +139,7 @@ window.OverworldMaps = {
               { type: "textMessage", text: "Dokładnie. Wybieraj mądrze, a łatwiej pokonasz pokusy"},
               { type: "textMessage", text: "Dzięki! Zaczynam od dziś"},
               { type: "textMessage", text: "Super. Pamiętaj o nawodnieniu, po więcej szczegółów wejdź na ... Powodzenia!"},
+              { type: "addItem", itemId: "item_recoverHp" },
             ]
           },
           {
