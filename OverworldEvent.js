@@ -28,6 +28,11 @@ class OverworldEvent {
     resolve();
   }
 
+  addStoryFlag (resolve) {
+    window.playerState.storyFlags[this.event.flag] = true;
+    resolve();
+  }
+
   walk(resolve) {
     const who = this.map.gameObjects[this.event.who];
     who.startBehavior({
