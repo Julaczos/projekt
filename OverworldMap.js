@@ -128,8 +128,17 @@ window.OverworldMaps = {
           {
             required: ["TALKED_TO_MARCIN"],
             events: [
-              { type: "textMessage", text: "Trener przekazał mi, że przyjdziesz, miło cię widzieć", faceHero: "dietetyk" },
-              { type: "textMessage", text: "Zacznę od prostego pytania: jak sie odżywiasz?"},
+              { type: "textMessage", text: "Trener przekazał mi, że przyjdziesz, miło cię widzieć, jak idzie ci walka z klątwą?", faceHero: "dietetyk" },
+              { type: "textMessage", text: "Czuję, że brakuje mi energii. Może to przez to, co jem..."},
+              { type: "textMessage", text: "Na pewno. Co zazwyczaj jesz na co dzień?"},
+              { type: "textMessage", text: "Zwykle kawa i coś szybkiego. Niezbyt zdrowo..."},
+              { type: "textMessage", text: "To jest problem. Zacznij od śniadania z pełnym białkiem i zbożami. Stabilna energia na cały dzień"},
+              { type: "textMessage", text: "Brzmi dobrze, ale jak znaleźć na to czas?"},
+              { type: "textMessage", text: "Nie musi być skomplikowane. Owsianka, jajka, orzechy. Szybkie, a zdrowe"},
+              { type: "textMessage", text: "Czyli mogę przekąszać, byle zdrowo?"},
+              { type: "textMessage", text: "Dokładnie. Wybieraj mądrze, a łatwiej pokonasz pokusy"},
+              { type: "textMessage", text: "Dzięki! Zaczynam od dziś"},
+              { type: "textMessage", text: "Super. Pamiętaj o nawodnieniu, po więcej szczegółów wejdź na ... Powodzenia!"},
             ]
           },
           {
