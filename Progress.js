@@ -16,7 +16,12 @@ class Progress {
             startingHeroY: this.startingHeroY,
             startingHeroDirection: this.startingHeroDirection,
             playerState: {
-              storyFlags: playerState.storyFlags
+              storyFlags: playerState.storyFlags,
+              pizzas: playerState.pizzas,
+              lineup: playerState.lineup,
+              items: playerState.items,
+              squatCount: playerState.squatCount,
+              bicepCurlCount: playerState.bicepCurlCount
             }
           }))      
         }
