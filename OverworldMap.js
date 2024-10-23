@@ -317,6 +317,39 @@ walls: function() {
       ],
   }
   },
+  PoliceStation: {
+    id: "PoliceStation",
+    lowerSrc: "/projekt/images/PoliceStationLower.png",
+    upperSrc: "/projekt/images/PoliceStationUpper.png",
+    gameObjects: {
+      hero: new Person({
+        isPlayerControlled: true,
+        x: utils.withGrid(5),
+        y: utils.withGrid(10),
+      }),
+      npc20: new Person({
+        x: utils.withGrid(9),
+        y: utils.withGrid(8),
+        src: "/projekt/images/npc20.png",
+        talking: [
+          {
+            events: [
+              { type: "textMessage", text: "Nawet nie wiesz jak uwielbiam pączki", faceHero: "npc20" },
+            ]
+          }
+        ]
+
+    }),
+    cutsceneSpaces: {
+      [utils.asGridCoord(7,16)]: [
+        {
+          events: [
+            { type: "changeMap", map: "MainMap", x: utils.withGrid(69), y: utils.withGrid(62), direction: "down"  }
+          ]
+        }
+      ],
+  }
+  },
   GenBuilding: {
     id: "GenBuilding",
     lowerSrc: "/projekt/images/GenBuildingLower.png",
@@ -517,7 +550,7 @@ walls: function() {
       "48,35", "51,35", "51,53", "51,46", "52,46", "53,46", "54,46", "54,47", "54,48", "53,48", "52,48", "51,48", "51,47",
       "54,53", "55,53", "56,53", "57,53", "58,53", "59,53", "60,53", "54,55", "55,55", "56,55", "57,55", "58,55", "59,55", "60,55","54,54", "60,54", 
       "39,75", "40,75", "41,75", "42,75", "43,75", "44,75", "45,75", "45,76", "45,77", "45,78", "44,78", "43,78", "42,78", "41,78", "40,78", "39,78", "39,77", "39,76",
-      "62,51", "66,58", "67,58", "68,58", "69,58", "70,58", "71,58", "72,58", "72,59", "72,60", "72,61", "72,62", "71,62", "70,62", "69,62", "68,62", "67,62", "66,62", "66,61", "66,60", "66,59",
+      "62,51", "66,58", "67,58", "68,58", "69,58", "70,58", "71,58", "72,58", "72,59", "72,60", "72,61", "72,62", "71,62", "70,62", "69,61", "68,62", "67,62", "66,62", "66,61", "66,60", "66,59",
       "58,19", "59,19", "60,19", "61,19", "62,19", "63,19", "64,19", "65,19", "66,19", "67,19", "68,19", "69,19", "70,19", "72,21", "56,21",
       "58,43", "59,43", "60,43", "61,43", "61,44", "61,45", "60,45", "59,45", "58,45", "58,44",
       "60,38", "61,38", "62,38", "63,38", "63,39", "63,40", "62,40", "61,40", "60,40", "60,39", "68,41", "69,41", "70,41", "71,41", "71,42", "71,43", "70,43", "69,43", "68,43", "68,42",
@@ -567,6 +600,13 @@ walls: function() {
         {
           events: [
             { type: "changeMap", map: "Hospital", x: utils.withGrid(4), y: utils.withGrid(14), direction: "up"},
+          ]
+        }
+      ],
+      [utils.asGridCoord(69,62)]: [
+        {
+          events: [
+            { type: "changeMap", map: "PoliceStation", x: utils.withGrid(7), y: utils.withGrid(16), direction: "up"},
           ]
         }
       ],
