@@ -142,7 +142,7 @@ window.OverworldMaps = {
               { type: "textMessage", text: "Dokładnie. Wybieraj mądrze, a łatwiej pokonasz pokusy"},
               { type: "textMessage", text: "Dzięki! Zaczynam od dziś"},
               { type: "textMessage", text: "Super. Pamiętaj o nawodnieniu, po więcej szczegółów wejdź na ... Powodzenia!"},
-              { type: "addItem", itemId: "item_recoverHp" },
+           //   { type: "addItem", itemId: "item_recoverHp" },
             ]
           },
           {
@@ -475,7 +475,10 @@ walls: function() {
       npc4: new Person({
         x: utils.withGrid(60),
         y: utils.withGrid(20),
-        src: "/projekt/images/npc4.png"
+        src: "/projekt/images/npc4.png",
+        events: [
+          {type: "battle", enemyId: "robert" }
+        ]
       }),
       npc5: new Person({
         x: utils.withGrid(50),

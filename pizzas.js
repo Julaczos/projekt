@@ -21,12 +21,12 @@ window.PizzaTypes = {
       type: PizzaTypes.spicy,
       actions: [ "damage1", "damage50", "clumsyStatus" ],
     },
-    "v001": {
-      name: "Call Me Kale",
+    "s003": {
+      name: "Robert",
       description: "Pizza desc here",
       src: "/projekt/images/pizzaPicture.png",
       type: PizzaTypes.veggie,
-      actions: [ "damage1" ],
+      actions: [ "damage1", "damage50", "clumsyStatus" ],
     },
     "f001": {
       name: "Portobello Express",

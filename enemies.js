@@ -12,11 +12,11 @@ window.Enemies = {
   },
   "robert": {
     name: "Robert",
-    src: "/projekt/images/npc1.png",
+    src: "/projekt/images/npc4.png",
     pizzas: {
       "a": {
-        hp: 1,
-        pizzaId: "f001",
+        hp: 45,
+        pizzaId: "s003",
         maxHp: 50,
         level: 1,
       },
