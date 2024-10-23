@@ -5,7 +5,7 @@ window.Actions = {
     success: [
       { type: "textMessage", text: "{CASTER} używa ataku {ACTION}!"},
       { type: "animation", animation: "glob", color: "#35700d" },
-      { type: "stateChange", damage: 10}
+      { type: "stateChange", damage: 5}
     ]
   },
 damage50: {
