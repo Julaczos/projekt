@@ -476,8 +476,12 @@ walls: function() {
         x: utils.withGrid(60),
         y: utils.withGrid(20),
         src: "/projekt/images/npc4.png",
-        events: [
-          {type: "battle", enemyId: "robert" }
+        talking: [
+        {
+          events: [
+          {type: "battle", enemyId: "robert" }        
+        ]
+        }
         ]
       }),
       npc5: new Person({
