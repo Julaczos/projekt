@@ -349,7 +349,7 @@ walls: function() {
         }
       ],
   }
-  },
+  }},
   GenBuilding: {
     id: "GenBuilding",
     lowerSrc: "/projekt/images/GenBuildingLower.png",
