@@ -5,9 +5,12 @@ class PlayerState {
         pizzaId: "s001",
         hp: 50,
         maxHp: 50,
-        xp: 90,
+        xp: 0,
         maxXp: 100,
         level: 1,
+        agility: 3,
+        strength: 2,
+        defense: 3,
       }
     }
     this.lineup = ["p1"];
