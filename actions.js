@@ -16,43 +16,6 @@ damage50: {
       { type: "animation", animation: "glob", color: "#7160db" },
       { type: "yesOrNo", damage: 20 }
     ],
-    execute: async function(caster, target, resolve) {
-      const battleEvent = new BattleEvent({ 
-        type: "textMessage", 
-        text: this.success[0].text, 
-        caster: caster,
-        target: target,
-        action: this.name 
-      }, this.battle);
-      await battleEvent.textMessage(() => {});
-
-      
-      const animationEvent = new BattleEvent({
-        type: "animation",
-        animation: this.success[1].animation,
-        color: this.success[1].color
-      }, this.battle);
-      await animationEvent.animation(() => {});
-
-    
-      const yesNoEvent = new BattleEvent({
-        type: "yesOrNo",
-        caster: caster,
-        target: target,
-        damage: 20
-      }, this.battle);
-      const result = await yesNoEvent.yesOrNo(() => {});
-
-    
-      if (result === "tak") {
-        target.update({ hp: target.hp - 20 }); // Zadaj obrażenia
-        console.log(`${caster.name} zadał 20 obrażeń ${target.name}!`);
-      } else {
-        console.log(`${caster.name} nie trafił!`);
-      }
-
-      resolve(); 
-    }
   },
 
   clumsyStatus: {
@@ -66,13 +29,13 @@ damage50: {
     ]
   },
   item_recoverStatus: {
-    name: "Heating Lamp",
-    description: "Feeling fresh and warm",
+    name: "Napar ziołowy",
+    description: "uczucie świeżości i oczyszczenia",
     targetType: "friendly",
     success: [
-      { type: "textMessage", text: "{CASTER} uses a {ACTION}!"},
+      { type: "textMessage", text: "{CASTER} wypija {ACTION}!"},
       { type: "stateChange", status: null },
-      { type: "textMessage", text: "Feeling fresh!", },
+      { type: "textMessage", text: "Co za świeżość", },
     ]
   },
   item_recoverHp: {
