@@ -60,7 +60,7 @@ class PauseMenu {
       <p>Poziom: ${window.playerState.pizzas.p1.level}</p>
       <p>Doświadczenie: ${window.playerState.pizzas.p1.xp} / ${window.playerState.pizzas.p1.maxXp}</p>
       <p>Przysiady: ${window.playerState.squatCount}</p>
-      p>Podnoszenie ciężarków: ${window.playerState.bicepCurlCount}</p>
+      <p>Podnoszenie ciężarków: ${window.playerState.bicepCurlCount}</p>
       <p>Skłony: ${window.playerState.bicepCurlCount}</p>
       <button id="closeStats">Zamknij</button>
     `;

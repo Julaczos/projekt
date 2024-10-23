@@ -107,7 +107,7 @@ class Battle {
         }
 
         this.element.remove();
-        this.onComplete();
+        this.onComplete(winner === "player");
       }
     });
 
