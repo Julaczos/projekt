@@ -338,8 +338,8 @@ walls: function() {
             ]
           }
         ]
-
-    }),
+     }),
+    },
     cutsceneSpaces: {
       [utils.asGridCoord(7,16)]: [
         {
@@ -348,8 +348,8 @@ walls: function() {
           ]
         }
       ],
-  }
-  }},
+    }
+  },
   GenBuilding: {
     id: "GenBuilding",
     lowerSrc: "/projekt/images/GenBuildingLower.png",
