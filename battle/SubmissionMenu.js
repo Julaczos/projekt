@@ -113,8 +113,13 @@ class SubmissionMenu {
   }
 
   decide() {
-    this.menuSubmit(Actions[ this.caster.actions[0] ]);
+    const randomIndex = Math.floor(Math.random() * this.caster.actions.length);
+    
+    const chosenAction = Actions[ this.caster.actions[randomIndex] ];
+  
+    this.menuSubmit(chosenAction);
   }
+  
 
   showMenu(container) {
     this.keyboardMenu = new KeyboardMenu();
