@@ -350,6 +350,34 @@ walls: function() {
       ],
     }
   },
+  Office: {
+    id: "Office",
+    lowerSrc: "/projekt/images/OfficeLower.png",
+    upperSrc: "/projekt/images/OfficeUpper.png",
+    gameObjects: {
+      hero: new Person({
+        isPlayerControlled: true,
+        x: utils.withGrid(5),
+        y: utils.withGrid(10),
+      }),
+      npc6: new Person({
+        x: utils.withGrid(8),
+        y: utils.withGrid(4),
+        src: "/projekt/images/npc6.png",
+      })
+    },
+    cutsceneSpaces: {
+      [utils.asGridCoord(7,16)]: [
+        {
+          events: [
+            { type: "changeMap", map: "MainMap", x: utils.withGrid(38), y: utils.withGrid(22), direction: "down"  }
+          ]
+
+        }
+
+      ]
+    }
+  },
   GenBuilding: {
     id: "GenBuilding",
     lowerSrc: "/projekt/images/GenBuildingLower.png",
@@ -604,6 +632,13 @@ walls: function() {
         }
       ],
       [utils.asGridCoord(69,62)]: [
+        {
+          events: [
+            { type: "changeMap", map: "PoliceStation", x: utils.withGrid(7), y: utils.withGrid(16), direction: "up"},
+          ]
+        }
+      ],
+      [utils.asGridCoord(38,22)]: [
         {
           events: [
             { type: "changeMap", map: "PoliceStation", x: utils.withGrid(7), y: utils.withGrid(16), direction: "up"},
