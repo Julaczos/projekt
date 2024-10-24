@@ -117,6 +117,11 @@ class SubmissionMenu {
     
     const chosenAction = Actions[ this.caster.actions[randomIndex] ];
   
+    console.log("Dostępne akcje przeciwnika:", this.caster.actions);
+  
+    console.log("Wylosowany indeks:", randomIndex);
+    console.log("Wybrana akcja przeciwnika:", chosenAction.name);
+  
     this.menuSubmit(chosenAction);
   }
   
