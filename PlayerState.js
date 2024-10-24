@@ -26,7 +26,7 @@ class PlayerState {
     };
   }
 
-  gainXP(amount) {
+  gainXPForPizza(amount) {
     this.pizzas.p1.xp += amount;
     if (this.pizzas.p1.xp >= this.pizzas.p1.maxXp) {
       this.levelUp();
