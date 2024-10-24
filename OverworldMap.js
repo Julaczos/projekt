@@ -641,7 +641,7 @@ walls: function() {
       [utils.asGridCoord(38,22)]: [
         {
           events: [
-            { type: "changeMap", map: "PoliceStation", x: utils.withGrid(7), y: utils.withGrid(16), direction: "up"},
+            { type: "changeMap", map: "Office", x: utils.withGrid(7), y: utils.withGrid(16), direction: "up"},
           ]
         }
       ],
