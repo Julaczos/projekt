@@ -46,7 +46,27 @@ function checkGameProgress() {
     }
 }
 
+function checkPoseVisibility(requiredLandmarks, poseLandmarks) {
+    for (const landmarkIndex of requiredLandmarks) {
+        const landmark = poseLandmarks[landmarkIndex];
+        if (!landmark || landmark.visibility < 0.5) {
+            document.getElementById("errorDisplay").innerText = "Część sylwetki jest niewidoczna. Ustaw się prawidłowo.";
+            return false;
+        }
+    }
+    document.getElementById("errorDisplay").innerText = ""; 
+    return true;
+}
+
+
 function updateSquatCounter(poseLandmarks) {
+
+    const requiredLandmarks = [23, 25, 27, 24, 26, 28]; 
+
+    if (!checkPoseVisibility(requiredLandmarks, poseLandmarks)) {
+        return;
+    }
+    
     const leftHip = poseLandmarks[23];
     const leftKnee = poseLandmarks[25];
     const leftAnkle = poseLandmarks[27];
@@ -78,11 +98,17 @@ function updateSquatCounter(poseLandmarks) {
         window.playerState.squatCount++;
         isSquatting = false;
         document.getElementById("squatCounter").innerText = `Przysiady: ${window.squatCount}`;
-        window.playerState.gainXPForPizza("p1", 10);
+        window.playerState.gainXPForPizza(10);
     } 
 }
 
 function updateBicepCurlCounter(poseLandmarks) {
+    
+    const requiredLandmarks = [11, 13, 15, 12, 14, 16]; 
+
+    if (!checkPoseVisibility(requiredLandmarks, poseLandmarks)) {
+        return;
+    }
     const leftShoulder = poseLandmarks[11];
     const leftElbow = poseLandmarks[13];
     const leftWrist = poseLandmarks[15];
@@ -110,7 +136,7 @@ function updateBicepCurlCounter(poseLandmarks) {
         window.playerState.bicepCurlCount++;
         isCurling = false;
         document.getElementById("bicepCounter").innerText = `Biceps Curls: ${window.bicepCurlCount}`;
-        window.playerState.gainXPForPizza("p1", 5);
+        window.playerState.gainXPForPizza(5);
     }
 }
 
