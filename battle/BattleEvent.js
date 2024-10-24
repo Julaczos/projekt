@@ -15,7 +15,7 @@ async yesOrNo(resolve) {
   if (result === "tak") {
     
     if (damage) {
-      target.update({ hp: target.hp - 10*caster.strength });
+      target.update({ hp: target.hp - (10*caster.strength - 2 * target.defense) });
       console.log(`${caster.name} zadał dodatkowe obrażenia: ${10*caster.strength}`);
       target.pizzaElement.classList.add("battle-damage-blink");
     }
@@ -55,7 +55,7 @@ async yesOrNo(resolve) {
     let who = this.event.onCaster ? caster : target;
 
     if (damage) {
-      target.update({ hp: target.hp - damage*caster.strength });
+      target.update({ hp: target.hp - (damage * caster.strength - 2*target.defense) });
       target.pizzaElement.classList.add("battle-damage-blink");
     }
 
