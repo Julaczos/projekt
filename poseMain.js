@@ -46,19 +46,6 @@ function checkGameProgress() {
     }
 }
 
-function checkPoseVisibility(requiredLandmarks, poseLandmarks) {
-    for (const landmarkIndex of requiredLandmarks) {
-        const landmark = poseLandmarks[landmarkIndex];
-        if (!landmark || landmark.visibility < 0.5) {
-            document.getElementById("errorDisplay").innerText = "Część sylwetki jest niewidoczna. Ustaw się prawidłowo.";
-            return false;
-        }
-    }
-    document.getElementById("errorDisplay").innerText = ""; 
-    return true;
-}
-
-
 function updateSquatCounter(poseLandmarks) {
 
     const requiredLandmarks = [23, 25, 27, 24, 26, 28]; 
@@ -75,10 +62,10 @@ function updateSquatCounter(poseLandmarks) {
     const rightKnee = poseLandmarks[26];
     const rightAnkle = poseLandmarks[28];
 
-    if (
-        !leftHip || !leftKnee || !leftAnkle || !rightHip || !rightKnee || !rightAnkle ||
+    if (!leftHip || !leftKnee || !leftAnkle || !rightHip || !rightKnee || !rightAnkle ||
         leftHip.visibility < 0.5 || leftKnee.visibility < 0.5 || leftAnkle.visibility < 0.5 || 
-        rightHip.visibility < 0.5 || rightKnee.visibility < 0.5 || rightAnkle.visibility < 0.5) {
+        rightHip.visibility < 0.5 || rightKnee.visibility < 0.5 || rightAnkle.visibility < 0.5 || !leftShoulder || !leftElbow || !leftWrist || !rightShoulder || !rightElbow || !rightWrist ||
+       leftShoulder.visibility < 0.5 || leftElbow.visibility < 0.5 || leftWrist.visibility < 0.5 || rightShoulder.visibility < 0.5 || rightElbow.visibility < 0.5 || rightWrist.visibility < 0.5) {
             document.getElementById("errorDisplay").innerText = "Część sylwetki jest niewidoczna. Ustaw się prawidłowo.";
             return;
     } else {
@@ -118,7 +105,10 @@ function updateBicepCurlCounter(poseLandmarks) {
     const rightWrist = poseLandmarks[16];
 
     if (!leftShoulder || !leftElbow || !leftWrist || !rightShoulder || !rightElbow || !rightWrist ||
-       leftShoulder.visibility < 0.5 || leftElbow.visibility < 0.5 || leftWrist.visibility < 0.5 || rightShoulder.visibility < 0.5 || rightElbow.visibility < 0.5 || rightWrist.visibility < 0.5) {
+       leftShoulder.visibility < 0.5 || leftElbow.visibility < 0.5 || leftWrist.visibility < 0.5 || rightShoulder.visibility < 0.5 || rightElbow.visibility < 0.5 || rightWrist.visibility < 0.5 ||
+       !leftHip || !leftKnee || !leftAnkle || !rightHip || !rightKnee || !rightAnkle ||
+        leftHip.visibility < 0.5 || leftKnee.visibility < 0.5 || leftAnkle.visibility < 0.5 || 
+        rightHip.visibility < 0.5 || rightKnee.visibility < 0.5 || rightAnkle.visibility < 0.5) {
         document.getElementById("errorDisplay").innerText = "Część sylwetki jest niewidoczna. Ustaw się prawidłowo.";
         return;
     } else {
