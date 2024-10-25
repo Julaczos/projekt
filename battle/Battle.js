@@ -103,7 +103,7 @@ class Battle {
           playerState.items = playerState.items.filter(item => {
             return !this.usedInstanceIds[item.instanceId];
           });
-        
+          if (winner != "player") playerStatePizza.hp = playerStatePizza.hp + 1;
 
         this.element.remove();
         this.onComplete(winner === "player");
