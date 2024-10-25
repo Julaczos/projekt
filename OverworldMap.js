@@ -141,7 +141,10 @@ window.OverworldMaps = {
               { type: "textMessage", text: "Czyli mogę przekąszać, byle zdrowo?"},
               { type: "textMessage", text: "Dokładnie. Wybieraj mądrze, a łatwiej pokonasz pokusy"},
               { type: "textMessage", text: "Dzięki! Zaczynam od dziś"},
-              { type: "textMessage", text: "Super. Pamiętaj o nawodnieniu, po więcej szczegółów wejdź na ... Powodzenia!"},
+              { type: "textMessage", text: "Super. Pamiętaj o nawodnieniu, po więcej szczegółów wejdź na ..."},
+              { type: "textMessage", text: "A, i jeszcze jedno - mentor ma dla ciebie misję, powodzenia!"},
+              { type: "addStoryFlag", flag: "TALKED_TO_ZELKA"},
+
            //   { type: "addItem", itemId: "item_recoverHp" },
             ]
           },
@@ -285,6 +288,18 @@ walls: function() {
         y: utils.withGrid(4),
         src: "/projekt/images/mentor.png",
         talking: [
+          {
+            required: ["TALKED_TO_ZELKA"],
+            events: [
+              { type: "textMessage", text: "Czas na twój pierwszy pojedynek", faceHero: "mentor" },
+              { type: "textMessage", text: "Czujesz się gotowy?" },
+              { type: "textMessage", text: "Sam nie wiem..." },
+              { type: "textMessage", text: "Musisz sam zdecydować czy walczyć teraz, czy poćwiczyć" },
+              { type: "textMessage", text: "W każdym razie Upiór Braku Motywacji siedzi na trybunach, opętał Roberta " },
+              { type: "textMessage", text: "Jeśli uda ci się wygrać, wróc do mnie, jeśli nie - udaj się do lekarza by odzyskać siły" },
+
+            ]             
+          },
           {
             required: ["TALKED_TO_MENTOR"],
             events: [
