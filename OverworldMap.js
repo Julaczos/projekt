@@ -554,10 +554,17 @@ walls: function() {
         src: "/projekt/images/npc4.png",
         talking: [
         {
+            required["WON_WITH_ROBERT"],
+            events: [
+              {type: "textMessage", text: "Dziękuje"},
+            ]
+        },
+        {
           events: [
-          {type: "battle", enemyId: "robert" }        
+          {type: "battle", enemyId: "robert" },
+          { type: "addStoryFlag", flag: "WON_WITH_ROBERT" }
         ]
-        }
+        },
         ]
       }),
       npc5: new Person({
