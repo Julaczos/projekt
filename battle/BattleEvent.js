@@ -56,7 +56,7 @@ async yesOrNo(resolve) {
 
     if (damage) {
       target.update({ hp: target.hp - (damage * caster.strength - 2*target.defense) });
-      console.log (`${caster.name} zadał obrażenia: ${damage*caster.strength - 2*target.defense}`)
+      console.log (`${caster.name} zadał obrażenia: ${damage*caster.strength}`)
       target.pizzaElement.classList.add("battle-damage-blink");
     }
 
