@@ -1,16 +1,14 @@
 class Battle {
   constructor({ enemy, onComplete }) {
-
     this.enemy = enemy;
     this.onComplete = onComplete;
 
-    this.combatants = {
-    }
+    this.combatants = {};
 
     this.activeCombatants = {
-      player: null, 
-      enemy: null, 
-    }
+      player: null,
+      enemy: null,
+    };
 
     window.playerState.lineup.forEach(id => {
       this.addCombatant(id, "player", window.playerState.pizzas[id]);
@@ -51,7 +49,7 @@ class Battle {
         <img src="${'/projekt/images/hero.png'}" alt="Hero" />
       </div>
       <div class="Battle_enemy">
-        <p class="Battle_enemy-name">${this.enemy.name}</p> <!-- Dodajemy imię przeciwnika -->
+        <p class="Battle_enemy-name">${this.enemy.name}</p>
         <img src=${this.enemy.src} alt=${this.enemy.name} />
       </div>
     `);
@@ -88,8 +86,9 @@ class Battle {
         });
       },
       onWinner: winner => {
+        const playerState = window.playerState;
+      
         if (winner === "player") {
-          const playerState = window.playerState;
           Object.keys(playerState.pizzas).forEach(id => {
             const playerStatePizza = playerState.pizzas[id];
             const combatant = this.combatants[id];
@@ -100,29 +99,24 @@ class Battle {
               playerStatePizza.level = combatant.level;
             }
           });
-
+      
           playerState.items = playerState.items.filter(item => {
             return !this.usedInstanceIds[item.instanceId];
           });
+      
         } else {
-          const playerState = window.playerState;
           Object.keys(playerState.pizzas).forEach(id => {
-            const playerStatePizza = playerState.pizzas[id];
             const combatant = this.combatants[id];
-            if (combatant) {
-              playerStatePizza.hp = 1;
-              playerStatePizza.xp = combatant.xp;
-              playerStatePizza.maxXp = combatant.maxXp;
-              playerStatePizza.level = combatant.level;
+            if (combatant && combatant.team === "player") {
+              combatant.update({ hp: 1 });
+              playerState.pizzas[id].hp = 1;
             }
           });
-
-          playerState.items = playerState.items.filter(item => {
-            return !this.usedInstanceIds[item.instanceId];          
-        }); 
-      }
+        }
+      
         this.element.remove();
         this.onComplete(winner === "player");
+      }
     });
 
     this.turnCycle.init();
