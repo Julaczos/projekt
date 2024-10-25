@@ -88,6 +88,7 @@ class Battle {
         });
       },
       onWinner: winner => {
+        if (winner === "player") {
           const playerState = window.playerState;
           Object.keys(playerState.pizzas).forEach(id => {
             const playerStatePizza = playerState.pizzas[id];
@@ -103,11 +104,25 @@ class Battle {
           playerState.items = playerState.items.filter(item => {
             return !this.usedInstanceIds[item.instanceId];
           });
-          if (winner != "player") playerStatePizza.hp = playerStatePizza.hp + 1;
+        } else {
+          const playerState = window.playerState;
+          Object.keys(playerState.pizzas).forEach(id => {
+            const playerStatePizza = playerState.pizzas[id];
+            const combatant = this.combatants[id];
+            if (combatant) {
+              playerStatePizza.hp = 1;
+              playerStatePizza.xp = combatant.xp;
+              playerStatePizza.maxXp = combatant.maxXp;
+              playerStatePizza.level = combatant.level;
+            }
+          });
 
+          playerState.items = playerState.items.filter(item => {
+            return !this.usedInstanceIds[item.instanceId];          
+        }); 
+      }
         this.element.remove();
         this.onComplete(winner === "player");
-      }
     });
 
     this.turnCycle.init();
