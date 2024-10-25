@@ -554,7 +554,7 @@ walls: function() {
         src: "/projekt/images/npc4.png",
         talking: [
         {
-            required["WON_WITH_ROBERT"],
+            required: ["WON_WITH_ROBERT"],
             events: [
               {type: "textMessage", text: "Dziękuje"},
             ]
