@@ -88,7 +88,6 @@ class Battle {
         });
       },
       onWinner: winner => {
-        if (winner === "player") {
           const playerState = window.playerState;
           Object.keys(playerState.pizzas).forEach(id => {
             const playerStatePizza = playerState.pizzas[id];
@@ -104,7 +103,7 @@ class Battle {
           playerState.items = playerState.items.filter(item => {
             return !this.usedInstanceIds[item.instanceId];
           });
-        }
+        
 
         this.element.remove();
         this.onComplete(winner === "player");
