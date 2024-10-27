@@ -8,9 +8,8 @@ let xp = 0;
 let xpToNextLevel = 100;
 let currentLocation = 'MainMap';
 
+let videoStream;
 let pose;
-const canvas = document.getElementById("poseCanvas");
-const ctx = canvas.getContext("2d");
 
 window.squatCount = squatCount;
 window.bicepCurlCount = bicepCurlCount;
@@ -22,7 +21,6 @@ window.currentLocation = currentLocation;
 function updateLocation(newLocation) {
     currentLocation = newLocation;
     console.log("Aktualna lokalizacja zmieniona na: ", currentLocation);
-    checkLocationAndStartCamera(); // Sprawdzanie widoczności przycisku i uruchamianie podglądu
 }
 
 function gainXP(amount) {
@@ -35,10 +33,10 @@ function checkLevelUp() {
     if (xp >= xpToNextLevel) {
         window.level++;
         window.xp -= xpToNextLevel;
-        xpToNextLevel = Math.floor(xpToNextLevel * 1.5);
+        window.xpToNextLevel = Math.floor(xpToNextLevel * 1.5);
 
         document.getElementById("levelDisplay").innerText = `Poziom: ${window.level}`;
-        document.getElementById("xpDisplay").innerText = `XP: ${window.xp} / ${xpToNextLevel}`;
+        document.getElementById("xpDisplay").innerText = `XP: ${window.xp} / ${window.xpToNextLevel}`;
     }
 }
 
@@ -49,7 +47,7 @@ function checkGameProgress() {
 }
 
 function updateSquatCounter(poseLandmarks) {
-    const requiredLandmarks = [23, 25, 27, 24, 26, 28];
+    const requiredLandmarks = [23, 25, 27, 24, 26, 28]; 
 
     if (!checkPoseVisibility(requiredLandmarks, poseLandmarks)) {
         return;
@@ -79,7 +77,7 @@ function updateSquatCounter(poseLandmarks) {
     if (averageKneeAngle < 70 && !isSquatting) {
         isSquatting = true; 
     } else if (averageKneeAngle > 160 && isSquatting) {
-        console.log("Przysiad zrobiony");
+        console.log("przysiad zrobiony");
         window.playerState.squatCount++;
         isSquatting = false;
         document.getElementById("squatCounter").innerText = `Przysiady: ${window.squatCount}`;
@@ -93,6 +91,7 @@ function updateBicepCurlCounter(poseLandmarks) {
     if (!checkPoseVisibility(requiredLandmarks, poseLandmarks)) {
         return;
     }
+    
     const leftShoulder = poseLandmarks[11];
     const leftElbow = poseLandmarks[13];
     const leftWrist = poseLandmarks[15];
@@ -102,7 +101,8 @@ function updateBicepCurlCounter(poseLandmarks) {
     const rightWrist = poseLandmarks[16];
 
     if (!leftShoulder || !leftElbow || !leftWrist || !rightShoulder || !rightElbow || !rightWrist ||
-       leftShoulder.visibility < 0.5 || leftElbow.visibility < 0.5 || leftWrist.visibility < 0.5 || rightShoulder.visibility < 0.5 || rightElbow.visibility < 0.5 || rightWrist.visibility < 0.5) {
+       leftShoulder.visibility < 0.5 || leftElbow.visibility < 0.5 || leftWrist.visibility < 0.5 || 
+       rightShoulder.visibility < 0.5 || rightElbow.visibility < 0.5 || rightWrist.visibility < 0.5) {
         document.getElementById("errorDisplay").innerText = "Część sylwetki jest niewidoczna. Ustaw się prawidłowo.";
         return;
     } else {
@@ -116,7 +116,7 @@ function updateBicepCurlCounter(poseLandmarks) {
     if (averageElbowAngle < 30 && !isCurling) {
         isCurling = true; 
     } else if (averageElbowAngle > 150 && isCurling) {
-        console.log("Podnoszenie zrobione");
+        console.log("podnoszenie zrobione");
         window.playerState.bicepCurlCount++;
         isCurling = false;
         document.getElementById("bicepCounter").innerText = `Biceps Curls: ${window.bicepCurlCount}`;
@@ -133,7 +133,20 @@ function calculateAngle(A, B, C) {
     return angle;
 }
 
-async function initMediaPipe() {
+async function startCamera() {
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        return stream;
+    } catch (err) {
+        console.error("Błąd podczas uzyskiwania dostępu do kamerki: ", err);
+    }
+}
+
+async function initMediaPipe(stream) {
+    const video = document.createElement("video");
+    video.srcObject = stream;
+    video.play();
+
     pose = new Pose({
         locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`
     });
@@ -147,40 +160,51 @@ async function initMediaPipe() {
     });
 
     pose.onResults(onPoseResults);
+
+    async function detectPose() {
+        if (video.readyState >= 3) {
+            await pose.send({ image: video });
+        }
+        requestAnimationFrame(detectPose);
+    }
+
+    detectPose();
 }
 
 function onPoseResults(results) {
-    ctx.clearRect(0, 0, canvas.width, canvas.height); // Czyści canvas
     if (results.poseLandmarks) {
         updateSquatCounter(results.poseLandmarks);
         updateBicepCurlCounter(results.poseLandmarks);
-        drawLandmarks(results.poseLandmarks); // Rysuje landmarki na canvasie
     }
-}
-
-function drawLandmarks(landmarks) {
-    landmarks.forEach(landmark => {
-        ctx.beginPath();
-        ctx.arc(landmark.x * canvas.width, landmark.y * canvas.height, 5, 0, 2 * Math.PI);
-        ctx.fillStyle = "red";
-        ctx.fill();
-    });
 }
 
 async function checkLocationAndStartCamera() {
     console.log("Aktualna lokalizacja: ", currentLocation); 
     
-    // Sprawdza i aktualizuje widoczność przycisku na podstawie lokalizacji.
-    toggleCameraButton();
-    
     if (currentLocation === 'FitnessRoom') {
-        console.log("Gracz znajduje się w FitnessRoom. Uruchamiam podgląd...");
-        await initMediaPipe();
-        canvas.style.display = 'block'; // Pokazuje canvas
+        console.log("Gracz znajduje się w FitnessRoom. Próba uruchomienia kamerki...");
+        if (!videoStream) {
+            videoStream = await startCamera();
+            if (videoStream) {
+                console.log("Kamerka uruchomiona.");
+                initMediaPipe(videoStream);
+            } else {
+                console.log("Nie udało się uruchomić kamerki.");
+            }
+        } else {
+            console.log("Kamerka już działa.");
+        }
     } else {
         document.getElementById("errorDisplay").innerText = " ";
-        console.log("Gracz nie znajduje się w FitnessRoom. Wyłączanie podglądu...");
-        canvas.style.display = 'none'; // Ukrywa canvas
+        console.log("Gracz nie znajduje się w FitnessRoom. Wyłączanie kamerki...");
+        if (videoStream) {
+            let tracks = videoStream.getTracks();
+            tracks.forEach(track => track.stop());
+            videoStream = null;
+            console.log("Kamerka wyłączona.");
+        } else {
+            console.log("Kamerka już była wyłączona.");
+        }
         if (pose) {
             pose.close();
             console.log("MediaPipe wyłączone.");
@@ -188,10 +212,5 @@ async function checkLocationAndStartCamera() {
     }
 }
 
-function toggleCameraButton() {
-    const cameraButton = document.getElementById("cameraButton");
-    cameraButton.style.display = currentLocation === 'FitnessRoom' ? 'block' : 'none';
-}
-
-// Dodaj event listener do przycisku
+// Dodaj przycisk do uruchomienia kamery
 document.getElementById("cameraButton").addEventListener("click", checkLocationAndStartCamera);
