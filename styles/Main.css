@@ -103,34 +103,49 @@ body {
   font-family: "Pixelify Sans", sans-serif; 
 }
 
- #audioButton {
-   position: fixed;
-   bottom: 20px;  
-   left: 45%;
-  transform: translateX(-55%);
-     padding: 10px 20px;
-  background-color: #7fc2ff;
-  color: #3A160D;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  font-family: "Pixelify Sans", sans-serif; 
- }
+#audioButton {
+    position: fixed;
+    bottom: 20px;  
+    left: 45%;
+    transform: translateX(-55%);
+    padding: 10px 20px;
+    background-color: #7fc2ff;
+    color: #3A160D;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: "Pixelify Sans", sans-serif; 
+}
+
+#cameraButton {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: #7fc2ff;
+    color: #3A160D;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: "Pixelify Sans", sans-serif;
+}
 
 #closeVideoButton {
     position: fixed;
-  bottom: 20px; 
-  left: 55%;
-  transform: translateX(-45%);
-  padding: 10px 20px;
-  background-color: #7fc2ff;
-  color: #3A160D;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  font-family: "Pixelify Sans", sans-serif; 
+    bottom: 20px; 
+    left: 55%;
+    transform: translateX(-45%);
+    padding: 10px 20px;
+    background-color: #7fc2ff;
+    color: #3A160D;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: "Pixelify Sans", sans-serif; 
 }
 
 #gameVideo {
