@@ -49,12 +49,22 @@ body {
   font-style: normal;
 }
 
-#errorDisplay {
+#levelDisplay, #xpDisplay, #errorDisplay {
   position: absolute;
   color: #fff;
   font-size: 16px;
   margin: 10px;
   z-index: 10; 
+}
+
+#levelDisplay {
+  top: 10px;
+  left: 10px;
+}
+
+#xpDisplay {
+  top: 30px;
+  left: 10px;
 }
 
 #errorDisplay {
@@ -79,79 +89,48 @@ body {
 
 
 #videoButton {
-    position: fixed;
-    bottom: 20px; 
-    left: 58%;
-    transform: translateX(-45%);
-    padding: 10px 20px;
-    background-color: #7fc2ff;
-    color: #3A160D;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    font-family: "Pixelify Sans", sans-serif; 
+  position: fixed;
+  bottom: 20px; 
+  left: 55%;
+  transform: translateX(-45%);
+  padding: 10px 20px;
+  background-color: #7fc2ff;
+  color: #3A160D;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: "Pixelify Sans", sans-serif; 
 }
 
-#audioButton {
-    position: fixed;
-    bottom: 20px;  
-    left: 42%; 
-    transform: translateX(-55%);
-    padding: 10px 20px;
-    background-color: #7fc2ff;
-    color: #3A160D;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    font-family: "Pixelify Sans", sans-serif; 
-}
-
-#cameraButton {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 10px 20px;
-    background-color: #7fc2ff;
-    color: #3A160D;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    font-family: "Pixelify Sans", sans-serif;
-}
+ #audioButton {
+   position: fixed;
+   bottom: 20px;  
+   left: 45%;
+  transform: translateX(-55%);
+     padding: 10px 20px;
+  background-color: #7fc2ff;
+  color: #3A160D;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: "Pixelify Sans", sans-serif; 
+ }
 
 #closeVideoButton {
     position: fixed;
-    bottom: 20px; 
-    left: 58%;
-    transform: translateX(-45%);
-    padding: 10px 20px;
-    background-color: #7fc2ff;
-    color: #3A160D;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    font-family: "Pixelify Sans", sans-serif; 
-}
-
-
-#closeVideoButton {
-    position: fixed;
-    bottom: 20px; 
-    left: 55%;
-    transform: translateX(-45%);
-    padding: 10px 20px;
-    background-color: #7fc2ff;
-    color: #3A160D;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    font-family: "Pixelify Sans", sans-serif; 
+  bottom: 20px; 
+  left: 55%;
+  transform: translateX(-45%);
+  padding: 10px 20px;
+  background-color: #7fc2ff;
+  color: #3A160D;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: "Pixelify Sans", sans-serif; 
 }
 
 #gameVideo {
@@ -161,24 +140,4 @@ body {
   left: 50%;
   transform: translate(-50%, -30%); 
   z-index: 1000; 
-}
-
-
-#video {
-    position: fixed;
-    bottom: 20px; 
-    right: 20px; 
-    width: 320px; 
-    height: auto;
-    border: 2px solid #fff; 
-    border-radius: 10px; 
-    z-index: 1001;
-}
-
-#canvas {
-    width: 80%;
-    max-width: 640px;
-    border: 2px solid #333;
-    border-radius: 8px;
-    z-index: 1002;
 }
