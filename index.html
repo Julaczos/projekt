@@ -13,9 +13,20 @@
     <link href="/projekt/styles/Combatant.css" type="text/css" rel="stylesheet">
     <link href="/projekt/styles/Team.css" type="text/css" rel="stylesheet">
     <link href="/projekt/styles/KeyboardMenu.css" type="text/css" rel="stylesheet">
+    
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+
+    <style>
+        #video {
+            display: none; 
+        }
+        #poseCanvas {
+            display: none; 
+            position: absolute;
+        }
+    </style>
 </head>
 <body>
     <div class="game-container">
@@ -28,6 +39,7 @@
     <div id="levelDisplay">Poziom: 1</div>
     <div id="errorDisplay"></div>
     <div id="instructions">wsad (strzałki) by się poruszać, enter by rozmawiać, esc by zapisać</div>
+    
     <button id="cameraButton" onclick="checkLocationAndStartCamera()">Uruchom kamerę</button>
     <button id="videoButton" onclick="toggleVideo()">Włącz wideo</button>
     <button id="audioButton" onclick="toggleAudio()">Włącz audio</button>
@@ -39,11 +51,11 @@
         </video>
         <button id="closeVideoButton" onclick="toggleVideo()" style="display: none;">Zamknij wideo</button>
     </div>
+    
     <audio id="backgroundAudio" src="/projekt/images/backgroundmusic.mp3" style="display:none;" loop></audio>
 
-    <video id="video" style="display: none;" autoplay playsinline></video>
-    <canvas id="poseCanvas" style="display: none; position: absolute;"></canvas>
-
+    <video id="video" autoplay playsinline></video>
+    <canvas id="poseCanvas"></canvas>
 
     <script src="enemies.js"></script>
     <script src="actions.js"></script>
@@ -75,8 +87,6 @@
     <script src="/projekt/battle/BattleEvent.js"></script>
     <script src="/projekt/battle/BattleAnimation.js"></script>
 
-
-    
     <script src="init.js"></script>
     <script src="poseMain.js"></script>
 </body>
