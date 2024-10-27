@@ -52,7 +52,7 @@ function updateSquatCounter(poseLandmarks) {
     if (!checkPoseVisibility(requiredLandmarks, poseLandmarks)) {
         return;
     }
-    
+
     const leftHip = poseLandmarks[23];
     const leftKnee = poseLandmarks[25];
     const leftAnkle = poseLandmarks[27];
@@ -78,9 +78,9 @@ function updateSquatCounter(poseLandmarks) {
         isSquatting = true; 
     } else if (averageKneeAngle > 160 && isSquatting) {
         console.log("przysiad zrobiony");
-        window.playerState.squatCount++;
+        squatCount++;
         isSquatting = false;
-        document.getElementById("squatCounter").innerText = `Przysiady: ${window.squatCount}`;
+        document.getElementById("squatCounter").innerText = `Przysiady: ${squatCount}`;
         window.playerState.gainXPForPizza(10);
     } 
 }
@@ -91,7 +91,7 @@ function updateBicepCurlCounter(poseLandmarks) {
     if (!checkPoseVisibility(requiredLandmarks, poseLandmarks)) {
         return;
     }
-    
+
     const leftShoulder = poseLandmarks[11];
     const leftElbow = poseLandmarks[13];
     const leftWrist = poseLandmarks[15];
@@ -106,7 +106,7 @@ function updateBicepCurlCounter(poseLandmarks) {
         document.getElementById("errorDisplay").innerText = "Część sylwetki jest niewidoczna. Ustaw się prawidłowo.";
         return;
     } else {
-        document.getElementById("errorDisplay").innerText = "Cała sylwetka widoczna, gratulacje!";  
+        document.getElementById("errorDisplay").innerText = "Cała sylwetka widoczna, gratulacje!";
     }
 
     const leftElbowAngle = calculateAngle(leftShoulder, leftElbow, leftWrist);
@@ -117,9 +117,9 @@ function updateBicepCurlCounter(poseLandmarks) {
         isCurling = true; 
     } else if (averageElbowAngle > 150 && isCurling) {
         console.log("podnoszenie zrobione");
-        window.playerState.bicepCurlCount++;
+        bicepCurlCount++;
         isCurling = false;
-        document.getElementById("bicepCounter").innerText = `Biceps Curls: ${window.bicepCurlCount}`;
+        document.getElementById("bicepCounter").innerText = `Biceps Curls: ${bicepCurlCount}`;
         window.playerState.gainXPForPizza(5);
     }
 }
@@ -172,7 +172,20 @@ async function initMediaPipe(stream) {
 }
 
 function onPoseResults(results) {
+    const canvasElement = document.getElementById('outputCanvas');
+    const canvasCtx = canvasElement.getContext('2d');
+
+    canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
+    canvasElement.width = results.image.width;
+    canvasElement.height = results.image.height;
+
+    canvasCtx.drawImage(results.image, 0, 0, canvasElement.width, canvasElement.height);
     if (results.poseLandmarks) {
+        drawConnectors(canvasCtx, results.poseLandmarks, POSE_CONNECTIONS,
+            { color: '#00FF00', lineWidth: 4 });
+        drawLandmarks(canvasCtx, results.poseLandmarks,
+            { color: '#FF0000', lineWidth: 2 });
+
         updateSquatCounter(results.poseLandmarks);
         updateBicepCurlCounter(results.poseLandmarks);
     }
@@ -181,45 +194,43 @@ function onPoseResults(results) {
 async function checkLocationAndStartCamera() {
     console.log("Aktualna lokalizacja: ", currentLocation);
 
-    // Elementy HTML
-    const videoElement = document.getElementById('video'); // Element wideo
-    const errorDisplay = document.getElementById("errorDisplay"); // Element do wyświetlania błędów
+    const videoElement = document.getElementById('video'); 
+    const errorDisplay = document.getElementById("errorDisplay");
 
     if (currentLocation === 'FitnessRoom') {
         console.log("Gracz znajduje się w FitnessRoom. Próba uruchomienia kamerki...");
         if (!videoStream) {
-            videoStream = await startCamera(); // Uruchom kamerę
+            videoStream = await startCamera();
             if (videoStream) {
                 console.log("Kamerka uruchomiona.");
-                videoElement.srcObject = videoStream; // Przypisz strumień do elementu wideo
-                videoElement.style.display = 'block'; // Upewnij się, że wideo jest widoczne
-                initMediaPipe(videoStream); // Inicjalizuj MediaPipe
+                videoElement.srcObject = videoStream; 
+                videoElement.style.display = 'block'; 
+                initMediaPipe(videoStream); 
             } else {
                 console.log("Nie udało się uruchomić kamerki.");
-                errorDisplay.innerText = "Nie udało się uruchomić kamerki."; // Wyświetl błąd
+                errorDisplay.innerText = "Nie udało się uruchomić kamerki."; 
             }
         } else {
             console.log("Kamerka już działa.");
-            errorDisplay.innerText = "Kamerka już działa."; // Wyświetl informację
+            errorDisplay.innerText = "Kamerka już działa."; 
         }
     } else {
-        errorDisplay.innerText = ""; // Wyczyść komunikat o błędzie
+        errorDisplay.innerText = ""; 
         console.log("Gracz nie znajduje się w FitnessRoom. Wyłączanie kamerki...");
         if (videoStream) {
-            let tracks = videoStream.getTracks(); // Zatrzymaj wszystkie tracki wideo
+            let tracks = videoStream.getTracks(); 
             tracks.forEach(track => track.stop());
-            videoStream = null; // Zresetuj strumień
-            videoElement.style.display = 'none'; // Ukryj wideo
+            videoStream = null; 
+            videoElement.style.display = 'none';
             console.log("Kamerka wyłączona.");
         } else {
             console.log("Kamerka już była wyłączona.");
         }
         if (pose) {
-            pose.close(); // Zamknij MediaPipe
+            pose.close(); 
             console.log("MediaPipe wyłączone.");
         }
     }
 }
 
-// Dodaj przycisk do uruchomienia kamery
 document.getElementById("cameraButton").addEventListener("click", checkLocationAndStartCamera);
