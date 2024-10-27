@@ -157,3 +157,27 @@ body {
   transform: translate(-50%, -30%); 
   z-index: 1000; 
 }
+
+
+#video {
+    position: fixed;
+    bottom: 20px; 
+    right: 20px; 
+    width: 320px; 
+    height: auto;
+    border: 2px solid #fff; 
+    border-radius: 10px; 
+    z-index: 1001;
+}
+
+#poseCanvas {
+    position: fixed;
+    bottom: 20px; /* Dystans od dołu */
+    right: 20px; /* Dystans od prawej */
+    width: 320px; /* Szerokość canvas */
+    height: auto; /* Automatyczna wysokość */
+    border: 2px solid #fff; /* Biały border wokół canvas */
+    border-radius: 10px; /* Zaokrąglone rogi */
+    z-index: 1002;
+}
+
