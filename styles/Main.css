@@ -49,22 +49,12 @@ body {
   font-style: normal;
 }
 
-#levelDisplay, #xpDisplay, #errorDisplay {
+#errorDisplay {
   position: absolute;
   color: #fff;
   font-size: 16px;
   margin: 10px;
   z-index: 10; 
-}
-
-#levelDisplay {
-  top: 10px;
-  left: 10px;
-}
-
-#xpDisplay {
-  top: 30px;
-  left: 10px;
 }
 
 #errorDisplay {
