@@ -1,54 +1,33 @@
-let squatCount = 0;
 let isSquatting = false;
-let bicepCurlCount = 0;
 let isCurling = false;
 
-let level = 1;
-let xp = 0;
-let xpToNextLevel = 100;
 let currentLocation = 'MainMap';
-
 let videoStream;
 let pose;
-
-window.squatCount = squatCount;
-window.bicepCurlCount = bicepCurlCount;
-window.level = level;
-window.xp = xp;
-window.xpToNextLevel = xpToNextLevel;
-window.currentLocation = currentLocation;
 
 function updateLocation(newLocation) {
     currentLocation = newLocation;
     console.log("Aktualna lokalizacja zmieniona na: ", currentLocation);
+    toggleCameraButton(); 
 }
 
-function gainXP(amount) {
-    window.xp += amount;
-    document.getElementById("xpDisplay").innerText = `XP: ${xp} / ${xpToNextLevel}`;
-    checkLevelUp();
-}
-
-function checkLevelUp() {
-    if (xp >= xpToNextLevel) {
-        window.level++;
-        window.xp -= xpToNextLevel;
-        window.xpToNextLevel = Math.floor(xpToNextLevel * 1.5);
-
-        document.getElementById("levelDisplay").innerText = `Poziom: ${window.level}`;
-        document.getElementById("xpDisplay").innerText = `XP: ${window.xp} / ${window.xpToNextLevel}`;
+function toggleCameraButton() {
+    const cameraButton = document.getElementById("cameraButton");
+    if (currentLocation === 'FitnessRoom') {
+        cameraButton.style.display = 'block';
+    } else {
+        cameraButton.style.display = 'none'; 
     }
 }
 
 function checkGameProgress() {
-    if (squatCount === 5) {
+    if (window.playerState.squatCount === 5) {
         window.playerState.storyFlags["Five_Squats"] = true;
     }
 }
 
 function updateSquatCounter(poseLandmarks) {
-    const requiredLandmarks = [23, 25, 27, 24, 26, 28]; 
-
+    const requiredLandmarks = [23, 25, 27, 24, 26, 28];
 
     const leftHip = poseLandmarks[23];
     const leftKnee = poseLandmarks[25];
@@ -59,10 +38,10 @@ function updateSquatCounter(poseLandmarks) {
     const rightAnkle = poseLandmarks[28];
 
     if (!leftHip || !leftKnee || !leftAnkle || !rightHip || !rightKnee || !rightAnkle ||
-        leftHip.visibility < 0.5 || leftKnee.visibility < 0.5 || leftAnkle.visibility < 0.5 || 
+        leftHip.visibility < 0.5 || leftKnee.visibility < 0.5 || leftAnkle.visibility < 0.5 ||
         rightHip.visibility < 0.5 || rightKnee.visibility < 0.5 || rightAnkle.visibility < 0.5) {
-            document.getElementById("errorDisplay").innerText = "Część sylwetki jest niewidoczna. Ustaw się prawidłowo.";
-            return;
+        document.getElementById("errorDisplay").innerText = "Część sylwetki jest niewidoczna. Ustaw się prawidłowo.";
+        return;
     } else {
         document.getElementById("errorDisplay").innerText = "Cała sylwetka widoczna, gratulacje!";
     }
@@ -72,19 +51,17 @@ function updateSquatCounter(poseLandmarks) {
     const averageKneeAngle = (leftKneeAngle + rightKneeAngle) / 2;
 
     if (averageKneeAngle < 70 && !isSquatting) {
-        isSquatting = true; 
+        isSquatting = true;
     } else if (averageKneeAngle > 160 && isSquatting) {
         console.log("przysiad zrobiony");
-        squatCount++;
+        window.playerState.squatCount++;
         isSquatting = false;
-        document.getElementById("squatCounter").innerText = `Przysiady: ${squatCount}`;
         window.playerState.gainXPForPizza(10);
-    } 
+    }
 }
 
 function updateBicepCurlCounter(poseLandmarks) {
-    const requiredLandmarks = [11, 13, 15, 12, 14, 16]; 
-
+    const requiredLandmarks = [11, 13, 15, 12, 14, 16];
 
     const leftShoulder = poseLandmarks[11];
     const leftElbow = poseLandmarks[13];
@@ -95,8 +72,8 @@ function updateBicepCurlCounter(poseLandmarks) {
     const rightWrist = poseLandmarks[16];
 
     if (!leftShoulder || !leftElbow || !leftWrist || !rightShoulder || !rightElbow || !rightWrist ||
-       leftShoulder.visibility < 0.5 || leftElbow.visibility < 0.5 || leftWrist.visibility < 0.5 || 
-       rightShoulder.visibility < 0.5 || rightElbow.visibility < 0.5 || rightWrist.visibility < 0.5) {
+        leftShoulder.visibility < 0.5 || leftElbow.visibility < 0.5 || leftWrist.visibility < 0.5 ||
+        rightShoulder.visibility < 0.5 || rightElbow.visibility < 0.5 || rightWrist.visibility < 0.5) {
         document.getElementById("errorDisplay").innerText = "Część sylwetki jest niewidoczna. Ustaw się prawidłowo.";
         return;
     } else {
@@ -108,12 +85,11 @@ function updateBicepCurlCounter(poseLandmarks) {
     const averageElbowAngle = (leftElbowAngle + rightElbowAngle) / 2;
 
     if (averageElbowAngle < 30 && !isCurling) {
-        isCurling = true; 
+        isCurling = true;
     } else if (averageElbowAngle > 150 && isCurling) {
         console.log("podnoszenie zrobione");
-        bicepCurlCount++;
+        window.playerState.bicepCurlCount++;
         isCurling = false;
-        document.getElementById("bicepCounter").innerText = `Biceps Curls: ${bicepCurlCount}`;
         window.playerState.gainXPForPizza(5);
     }
 }
@@ -228,3 +204,5 @@ async function checkLocationAndStartCamera() {
 }
 
 document.getElementById("cameraButton").addEventListener("click", checkLocationAndStartCamera);
+
+toggleCameraButton();
