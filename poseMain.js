@@ -17,6 +17,7 @@ function toggleCameraButton() {
         cameraButton.style.display = 'block';
     } else {
         cameraButton.style.display = 'none'; 
+        stopCamera(); 
     }
 }
 
@@ -112,6 +113,7 @@ async function startCamera() {
     }
 }
 
+
 async function initMediaPipe(stream) {
     const video = document.createElement("video");
     video.srcObject = stream;
@@ -185,24 +187,34 @@ async function checkLocationAndStartCamera() {
             errorDisplay.innerText = "Kamerka już działa."; 
         }
     } else {
-        errorDisplay.innerText = ""; 
-        console.log("Gracz nie znajduje się w FitnessRoom. Wyłączanie kamerki...");
-        if (videoStream) {
-            let tracks = videoStream.getTracks(); 
-            tracks.forEach(track => track.stop());
-            videoStream = null; 
-            videoElement.style.display = 'none';
-            console.log("Kamerka wyłączona.");
-        } else {
-            console.log("Kamerka już była wyłączona.");
-        }
-        if (pose) {
-            pose.close(); 
-            console.log("MediaPipe wyłączone.");
-        }
+        stopCamera(); 
+    }
+}
+
+function stopCamera() {
+    const videoElement = document.getElementById('video'); 
+    const errorDisplay = document.getElementById("errorDisplay");
+    
+    errorDisplay.innerText = ""; 
+    console.log("Gracz nie znajduje się w FitnessRoom. Wyłączanie kamerki...");
+    if (videoStream) {
+        let tracks = videoStream.getTracks(); 
+        tracks.forEach(track => track.stop());
+        videoStream = null; 
+        videoElement.style.display = 'none';
+        console.log("Kamerka wyłączona.");
+    } else {
+        console.log("Kamerka już była wyłączona.");
+    }
+    if (pose) {
+        pose.close(); 
+        console.log("MediaPipe wyłączone.");
     }
 }
 
 document.getElementById("cameraButton").addEventListener("click", checkLocationAndStartCamera);
+
+toggleCameraButton();
+
 
 toggleCameraButton();
