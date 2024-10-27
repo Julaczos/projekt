@@ -89,24 +89,24 @@ body {
 
 
 #videoButton {
-  position: fixed;
-  bottom: 20px; 
-  left: 55%;
-  transform: translateX(-45%);
-  padding: 10px 20px;
-  background-color: #7fc2ff;
-  color: #3A160D;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  font-family: "Pixelify Sans", sans-serif; 
+    position: fixed;
+    bottom: 20px; 
+    left: 58%;
+    transform: translateX(-45%);
+    padding: 10px 20px;
+    background-color: #7fc2ff;
+    color: #3A160D;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: "Pixelify Sans", sans-serif; 
 }
 
 #audioButton {
     position: fixed;
     bottom: 20px;  
-    left: 45%;
+    left: 42%; 
     transform: translateX(-55%);
     padding: 10px 20px;
     background-color: #7fc2ff;
@@ -121,7 +121,6 @@ body {
 #cameraButton {
     position: fixed;
     bottom: 20px;
-    display: none;
     left: 50%;
     transform: translateX(-50%);
     padding: 10px 20px;
@@ -133,6 +132,22 @@ body {
     font-size: 16px;
     font-family: "Pixelify Sans", sans-serif;
 }
+
+#closeVideoButton {
+    position: fixed;
+    bottom: 20px; 
+    left: 58%;
+    transform: translateX(-45%);
+    padding: 10px 20px;
+    background-color: #7fc2ff;
+    color: #3A160D;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: "Pixelify Sans", sans-serif; 
+}
+
 
 #closeVideoButton {
     position: fixed;
