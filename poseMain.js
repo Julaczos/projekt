@@ -49,9 +49,6 @@ function checkGameProgress() {
 function updateSquatCounter(poseLandmarks) {
     const requiredLandmarks = [23, 25, 27, 24, 26, 28]; 
 
-    if (!checkPoseVisibility(requiredLandmarks, poseLandmarks)) {
-        return;
-    }
 
     const leftHip = poseLandmarks[23];
     const leftKnee = poseLandmarks[25];
@@ -88,9 +85,6 @@ function updateSquatCounter(poseLandmarks) {
 function updateBicepCurlCounter(poseLandmarks) {
     const requiredLandmarks = [11, 13, 15, 12, 14, 16]; 
 
-    if (!checkPoseVisibility(requiredLandmarks, poseLandmarks)) {
-        return;
-    }
 
     const leftShoulder = poseLandmarks[11];
     const leftElbow = poseLandmarks[13];
