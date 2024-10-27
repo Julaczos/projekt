@@ -135,6 +135,12 @@ function calculateAngle(A, B, C) {
 }
 
 async function initMediaPipe() {
+    const video = document.getElementById("video"); // Zmieniamy, aby korzystać z elementu wideo
+
+    video.style.display = 'block'; // Ustawiamy wyświetlanie wideo
+    video.srcObject = await startCamera(); // Ustawiamy strumień wideo
+    video.play(); // Uruchamiamy odtwarzanie
+
     pose = new Pose({
         locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`
     });
@@ -149,6 +155,7 @@ async function initMediaPipe() {
 
     pose.onResults(onPoseResults);
 }
+
 
 function onPoseResults(results) {
     ctx.clearRect(0, 0, canvas.width, canvas.height); // Czyści canvas
