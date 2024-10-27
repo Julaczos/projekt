@@ -179,34 +179,43 @@ function onPoseResults(results) {
 }
 
 async function checkLocationAndStartCamera() {
-    console.log("Aktualna lokalizacja: ", currentLocation); 
-    
+    console.log("Aktualna lokalizacja: ", currentLocation);
+
+    // Elementy HTML
+    const videoElement = document.getElementById('video'); // Element wideo
+    const errorDisplay = document.getElementById("errorDisplay"); // Element do wyświetlania błędów
+
     if (currentLocation === 'FitnessRoom') {
         console.log("Gracz znajduje się w FitnessRoom. Próba uruchomienia kamerki...");
         if (!videoStream) {
-            videoStream = await startCamera();
+            videoStream = await startCamera(); // Uruchom kamerę
             if (videoStream) {
                 console.log("Kamerka uruchomiona.");
-                initMediaPipe(videoStream);
+                videoElement.srcObject = videoStream; // Przypisz strumień do elementu wideo
+                videoElement.style.display = 'block'; // Upewnij się, że wideo jest widoczne
+                initMediaPipe(videoStream); // Inicjalizuj MediaPipe
             } else {
                 console.log("Nie udało się uruchomić kamerki.");
+                errorDisplay.innerText = "Nie udało się uruchomić kamerki."; // Wyświetl błąd
             }
         } else {
             console.log("Kamerka już działa.");
+            errorDisplay.innerText = "Kamerka już działa."; // Wyświetl informację
         }
     } else {
-        document.getElementById("errorDisplay").innerText = " ";
+        errorDisplay.innerText = ""; // Wyczyść komunikat o błędzie
         console.log("Gracz nie znajduje się w FitnessRoom. Wyłączanie kamerki...");
         if (videoStream) {
-            let tracks = videoStream.getTracks();
+            let tracks = videoStream.getTracks(); // Zatrzymaj wszystkie tracki wideo
             tracks.forEach(track => track.stop());
-            videoStream = null;
+            videoStream = null; // Zresetuj strumień
+            videoElement.style.display = 'none'; // Ukryj wideo
             console.log("Kamerka wyłączona.");
         } else {
             console.log("Kamerka już była wyłączona.");
         }
         if (pose) {
-            pose.close();
+            pose.close(); // Zamknij MediaPipe
             console.log("MediaPipe wyłączone.");
         }
     }
