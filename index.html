@@ -13,7 +13,7 @@
     <link href="/projekt/styles/Combatant.css" type="text/css" rel="stylesheet">
     <link href="/projekt/styles/Team.css" type="text/css" rel="stylesheet">
     <link href="/projekt/styles/KeyboardMenu.css" type="text/css" rel="stylesheet">
-    
+
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
@@ -21,13 +21,10 @@
 </head>
 <body>
     <div class="game-container">
-        <canvas id="outputCanvas" class="game-canvas" width="352" height="198"></canvas>
+        <canvas id="outputCanvas" class="game-canvas" width="300" height="400" style="position: fixed; top: 20px; right: 20px;"></canvas>
+        <video id="video" autoplay playsinline style="display: none;"></video>
     </div>
 
-    <div id="squatCounter">Przysiady: 0</div>
-    <div id="bicepCounter">Biceps Curls: 0</div>
-    <div id="xpDisplay">XP: 0 / 100</div>
-    <div id="levelDisplay">Poziom: 1</div>
     <div id="errorDisplay"></div>
     <div id="instructions">wsad (strzałki) by się poruszać, enter by rozmawiać, esc by zapisać</div>
     
@@ -45,8 +42,9 @@
     
     <audio id="backgroundAudio" src="/projekt/images/backgroundmusic.mp3" style="display:none;" loop></audio>
 
-    <video id="video" autoplay playsinline></video>
-    <canvas id="poseCanvas"></canvas>
+    <div id="poseCanvasContainer" style="display: none;">
+        <canvas id="poseCanvas" width="640" height="360"></canvas>
+    </div>
 
     <script src="enemies.js"></script>
     <script src="actions.js"></script>
