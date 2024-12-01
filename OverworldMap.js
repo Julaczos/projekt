@@ -203,6 +203,13 @@ walls: function() {
         x: utils.withGrid(7),
         y: utils.withGrid(5),
         src: "/projekt/images/npc11.png",
+        talking: [
+          {
+              { type: "textMessage", text: "Hej, potrzebujesz pomocy?", faceHero: "lekarz" },
+              { type: "textMessage", text: "Przydałoby się"},
+              { type: "textMessage", text: "Proszę, jako lekarz mogę cię uleczyć"},
+          }
+        ]
       })
     },
     cutsceneSpaces: {
