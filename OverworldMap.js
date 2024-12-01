@@ -207,7 +207,7 @@ walls: function() {
           {
             required: ["TALKED_TO_LEKARZ"],
             events: [
-               {{ type: "textMessage", text: "Hej, przed chwilą dałem ci jabłka", faceHero: "lekarz" },}
+               { type: "textMessage", text: "Hej, przed chwilą dałem ci jabłka", faceHero: "lekarz" },
             ]
           },
           {
