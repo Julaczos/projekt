@@ -309,6 +309,17 @@ walls: function() {
         src: "/projekt/images/mentor.png",
         talking: [
           {
+            required: ["WON_WITH_ROBERT"],
+            events: [
+              { type: "textMessage", text: "Widzisz, udało Ci się!", faceHero: "mentor" },
+              { type: "textMessage", text: "To dopiero pierwszy krok, ale bardzo udany" },
+              { type: "textMessage", text: "Teraz czeka się jeszcze więcej walki i treningu" },
+              { type: "textMessage", text: "Ale na ten moment, dziękuje za zagranie w GymAI" },
+              { type: "textMessage", text: "Jakie GymAI?" },
+              { type: "textMessage", text: "On nie wie..., nie zadawaj zbędnych pytań" },
+            ]
+          },
+          {
             required: ["TALKED_TO_ZELKA"],
             events: [
               { type: "textMessage", text: "Czas na twój pierwszy pojedynek", faceHero: "mentor" },
@@ -557,7 +568,7 @@ walls: function() {
               {type: "textMessage", text: "Moja babcia mówiła, że to przez brak zdrowej diety i sportu"},
               {type: "textMessage", text: "Wiesz może, co można z tym zrobić?"},
               {type: "textMessage", text: "Ponoć sławny bohater przybędzie i pokona mroczny byt, który to wszystko spowodował"},
-              {type: "textMessage", text: "Cóż, w takim razie czas zacząć treningi, do zobaczenia!"},
+              {type: "textMessage", text: "Cóż, w takim razie czas zacząć treningi, lepiej wrócę do trenera"},
               {type: "addStoryFlag", flag: "TALKED_TO_RUDA"}
             ]
           },
@@ -577,11 +588,12 @@ walls: function() {
             required: ["WON_WITH_ROBERT"],
             events: [
               {type: "textMessage", text: "Dziękuje"},
+              {type: "textMessage", text: "Powiedz mentorowi, że go pozdrawiam"},
             ]
         },
         {
           events: [
-            {type: "textMessage", text: "Zmiażdzę Cię jak słabego pomidora!"},
+            {type: "textMessage", text: "Zmiażdzę Cię jak miękkiego pomidora!"},
           {type: "battle", enemyId: "robert" },
           { type: "addStoryFlag", flag: "WON_WITH_ROBERT" }
         ]
