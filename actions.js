@@ -43,8 +43,8 @@ damage50: {
     description: "Szybka dawka energii i siły",
     targetType: "friendly",
     success: [
-      { type:"textMessage", text: "{CASTER} zjada trochę owocu {ACTION}!", },
-      { type:"stateChange", recover: 10, },
+      { type:"textMessage", text: "{CASTER} zjada trochę owocu: {ACTION}!", },
+      { type:"stateChange", recover: 15, },
       { type:"textMessage", text: "{CASTER} odzyskuje zdrowie", },
     ]
   },
