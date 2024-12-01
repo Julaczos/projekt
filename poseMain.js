@@ -28,6 +28,14 @@ function updateSquatCounter(poseLandmarks) {
     const rightKnee = poseLandmarks[26];
     const rightAnkle = poseLandmarks[28];
 
+    const leftShoulder = poseLandmarks[11];
+    const leftElbow = poseLandmarks[13];
+    const leftWrist = poseLandmarks[15];
+
+    const rightShoulder = poseLandmarks[12];
+    const rightElbow = poseLandmarks[14];
+    const rightWrist = poseLandmarks[16];
+
     if (!leftHip || !leftKnee || !leftAnkle || !rightHip || !rightKnee || !rightAnkle ||
         leftHip.visibility < 0.5 || leftKnee.visibility < 0.5 || leftAnkle.visibility < 0.5 || 
         rightHip.visibility < 0.5 || rightKnee.visibility < 0.5 || rightAnkle.visibility < 0.5 || !leftShoulder || !leftElbow || !leftWrist || !rightShoulder || !rightElbow || !rightWrist ||
@@ -63,6 +71,14 @@ function updateBicepCurlCounter(poseLandmarks) {
     const rightShoulder = poseLandmarks[12];
     const rightElbow = poseLandmarks[14];
     const rightWrist = poseLandmarks[16];
+
+    const leftHip = poseLandmarks[23];
+    const leftKnee = poseLandmarks[25];
+    const leftAnkle = poseLandmarks[27];
+
+    const rightHip = poseLandmarks[24];
+    const rightKnee = poseLandmarks[26];
+    const rightAnkle = poseLandmarks[28];
 
     if (!leftShoulder || !leftElbow || !leftWrist || !rightShoulder || !rightElbow || !rightWrist ||
        leftShoulder.visibility < 0.5 || leftElbow.visibility < 0.5 || leftWrist.visibility < 0.5 || rightShoulder.visibility < 0.5 || rightElbow.visibility < 0.5 || rightWrist.visibility < 0.5 ||
