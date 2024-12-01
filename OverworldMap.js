@@ -205,7 +205,7 @@ walls: function() {
         src: "/projekt/images/npc11.png",
         talking: [
           {
-            required ["TALKED_TO_LEKARZ"],
+            required: ["TALKED_TO_LEKARZ"],
             events: [
                {{ type: "textMessage", text: "Hej, przed chwilą dałem ci jabłka", faceHero: "lekarz" },}
             ]
