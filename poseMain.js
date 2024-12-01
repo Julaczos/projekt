@@ -13,7 +13,7 @@ function updateLocation(newLocation) {
 }
 
 function checkGameProgress() {
-    if (squatCount === 5) {
+    if (window.playerState.squatCount >= 5) {
         window.playerState.storyFlags["Five_Squats"] = true;
     }
 }
