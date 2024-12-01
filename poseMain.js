@@ -59,6 +59,7 @@ function updateSquatCounter(poseLandmarks) {
         window.playerState.squatCount++;
         isSquatting = false;
         window.playerState.gainXPForPizza(10);
+        checkGameProgress();
     } 
 }
 
