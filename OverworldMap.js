@@ -581,6 +581,7 @@ walls: function() {
         },
         {
           events: [
+            {type: "textMessage", text: "Zmiażdzę Cię jak słabego pomidora!"},
           {type: "battle", enemyId: "robert" },
           { type: "addStoryFlag", flag: "WON_WITH_ROBERT" }
         ]
