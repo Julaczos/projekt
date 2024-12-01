@@ -209,7 +209,7 @@ walls: function() {
             events: [
                {{ type: "textMessage", text: "Hej, przed chwilą dałem ci jabłka", faceHero: "lekarz" },}
             ]
-          }
+          },
           {
             events: [
               { type: "textMessage", text: "Hej, potrzebujesz pomocy?", faceHero: "lekarz" },
@@ -221,7 +221,6 @@ walls: function() {
               { type: "addItem", itemId: "item_recoverHp" },
             ]
           }
-        ]
       })
     },
     cutsceneSpaces: {
