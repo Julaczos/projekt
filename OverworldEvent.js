@@ -90,6 +90,20 @@ class OverworldEvent {
     resolve();
   }
 
+  restoreHpToMax(resolve) {
+    const player = window.playerState;
+    player.lineup.forEach(pizzaId => {
+      const pizza = player.pizzas[pizzaId];
+      if (pizza) {
+        pizza.hp = pizza.maxHp;
+      }
+    });
+    console.log("HP zostało przywrócone do maksymalnego poziomu.");
+    resolve();
+  }
+
+
+
   pause(resolve) {
     this.map.isPaused = true;
     const menu = new PauseMenu({
