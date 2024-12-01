@@ -205,9 +205,11 @@ walls: function() {
         src: "/projekt/images/npc11.png",
         talking: [
           {
+            events: [
               { type: "textMessage", text: "Hej, potrzebujesz pomocy?", faceHero: "lekarz" },
               { type: "textMessage", text: "Przydałoby się"},
-              { type: "textMessage", text: "Proszę, jako lekarz mogę cię uleczyć"},
+              { type: "textMessage", text: "Proszę, jako lekarz mogę cię uleczyć"},              
+            ]
           }
         ]
       })
