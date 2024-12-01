@@ -221,7 +221,7 @@ walls: function() {
               { type: "addItem", itemId: "item_recoverHp" },
             ]
           }
-      })
+      }),
     },
     cutsceneSpaces: {
       [utils.asGridCoord(4,14)]: [
