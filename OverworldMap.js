@@ -219,6 +219,7 @@ walls: function() {
               { type: "addItem", itemId: "item_recoverHp" },
               { type: "addItem", itemId: "item_recoverHp" },
               { type: "addItem", itemId: "item_recoverHp" },
+              { type: "restoreHpToMax"},
             ]
           }
         ]
