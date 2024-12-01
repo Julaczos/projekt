@@ -205,10 +205,20 @@ walls: function() {
         src: "/projekt/images/npc11.png",
         talking: [
           {
+            required ["TALKED_TO_LEKARZ"],
+            events: [
+               {{ type: "textMessage", text: "Hej, przed chwilą dałem ci jabłka", faceHero: "lekarz" },}
+            ]
+          }
+          {
             events: [
               { type: "textMessage", text: "Hej, potrzebujesz pomocy?", faceHero: "lekarz" },
               { type: "textMessage", text: "Przydałoby się"},
-              { type: "textMessage", text: "Proszę, jako lekarz mogę cię uleczyć"},              
+              { type: "textMessage", text: "Proszę, jako lekarz mogę dać Ci lecznice jabłka"}, 
+              { type: "addStoryFlag", flag: "TALKED_TO_LEKARZ"},
+              { type: "addItem", itemId: "item_recoverHp" },
+              { type: "addItem", itemId: "item_recoverHp" },
+              { type: "addItem", itemId: "item_recoverHp" },
             ]
           }
         ]
