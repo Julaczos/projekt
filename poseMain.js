@@ -19,7 +19,6 @@ function checkGameProgress() {
 }
 
 function updateSquatCounter(poseLandmarks) {
-    
     const leftHip = poseLandmarks[23];
     const leftKnee = poseLandmarks[25];
     const leftAnkle = poseLandmarks[27];
@@ -38,14 +37,15 @@ function updateSquatCounter(poseLandmarks) {
 
     if (!leftHip || !leftKnee || !leftAnkle || !rightHip || !rightKnee || !rightAnkle ||
         leftHip.visibility < 0.5 || leftKnee.visibility < 0.5 || leftAnkle.visibility < 0.5 || 
-        rightHip.visibility < 0.5 || rightKnee.visibility < 0.5 || rightAnkle.visibility < 0.5 || !leftShoulder || !leftElbow || !leftWrist || !rightShoulder || !rightElbow || !rightWrist ||
-       leftShoulder.visibility < 0.5 || leftElbow.visibility < 0.5 || leftWrist.visibility < 0.5 || rightShoulder.visibility < 0.5 || rightElbow.visibility < 0.5 || rightWrist.visibility < 0.5) {
+        rightHip.visibility < 0.5 || rightKnee.visibility < 0.5 || rightAnkle.visibility < 0.5 || 
+        !leftShoulder || !leftElbow || !leftWrist || !rightShoulder || !rightElbow || !rightWrist ||
+        leftShoulder.visibility < 0.5 || leftElbow.visibility < 0.5 || leftWrist.visibility < 0.5 || 
+        rightShoulder.visibility < 0.5 || rightElbow.visibility < 0.5 || rightWrist.visibility < 0.5) {
             document.getElementById("errorDisplay").innerText = "Część sylwetki jest niewidoczna. Ustaw się prawidłowo.";
             return;
     } else {
         document.getElementById("errorDisplay").innerText = "Cała sylwetka widoczna, gratulacje!";
     }
-
 
     const leftKneeAngle = calculateAngle(leftHip, leftKnee, leftAnkle);
     const rightKneeAngle = calculateAngle(rightHip, rightKnee, rightAnkle);
@@ -58,10 +58,20 @@ function updateSquatCounter(poseLandmarks) {
         console.log("przysiad zrobiony");
         window.playerState.squatCount++;
         isSquatting = false;
+
+        const squatSound = new Audio('/projekt/images/sound.mp3');
+        squatSound.play();
+
+        setTimeout(() => {
+            squatSound.pause();
+            squatSound.currentTime = 0; 
+        }, 3000);
+
         window.playerState.gainXPForPizza(10);
         checkGameProgress();
-    } 
+    }
 }
+
 
 function updateBicepCurlCounter(poseLandmarks) {
     
