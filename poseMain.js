@@ -52,9 +52,9 @@ function updateSquatCounter(poseLandmarks) {
 
     const averageKneeAngle = (leftKneeAngle + rightKneeAngle) / 2;
 
-    if (averageKneeAngle < 85 && !isSquatting) {
+    if (averageKneeAngle < 150 && !isSquatting) {
         isSquatting = true; 
-    } else if (averageKneeAngle > 160 && isSquatting) {
+    } else if (averageKneeAngle > 170 && isSquatting) {
         console.log("przysiad zrobiony");
         window.playerState.squatCount++;
         isSquatting = false;
