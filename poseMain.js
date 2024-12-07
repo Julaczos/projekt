@@ -13,7 +13,7 @@ function updateLocation(newLocation) {
 }
 
 function checkGameProgress() {
-    if (window.playerState.squatCount >= 5) {
+    if (window.playerState.squatCount >= 3) {
         window.playerState.storyFlags["Five_Squats"] = true;
     }
 }
@@ -52,9 +52,9 @@ function updateSquatCounter(poseLandmarks) {
 
     const averageKneeAngle = (leftKneeAngle + rightKneeAngle) / 2;
 
-    if (averageKneeAngle < 150 && !isSquatting) {
+    if (averageKneeAngle < 155 && !isSquatting) {
         isSquatting = true; 
-    } else if (averageKneeAngle > 170 && isSquatting) {
+    } else if (averageKneeAngle > 160 && isSquatting) {
         console.log("przysiad zrobiony");
         window.playerState.squatCount++;
         isSquatting = false;
